@@ -9,7 +9,7 @@
 ### General
 - As a user i can make posts
 - As a user i can comment on posts
-- As a user i can upvote a posts
+- As a user i can have the option to add a profile
 ### Admin
 - As an admin i can create a new sport event
 - As an admin i can delete comments and posts
