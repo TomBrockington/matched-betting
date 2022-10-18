@@ -9,13 +9,15 @@
   --main-border-radius: 0.8rem;
   --round-border-radius: 50%;
   /* FONTS */
-  --main-font-color: gold;
+  --main-font-color: black;
   --alt-font-color: orange;
   /* CONTAINER WIDTH */
   --main-container-width: 90%;
   --nav-container-width: 100%;
+  --reg--login--container: 30%;
   /* TRANSITIONS */
   --transition: all 400ms ease;
+
 
 }
 

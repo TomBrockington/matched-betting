@@ -1,0 +1,40 @@
+.register__container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+.form__container {
+    background-color: orangered;
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    width: var(--reg--login--container);
+    height: fit-content;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.form__container > *, .register__form > * {
+    padding-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+.email__container {
+    display: grid;
+    justify-content: center;
+}
+
+.password__container {
+    display: grid;
+    justify-content: center;
+}
+
+.submit__container {
+    display: grid;
+    justify-content: center;
+}
+
+.login__link {
+}
