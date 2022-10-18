@@ -3,6 +3,8 @@ const prisma = require('../utils/prisma');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const findAllUsers = () => prisma.user.findMany({});
+
 const findUserByEmail = (email) =>
   prisma.user.findFirst({
     where: {
@@ -19,6 +21,7 @@ const createUser = (email, password) =>
   });
 
 module.exports = {
+  findAllUsers,
   findUserByEmail,
   createUser,
 };
