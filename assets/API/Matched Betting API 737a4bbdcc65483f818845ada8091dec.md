@@ -14,6 +14,8 @@
     **Responses**
     
     **201**  - successful
+
+    **404** - missing fields in body
     
     **409** - Data already exists
     
