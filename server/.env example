@@ -1,0 +1,5 @@
+PORT=4000
+DATABASE_URL="?schema=prisma"
+SHADOW_DATABASE_URL="?schema=shadow"
+JWT_SECRET=""
+JWT_EXPIRY="12h"
