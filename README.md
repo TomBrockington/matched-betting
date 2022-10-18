@@ -39,8 +39,6 @@ An educational website about how to guarantee profit from matched betting system
 - delete account
 - make forum post
 - comment on post
-- like post
-- upvote post
 - comment on comments to post
   
 ## Pages
