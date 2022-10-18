@@ -1,6 +1,89 @@
-body {
+:root {
+  /* BACKGROUNDS */
+  --main-background-color: green;
+  --alt-background-color: grey;
+  --nav-background-color: lightblue;
+  /* BORDERS */
+  --main-border-color: black;
+  --alt-border-color: red;
+  --main-border-radius: 0.8rem;
+  --round-border-radius: 50%;
+  /* FONTS */
+  --main-font-color: gold;
+  --alt-font-color: orange;
+  /* CONTAINER WIDTH */
+  --main-container-width: 90%;
+  --nav-container-width: 100%;
+  /* TRANSITIONS */
+  --transition: all 400ms ease;
+
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  outline: 0;
+  text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.7;
+  background-color: var(--main-background-color);
+}
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+/* ================= GENERAL STYLES ================= */
+
+.container {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+/* ================= IMAGES ================= */
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--main-font-color);
+  padding: 0.75rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--main-border-color);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--color-white);
+  color: var(--color-bg);
+  border-color: transparent;
+}
