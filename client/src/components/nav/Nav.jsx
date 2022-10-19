@@ -1,14 +1,17 @@
 import React from 'react';
 import './style.css';
 import Logo from '../../assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Nav() {
+  const navigate = useNavigate();
 
-  const signOut = () => {
-    console.log('sign out');
-  }
+  const signOut = (event) => {
+    event.preventDefault();
+    localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
+    navigate('../', { replace: true });
+  };
 
   return (
     <nav className='nav__container'>

@@ -3,7 +3,6 @@ import PostItem from './PostItem'
 import './style.css'
 
 function Posts({ posts }) {
-  console.log('posts', posts);
   return (
     <section className='posts__container'>
       <ul>

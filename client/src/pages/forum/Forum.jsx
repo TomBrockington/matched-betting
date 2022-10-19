@@ -19,7 +19,6 @@ function Forum() {
     fetch(`http://localhost:4000/posts?category=${postCategory.query}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log('data', data);
         setPosts(data.data);
       })
       .catch((error) => {
