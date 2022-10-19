@@ -30,6 +30,7 @@
     border-radius: var(--main-border-radius);
     padding: var(--standard-padding);
     height: min-content;
+    min-width: fit-content;
 }
 
 .forum__posts__container {

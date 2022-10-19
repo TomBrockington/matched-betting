@@ -5,6 +5,16 @@ const jwt = require('jsonwebtoken');
 
 const findAllPosts = () => prisma.post.findMany({});
 
+const findPostsByCategory = (category) => prisma.post.findMany({
+  where: {
+    category: category
+  },
+  orderBy: {
+    createdAt: 'desc'
+  },
+  
+})
+
 const createPost = (title, content, id, category) =>
   prisma.post.create({
     data: {
@@ -17,5 +27,6 @@ const createPost = (title, content, id, category) =>
 
 module.exports = {
   findAllPosts,
+  findPostsByCategory,
   createPost,
 };

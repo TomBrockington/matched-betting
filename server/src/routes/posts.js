@@ -6,9 +6,9 @@ const {
     getPostsByCategory,
 } = require('../controllers/posts');
 
+router.get('/', getPostsByCategory);
 router.get('/', getAllPosts);
 router.post('/', createNewPost);
-router.get('/', getPostsByCategory);
 
 module.exports = router;
 
