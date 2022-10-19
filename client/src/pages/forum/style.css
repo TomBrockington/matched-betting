@@ -16,15 +16,15 @@
   margin-left: 20%;
   margin-bottom: 2rem;
 }
-
-.forum-content-container {
+/* POSTS AND CATEGORIES */
+.forum__content__container {
     background-color: orange;
     display: grid;
     grid-template-columns: 19% 1fr;
     gap: var(--standard-padding);
 }
 
-.forum_catagory__container {
+.forum__catagory__container {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
     padding: var(--standard-padding);
@@ -35,4 +35,11 @@
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
     padding: var(--standard-padding);
+}
+
+/* CATEGORY DESIGN */
+
+.categories__container {
+    display: grid;
+    height: auto;
 }
