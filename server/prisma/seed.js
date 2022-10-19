@@ -13,6 +13,14 @@ async function seed() {
     },
   });
 
+  const userPostOne = await prisma.post.create({
+    data: {
+      userId: createdUser.id,
+      title: 'My first post',
+      content: `Ahh so much to say and so little time`
+    }
+  })
+
   const createdUserTwo = await prisma.user.create({
     data: {
       email: 'atanzarian@email.com',
@@ -24,6 +32,7 @@ async function seed() {
   console.log(
     'users',
     createdUser,
+    userPostOne,
     createdUserTwo
   );
 }
