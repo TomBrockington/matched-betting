@@ -7,6 +7,7 @@ export const UserContext = React.createContext()
 // name of the provider this is what wraps the other, i.e <app />, files
 const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState({
+        id: 1,
         email: 'email@email.com'
     });
 

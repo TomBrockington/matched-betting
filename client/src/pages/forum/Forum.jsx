@@ -1,27 +1,39 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Nav from '../../components/nav/Nav';
 import { UserContext } from '../../context/UserContext';
 import './style.css';
 import { categoryInfomation } from '../../utils/Categories'
+import Posts from '../../components/posts/Posts';
 
 const startingCategory = categoryInfomation[0]
 
 function Forum() {
   const user = useContext(UserContext);
-  console.log('startingCategory', startingCategory);
-
-  const [postCategory, setPostCategory] = useState(startingCategory)
   console.log('user', user);
 
+  const [postCategory, setPostCategory] = useState(startingCategory)
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    console.log('using an effect');
+    fetch(`http://localhost:4000/posts?category=${postCategory.query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data', data);
+        setPosts(data.data);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  }, [postCategory])
+
+
   const toggleCategory = (event) => {
-    const  array  = categoryInfomation
-    const newArray = array.filter(cat => cat.id === event.target.id)
-    console.log('newArray', newArray);
-    const categoryState = newArray[0]
-    console.log('categoryState', categoryState);
+    const categories  = categoryInfomation
+    const newCategory = categories.filter(cat => cat.id === event.target.id)
+    const categoryState = newCategory[0]
 
     setPostCategory(categoryState);
-    console.log('postCategory', postCategory);
   }
 
   return (
@@ -45,6 +57,7 @@ function Forum() {
           <main className='forum__posts__container'>
             <h3>Posts: {postCategory.title}</h3>
             <span>{postCategory.subtitle}</span>
+            <Posts posts={posts} />
           </main>
         </div>
 
