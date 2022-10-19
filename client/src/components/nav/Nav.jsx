@@ -2,12 +2,14 @@ import React from 'react';
 import './style.css';
 import Logo from '../../assets/images/logo.png';
 import { Link } from 'react-router-dom';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function Nav() {
 
   const signOut = () => {
     console.log('sign out');
   }
+
   return (
     <nav className='nav__container'>
       <div className='nav__logo__container'>
@@ -30,7 +32,7 @@ function Nav() {
         <div className='login__container'>
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
-          <Link to='/account'></Link>
+          <Link to='/account'><AccountCircleIcon /></Link>
           <Link to='/home' onClick={signOut}>Sign Out</Link>
 
         </div>
