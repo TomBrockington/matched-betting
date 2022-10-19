@@ -9,6 +9,7 @@ function PostItem({ post }) {
         <p>{post.content}</p>
         <p>{post.createdAt}</p>
         <p>{post.userId}</p>
+        <p>{post.ownerName}</p>
       </article>
     </li>
   )

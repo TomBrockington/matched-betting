@@ -78,7 +78,7 @@ const getPostsByCategory = async (req, res) => {
         .status(404)
         .json({ error: `Posts not found or don't exist`, code: `404` });
     }
-
+    console.log('foundPosts', foundPosts);
     return res.status(201).json({
       data: foundPosts,
       message: `Posts found for category: ${category}`,
