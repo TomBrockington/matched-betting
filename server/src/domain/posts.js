@@ -5,12 +5,13 @@ const jwt = require('jsonwebtoken');
 
 const findAllPosts = () => prisma.post.findMany({});
 
-const createPost = (title, content, id) =>
+const createPost = (title, content, id, category) =>
   prisma.post.create({
     data: {
         title: title,
         content: content,
         userId: id,
+        category: category,
     },
   });
 

@@ -26,6 +26,7 @@ const getAllPosts = async (req, res) => {
 const createNewPost = async (req, res) => {
   const { title, content } = req.body;
   const id = 1; // TODO:// req.user;
+  const category = 'GENERAL' //TODO:
 
   console.log('id:', id);
   // user id req.params
@@ -37,7 +38,7 @@ const createNewPost = async (req, res) => {
   }
 
   try {
-    const newPost = await createPost(title, content, id);
+    const newPost = await createPost(title, content, id, category);
 
     return res
       .status(201)

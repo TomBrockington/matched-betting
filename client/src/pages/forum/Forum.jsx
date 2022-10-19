@@ -2,18 +2,26 @@ import React, { useContext, useState } from 'react';
 import Nav from '../../components/nav/Nav';
 import { UserContext } from '../../context/UserContext';
 import './style.css';
+import { categoryInfomation } from '../../utils/Categories'
+
+const startingCategory = categoryInfomation[0]
 
 function Forum() {
   const user = useContext(UserContext);
+  console.log('startingCategory', startingCategory);
 
-  const [postCategory, setPostCategory] = useState('general')
+  const [postCategory, setPostCategory] = useState(startingCategory)
   console.log('user', user);
 
   const toggleCategory = (event) => {
-    console.log('togle', event.target.id);
-    console.log('postCategory', postCategory);
+    const  array  = categoryInfomation
+    const newArray = array.filter(cat => cat.id === event.target.id)
+    console.log('newArray', newArray);
+    const categoryState = newArray[0]
+    console.log('categoryState', categoryState);
 
-    setPostCategory(event.target.id);
+    setPostCategory(categoryState);
+    console.log('postCategory', postCategory);
   }
 
   return (
@@ -35,8 +43,8 @@ function Forum() {
             </div>
           </aside>
           <main className='forum__posts__container'>
-            <h3>Posts: {postCategory}</h3>
-            <span>Feel free to post and discuss anything here</span>
+            <h3>Posts: {postCategory.title}</h3>
+            <span>{postCategory.subtitle}</span>
           </main>
         </div>
 
