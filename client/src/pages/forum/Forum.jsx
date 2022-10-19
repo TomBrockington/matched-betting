@@ -32,7 +32,7 @@ function Forum() {
             <h2>Forum</h2>
         <span>Secondary header </span>
         </header>
-
+        {/* TODO: make these float with the page as you scroll, add back to top button */}
         <div className='forum__content__container'>
           <aside className='forum__catagory__container'>
             <h3>Forum categories</h3>

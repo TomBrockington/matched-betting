@@ -22,6 +22,51 @@ async function seed() {
     }
   })
 
+  const userPostTwo = await prisma.post.create({
+    data: {
+      userId: createdUser.id,
+      title: 'My second post',
+      content: `Will it work?`,
+      category: `GENERAL`
+    }
+  })
+
+  const userPostThree = await prisma.post.create({
+    data: {
+      userId: createdUser.id,
+      title: 'My 3rd post',
+      content: `3 is the magic number`,
+      category: `EVENTS`
+    }
+  })
+
+  const userPostFour = await prisma.post.create({
+    data: {
+      userId: createdUser.id,
+      title: 'My 4TH post',
+      content: `SQUARE ROOT OF WHATEVER`,
+      category: `EVENTS`
+    }
+  })
+
+  const userPostFive = await prisma.post.create({
+    data: {
+      userId: createdUser.id,
+      title: 'My V Post',
+      content: `Romans get it`,
+      category: `NEWBIES`
+    }
+  })
+
+  const userPostSix = await prisma.post.create({
+    data: {
+      userId: createdUser.id,
+      title: '666',
+      content: `Ahh the devil is here`,
+      category: `NEWBIES`
+    }
+  })
+
   const createdUserTwo = await prisma.user.create({
     data: {
       email: 'atanzarian@email.com',
