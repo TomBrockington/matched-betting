@@ -14,12 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Tell express to use your routers here
+const postRouter = require('./routes/posts');
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 
+app.use('/posts', postRouter);
 app.use('/users', userRouter);
 app.use('/', userRouter);
-app.use('/', authRouter) // login
+app.use('/', authRouter) 
 
 
 module.exports = app
