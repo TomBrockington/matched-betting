@@ -12,13 +12,13 @@
   --main-font-color: black;
   --alt-font-color: orange;
   /* CONTAINER WIDTH */
-  --main-container-width: 90%;
+  --main-container-width: 98%;
   --nav-container-width: 100%;
   --reg--login--container: 30%;
   /* TRANSITIONS */
   --transition: all 400ms ease;
-
-
+  /* PADDING  */
+  --standard-padding: 1rem;
 }
 
 * {
@@ -37,6 +37,7 @@ html {
 body {
   line-height: 1.7;
   background-color: var(--main-background-color);
+
 }
 
 /* ::-webkit-scrollbar {

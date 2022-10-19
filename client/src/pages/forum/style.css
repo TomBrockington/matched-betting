@@ -1,0 +1,38 @@
+.forum__container {
+  width: 100%;
+}
+
+.forum__content_container {
+  display: grid;
+  background-color: red;
+  width: 100%;
+  padding: var(--standard-padding);
+}
+
+.forum__header__container {
+  border: 2px solid var(--main-border-color);
+  border-radius: var(--main-border-radius);
+  padding: var(--standard-padding);
+  margin-left: 20%;
+  margin-bottom: 2rem;
+}
+
+.forum-content-container {
+    background-color: orange;
+    display: grid;
+    grid-template-columns: 19% 1fr;
+    gap: var(--standard-padding);
+}
+
+.forum_catagory__container {
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    padding: var(--standard-padding);
+
+}
+
+.forum__posts__container {
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    padding: var(--standard-padding);
+}
