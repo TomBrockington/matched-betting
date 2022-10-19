@@ -23,8 +23,8 @@ const getAllUsers = async (req, res) => {
       .status(201)
       .json({ data: foundUsers, message: `Returning all users`, code: `201` });
 
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 };
 
@@ -50,7 +50,6 @@ const createNewUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, hashRate);
 
     const newUser = await createUser(lowercaseEmail, hashedPassword);
-    console.log('new user created', newUser);
 
     return res
       .status(201)
@@ -59,8 +58,8 @@ const createNewUser = async (req, res) => {
         message: `User ${newUser.email} created`,
         code: `201`,
       });
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 };
 
