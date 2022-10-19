@@ -13,6 +13,7 @@ function Nav() {
       </div>
 
       <div className='nav__links__container'>
+        <Link to='/'>Home</Link>
         <Link to='/calculator'>Calculator</Link>
         <Link to='/lessons'>Lessons</Link>
         <Link to='/forum'>Forum</Link>
