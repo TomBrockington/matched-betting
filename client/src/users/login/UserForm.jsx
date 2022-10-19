@@ -1,24 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function UserForm() {
+function UserForm({ handleChange, handleSubmit }) {
   return (
     <>
-      <form className='register__form'>
+      <form className='register__form' onSubmit={handleSubmit}>
         <div className='email__container'>
           <label htmlFor='email'>Email:</label>
-          <input type='text' name='email' required />
+          <input 
+            type='email' 
+            name='email' 
+            id='email'
+            onChange={handleChange}
+            required />
         </div>
 
         <div className='password__container'>
           <label htmlFor='password'>Password:</label>
-          <input type='password' name='password' required />
+          <input 
+            type='password' 
+            name='password' 
+            id='password'
+            onChange={handleChange}
+            required />
         </div>
 
-        <div className='password__container'>
-          <label htmlFor='confirm-password'>Confirm Password:</label>
-          <input type='password' name='confirm-password' required />
-        </div>
+
         <div className='submit__container'>
           <input type='submit' className='btn' value='Submit!' />
         </div>
