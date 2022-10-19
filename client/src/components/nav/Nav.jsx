@@ -20,19 +20,18 @@ function Nav() {
         <Link to='/links'>Links</Link>
       </div>
 
-{/* EVENTUALLY MAKE THESE CONDITION SO ONLY ONE IS SHOWN */}
+      {/* EVENTUALLY MAKE THESE CONDITION SO ONLY ONE IS SHOWN */}
       <div className='nav__user__features'>
-        <div className="login__container">
+        <div className='login__container'>
           <Link to='/login'>Login</Link>
-        </div>
-
-        <div className="register__container">
           <Link to='/register'>Register</Link>
         </div>
 
+        {/* <div className="register__container">
+        </div> */}
+
         {/* ADD LOGOUT */}
       </div>
-       
     </nav>
   );
 }

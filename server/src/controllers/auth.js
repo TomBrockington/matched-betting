@@ -7,10 +7,17 @@ const { findUserByEmail } = require('../domain/users');
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+  const lowercaseEmail = email.toLowerCase();
+
+  if(!email || !password) {
+    return res.status(400).json({
+      message: 'Invalid email and/or password provided'
+    })
+  }
 
   try {
 
-    const existingUser = await findUserByEmail(email);
+    const existingUser = await findUserByEmail(lowercaseEmail);
 
     if (!existingUser)
       return res.status(409).json({ error: { message: 'Incorrect login information' } });
@@ -25,7 +32,8 @@ const login = async (req, res) => {
 
     const token = createAccessToken(existingUser.id, existingUser.email);
 
-    res.status(200).json({ data: token });
+    return res.status(200).json({ data: token, user: existingUser });
+
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

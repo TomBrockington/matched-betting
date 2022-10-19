@@ -31,18 +31,18 @@ function Login() {
     // returning data from local:4000 as res.json is a token that can be used as your auth badge
     const login = await res.json();
     console.log('login', login);
+    console.log('login', login.user);
 
     // // saving the token to local storage
-    // localStorage.setItem(process.env.REACT_APP_USER_TOKEN, login.data);
+    localStorage.setItem(process.env.REACT_APP_USER_TOKEN, login.data);
     
-    // if (login.error) {
-    //   return alert('Incorrect infomation entered')
-    // }
+    if (login.error) {
+      return alert('Incorrect infomation entered')
+    }
     
-    // // go to secured welcome page
-    // navigate('/home', {
-    //   replace: true,
-    // });
+    navigate('/', {
+      replace: true,
+    });
   }
 
   return (

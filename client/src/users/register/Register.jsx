@@ -45,7 +45,7 @@ function Register() {
       }),
     });
 
-    const value = await res.json();
+    const userData = await res.json();
 
     navigate('/login', {
       replace: true,
