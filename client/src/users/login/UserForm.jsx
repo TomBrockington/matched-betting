@@ -31,7 +31,7 @@ function UserForm({ handleChange, handleSubmit }) {
         </div>
 
         <div className='login__link'>
-          <Link to='/login'>or Login Here</Link>
+          <Link to='/register'>Not a member? Register Now</Link>
         </div>
       </form>
     </>

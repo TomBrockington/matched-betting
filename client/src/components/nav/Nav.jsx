@@ -30,6 +30,7 @@ function Nav() {
         <div className='login__container'>
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
+          <Link to='/account'></Link>
           <Link to='/home' onClick={signOut}>Sign Out</Link>
 
         </div>
