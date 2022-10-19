@@ -17,7 +17,8 @@ async function seed() {
     data: {
       userId: createdUser.id,
       title: 'My first post',
-      content: `Ahh so much to say and so little time`
+      content: `Ahh so much to say and so little time`,
+      category: `GENERAL`
     }
   })
 

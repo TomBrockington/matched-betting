@@ -11,6 +11,12 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
+enum Category {
+  GENERAL
+  EVENTS
+  NEWBIES
+}
+
 model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
@@ -25,6 +31,7 @@ model Post {
   id        Int       @id @default(autoincrement())
   title     String    @unique
   content   String
+  category Category 
   userId    Int       
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime  @default(now())
