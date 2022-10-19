@@ -60,7 +60,13 @@ const createNewPost = async (req, res) => {
   }
 };
 
+const getPostsByCategory = async (req, res) => {
+  console.log('getting posts by category');
+  const category = req.params.category
+}
+
 module.exports = {
   getAllPosts,
   createNewPost,
+  getPostsByCategory
 };

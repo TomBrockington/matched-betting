@@ -22,6 +22,7 @@
     display: grid;
     grid-template-columns: 19% 1fr;
     gap: var(--standard-padding);
+    position: relative;
 }
 
 .forum__catagory__container {
@@ -37,7 +38,7 @@
     padding: var(--standard-padding);
 
     background-color: pink;
-    height: 100vh;
+    /* max-height: 150vh; */
 }
 
 /* CATEGORY DESIGN */
