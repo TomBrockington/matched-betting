@@ -4,6 +4,10 @@ import Logo from '../../assets/images/logo.png';
 import { Link } from 'react-router-dom';
 
 function Nav() {
+
+  const signOut = () => {
+    console.log('sign out');
+  }
   return (
     <nav className='nav__container'>
       <div className='nav__logo__container'>
@@ -26,6 +30,8 @@ function Nav() {
         <div className='login__container'>
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
+          <Link to='/home' onClick={signOut}>Sign Out</Link>
+
         </div>
 
         {/* <div className="register__container">
