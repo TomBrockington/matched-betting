@@ -6,11 +6,15 @@ import { categoryInfomation } from '../../utils/Categories'
 import Posts from '../../components/posts/Posts';
 import NewPostCTA from '../../components/posts/NewPostCTA';
 import PostForm from '../../components/posts/PostForm';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const startingCategory = categoryInfomation[0]
 
 function Forum() {
   const user = useContext(UserContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   console.log('user', user);
 
   const [postCategory, setPostCategory] = useState(startingCategory)
@@ -33,6 +37,13 @@ function Forum() {
     console.log('creating new post');
     setCreatingPost(!creatingPost)
   }
+
+  const viewPost = (post) => {
+    console.log('viewing post');
+    console.log('event', post);
+
+    navigate('/post', { state: { post: post } });
+  } 
 
 
   const toggleCategory = (event) => {
@@ -66,7 +77,7 @@ function Forum() {
             <h3>Posts: {postCategory.title}</h3>
             <span>{postCategory.subtitle}</span>
 
-            {creatingPost ? ( <PostForm /> ) : <Posts posts={posts} />}
+            {creatingPost ? ( <PostForm /> ) : <Posts posts={posts} viewPost={viewPost} />}
             
           </main>
         </div>

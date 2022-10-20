@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function PostItem({ post }) {
+function PostItem({ post, viewPost }) {
   return (
     <li>
       <article className="post__item">
@@ -10,7 +10,7 @@ function PostItem({ post }) {
         <p>{post.createdAt}</p>
         <p>{post.userId}</p>
         <p>{post.ownerName}</p>
-        <Link to='/post'>Read Full</Link>
+        <span onClick={() => viewPost(post)}>Read More</span>
       </article>
     </li>
   )
