@@ -6,6 +6,7 @@ import { categoryInfomation } from '../../utils/Categories'
 import Posts from '../../components/posts/Posts';
 import NewPostCTA from '../../components/posts/NewPostCTA';
 import PostForm from '../../components/posts/PostForm';
+// need this
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
@@ -13,6 +14,7 @@ const startingCategory = categoryInfomation[0]
 
 function Forum() {
   const user = useContext(UserContext);
+  // need these two on any page using effect
   const location = useLocation();
   const navigate = useNavigate();
   console.log('user', user);
@@ -42,6 +44,7 @@ function Forum() {
     console.log('viewing post');
     console.log('event', post);
 
+    // using naviagte to pass info through location with state
     navigate('/post', { state: { post: post } });
   } 
 
