@@ -27,6 +27,15 @@ model User {
   updatedAt DateTime? @updatedAt
 }
 
+model Profile {
+    id        Int       @id @default(autoincrement())
+    firstname String
+    lastname String
+    biography String
+    profileImgUrl String @default("https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png")
+
+}
+
 model Post {
   id        Int       @id @default(autoincrement())
   title     String    @unique
