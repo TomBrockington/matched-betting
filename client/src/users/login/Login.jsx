@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../style.css'
-import UserForm from './UserForm'
+import Nav from '../../components/nav/Nav';
+import '../style.css';
+import UserForm from './UserForm';
 
 function Login() {
   const [user, setUser] = useState('');
@@ -14,11 +15,11 @@ function Login() {
       ...user,
       [name]: value,
     });
-  }
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    console.log('handleSubmit')
+    event.preventDefault();
+    console.log('handleSubmit');
 
     const res = await fetch('http://localhost:4000/login', {
       method: 'POST',
@@ -35,24 +36,27 @@ function Login() {
 
     // // saving the token to local storage
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, login.data);
-    
+
     if (login.error) {
-      return alert('Incorrect infomation entered')
+      return alert('Incorrect infomation entered');
     }
-    
+
     navigate('/', {
       replace: true,
     });
-  }
+  };
 
   return (
-    <main className='register__container'>
+    <>
+    {/* TODO: add in nav and adjust css */}
+      <main className='register__container'>
         <section className='form__container'>
-            <h2>Login</h2>
-            <UserForm handleChange={handleChange} handleSubmit={handleSubmit} />
+          <h2>Login</h2>
+          <UserForm handleChange={handleChange} handleSubmit={handleSubmit} />
         </section>
-    </main>
-  )
+      </main>
+    </>
+  );
 }
 
-export default Login
+export default Login;

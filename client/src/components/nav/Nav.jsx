@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './style.css';
 import Logo from '../../assets/images/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import { UserContext } from '../../context/UserContext';
+
+
 function Nav() {
+  const { user, setUser } = useContext(UserContext);
+  
+  console.log('NAV user from the nav', user);
   const navigate = useNavigate();
 
   const signOut = (event) => {
