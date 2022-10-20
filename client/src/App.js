@@ -11,7 +11,6 @@ import Links from './pages/links/Links';
 
 
 function App() {
-  console.log('app');
   return (
     <>
       <Routes>

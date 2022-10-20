@@ -23,3 +23,9 @@ ul {
     width: 100%;
     margin-top: 1rem;
 }
+
+.forum__post__container {
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    padding: var(--standard-padding);
+}
