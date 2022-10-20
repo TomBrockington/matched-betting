@@ -7,7 +7,8 @@ const {
   findAllPosts,
   createPost,
   findPostsByCategory,
-  findPostsById
+  findPostById,
+  editPostContent
 } = require('../domain/posts');
 
 const getAllPosts = async (req, res) => {
@@ -42,13 +43,12 @@ const createNewPost = async (req, res) => {
   }
 
   try {
-
     const newPost = await createPost(title, content, id, category);
 
     if (!newPost) {
       return res
-      .status(409)
-      .json({ error: 'Failed to create post', code: `409` });
+        .status(409)
+        .json({ error: 'Failed to create post', code: `409` });
     }
 
     return res.status(201).json({
@@ -56,9 +56,7 @@ const createNewPost = async (req, res) => {
       message: `Post: '${newPost.title}' created`,
       code: `201`,
     });
-
   } catch (error) {
-
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -92,9 +90,7 @@ const getPostsByCategory = async (req, res) => {
       message: `Posts found for category: ${category}`,
       code: `201`,
     });
-
   } catch (error) {
-
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -108,20 +104,15 @@ const getPostById = async (req, res) => {
   const id = Number(req.params.id);
 
   if (!id) {
-    return res
-      .status(404)
-      .json({ error: `ID missing`, code: `404` });
+    return res.status(404).json({ error: `ID missing`, code: `404` });
   }
 
   try {
-
-    const foundPost = await findPostsById(id);
+    const foundPost = await findPostById(id);
     console.log('foundPost', foundPost);
 
     if (!foundPost) {
-      return res
-      .status(404)
-      .json({ error: 'Post not found', code: `404` });
+      return res.status(404).json({ error: 'Post not found', code: `404` });
     }
 
     return res.status(201).json({
@@ -130,7 +121,48 @@ const getPostById = async (req, res) => {
       code: `201`,
     });
 
-  } catch (error) { 
+  } catch (error) {
+
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
+  }
+};
+
+const editPost = async (req, res) => {
+  console.log('editPost');
+  const postId = Number(req.params.id);
+  const { title, content, category } = req.body
+
+  if (!postId) {
+    return res.status(404).json({ error: `ID missing`, code: `404` });
+  }
+
+  try {
+
+    const foundPost = await findPostById(postId);
+    console.log('foundPost', foundPost);
+
+    if (!foundPost) {
+      return res.status(404).json({ error: 'Post not found', code: `404` });
+    }
+    
+    if (category === '' || category === null || category === undefined) {
+      console.log('cat empty');
+      category = foundPost.category
+    }
+
+    const editedPost = await editPostContent(postId, title, content, category);
+
+    return res.status(201).json({
+      data: editedPost,
+      message: `Post ${editedPost.title}`,
+      code: `201`,
+    });
+
+  } catch (error) {
 
     return res.status(500).json({
       error: error.message,
@@ -145,4 +177,5 @@ module.exports = {
   createNewPost,
   getPostsByCategory,
   getPostById,
+  editPost,
 };

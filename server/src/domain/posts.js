@@ -15,7 +15,7 @@ const findPostsByCategory = (category) => prisma.post.findMany({
   
 })
 
-const findPostsById = (id) => prisma.post.findFirst({
+const findPostById = (id) => prisma.post.findFirst({
   where: {
     id: id
   },
@@ -34,9 +34,21 @@ const createPost = (title, content, id, category) =>
     },
   });
 
+const editPostContent = (postId, title, content, category) => prisma.post.update({
+  where: {
+    id: postId
+  },
+  data: {
+    title: title,
+    content: content,
+    category: category,
+  }
+})
+
 module.exports = {
   findAllPosts,
   findPostsByCategory,
   createPost,
-  findPostsById
+  findPostById,
+  editPostContent
 };
