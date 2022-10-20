@@ -1,7 +1,6 @@
 import React from 'react'
 
 function PostItem({ post }) {
-  console.log('post', post);
   return (
     <li>
       <article className="post__item">
