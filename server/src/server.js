@@ -3,7 +3,7 @@ const app = express();
 
 const cors = require('cors');
 const morgan = require('morgan');
-const {authorization} = require('./middleware/auth')
+const { authorization } = require('./middleware/auth')
 
 app.disable('x-powered-by');
 

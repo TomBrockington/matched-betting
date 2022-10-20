@@ -10,7 +10,6 @@ import { UserContext } from '../../context/UserContext';
 function Nav() {
   const { user, setUser } = useContext(UserContext);
   
-  console.log('NAV user from the nav', user);
   const navigate = useNavigate();
 
   const signOut = (event) => {

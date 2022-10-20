@@ -25,7 +25,10 @@ const getAllUsers = async (req, res) => {
     return res
       .status(201)
       .json({ data: foundUsers, message: `Returning all users`, code: `201` });
+
+
   } catch (error) {
+
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -62,7 +65,9 @@ const createNewUser = async (req, res) => {
       message: `User ${newUser.email} created`,
       code: `201`,
     });
+
   } catch (error) {
+
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -93,7 +98,9 @@ const deleteUser = async (req, res) => {
       message: `User ${deletedUser.email} deleted successfully`,
       code: `200`,
     });
+
   } catch (error) {
+    
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,

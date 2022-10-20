@@ -24,13 +24,14 @@ const findPostById = (id) => prisma.post.findFirst({
   }
 })
 
-const createPost = (title, content, id, category) =>
+const createPost = (title, content, category, username, userId) =>
   prisma.post.create({
     data: {
         title: title,
         content: content,
-        userId: id,
         category: category,
+        ownerName: username,
+        userId: userId,
     },
   });
 
