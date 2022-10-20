@@ -13,6 +13,15 @@ async function seed() {
     },
   });
 
+  const createdProfile = await prisma.profile.create({
+    data: {
+      userId: createdUser.id,
+      firstname: 'Max',
+      lastname: 'Power',
+      biography: 'I got my name off a microwave',
+    }
+  })
+
   const userPostOne = await prisma.post.create({
     data: {
       userId: createdUser.id,
@@ -90,7 +99,8 @@ async function seed() {
     'users',
     createdUser,
     userPostOne,
-    createdUserTwo
+    createdUserTwo,
+    createdProfile
   );
 }
 
