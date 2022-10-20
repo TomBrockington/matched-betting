@@ -10,7 +10,7 @@ datasource db {
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
-
+// TODO: add to erd
 enum Category {
   GENERAL
   EVENTS
@@ -22,18 +22,23 @@ model User {
   email     String    @unique
   password  String
   username  String    @default("Mr. Default")
+  profile   Profile?
   posts     Post[]
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
 
 model Profile {
-    id        Int       @id @default(autoincrement())
-    firstname String
-    lastname String
-    biography String
-    profileImgUrl String @default("https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png")
-
+  id            Int       @id @default(autoincrement())
+  firstname     String
+  lastname      String
+  biography     String
+  profileImgUrl String    @default("https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png")
+  bank  Int @default(1000)
+  userId        Int       @unique
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
 }
 
 model Post {
@@ -41,7 +46,7 @@ model Post {
   title     String    @unique
   content   String
   category  Category
-  ownerName String    
+  ownerName String
   userId    Int
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime  @default(now())
