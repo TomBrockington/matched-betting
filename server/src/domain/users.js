@@ -20,8 +20,15 @@ const createUser = (email, password) =>
     },
   });
 
+  const deleteUserById = (userId) => prisma.user.delete({
+    where: {
+      id: userId,
+    }
+  })
+  
 module.exports = {
   findAllUsers,
   findUserByEmail,
   createUser,
+  deleteUserById
 };

@@ -94,13 +94,21 @@ async function seed() {
     },
   });
 
+  const createdAdminTwo = await prisma.user.create({
+    data: {
+      email: 'admin@email.com',
+      password,
+      role: `ADMIN`
+    }
+  })
 
   console.log(
     'users',
     createdUser,
     userPostOne,
     createdUserTwo,
-    createdProfile
+    createdProfile,
+    createdAdminTwo
   );
 }
 

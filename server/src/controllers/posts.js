@@ -26,7 +26,11 @@ const getAllPosts = async (req, res) => {
 
     return res.status(200).json({ data: foundPosts });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
   }
 };
 

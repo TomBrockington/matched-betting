@@ -9,6 +9,7 @@ const {
   findAllUsers,
   findUserByEmail,
   createUser,
+  deleteUserById
 } = require('../domain/users');
 
 const getAllUsers = async (req, res) => {
@@ -24,7 +25,11 @@ const getAllUsers = async (req, res) => {
       .json({ data: foundUsers, message: `Returning all users`, code: `201` });
 
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
   }
 };
 
@@ -59,11 +64,56 @@ const createNewUser = async (req, res) => {
         code: `201`,
       });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
   }
 };
 
+const deleteUser = async (req, res) => {
+  console.log('delete user');
+  const userId = Number(req.params.id)
+
+  const [_, token] = req.get('authorization').split(' ')
+
+  try {
+
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
+
+    const foundUser = await findUserByEmail(decodedToken.email)
+
+    if (foundUser.role !== `ADMIN`) {
+      if (foundUser) {
+        return res
+          .status(409)
+          .json({ error: 'Missing Authorization to perform request', code: `409` });
+      }
+    }
+    
+    const deletedUser = await deleteUserById(userId)
+
+    return res
+      .status(201)
+      .json({
+        data: deletedUser,
+        message: `User ${deletedUser.email} deleted successfully`,
+        code: `200`,
+      });
+
+  } catch (error) {
+
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
+  }
+
+}
 module.exports = {
   getAllUsers,
   createNewUser,
+  deleteUser
 };

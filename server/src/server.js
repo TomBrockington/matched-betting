@@ -21,6 +21,7 @@ const authRouter = require('./routes/auth');
 app.use('/posts', postRouter);
 app.use('/post', postRouter);
 app.use('/users', userRouter);
+app.use('/user', userRouter);
 app.use('/', userRouter);
 app.use('/', authRouter) 
 
