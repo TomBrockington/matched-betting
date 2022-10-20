@@ -15,6 +15,12 @@ const {
 const getAllPosts = async (req, res) => {
   console.log('getting all posts...');
 
+  if (req.query) {
+    console.log('QUERY');
+  } else {
+    console.log('GET ALL');
+  }
+
   try {
     const foundPosts = await findAllPosts();
 
@@ -25,6 +31,7 @@ const getAllPosts = async (req, res) => {
     }
 
     return res.status(200).json({ data: foundPosts });
+    
   } catch (error) {
     return res.status(500).json({
       error: error.message,
