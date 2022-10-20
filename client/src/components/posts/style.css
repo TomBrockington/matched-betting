@@ -29,3 +29,7 @@ ul {
     border-radius: var(--main-border-radius);
     padding: var(--standard-padding);
 }
+
+textarea {
+   height: 200px;
+}

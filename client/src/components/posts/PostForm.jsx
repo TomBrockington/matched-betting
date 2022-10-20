@@ -10,7 +10,7 @@ function PostForm({ postCategory }) {
         <input type='text' name='title' />
 
         <label htmlFor='contetn'>Content</label>
-        <input type='text' name='content' />
+        <textarea type='text' name='content' className='input__textarea' />
 
         <label htmlFor='category'>Category</label>
         <p>{postCategory.title}</p>
