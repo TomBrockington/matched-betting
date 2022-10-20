@@ -10,3 +10,11 @@
     border-radius: var(--main-border-radius);
     padding: var(--standard-padding);
 }
+
+.new__post__cta {
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    padding: var(--standard-padding);
+    width: 100%;
+    margin-top: 1rem;
+}

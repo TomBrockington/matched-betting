@@ -4,6 +4,8 @@ import { UserContext } from '../../context/UserContext';
 import './style.css';
 import { categoryInfomation } from '../../utils/Categories'
 import Posts from '../../components/posts/Posts';
+import NewPostCTA from '../../components/posts/NewPostCTA';
+import PostForm from '../../components/posts/PostForm';
 
 const startingCategory = categoryInfomation[0]
 
@@ -13,6 +15,7 @@ function Forum() {
 
   const [postCategory, setPostCategory] = useState(startingCategory)
   const [posts, setPosts] = useState([])
+  const [creatingPost, setCreatingPost] = useState(false)
 
   useEffect(() => {
     console.log('using an effect');
@@ -25,6 +28,11 @@ function Forum() {
         console.log('error', error);
       });
   }, [postCategory])
+
+  const createNewPost = () => {
+    console.log('creating new post');
+    setCreatingPost(!creatingPost)
+  }
 
 
   const toggleCategory = (event) => {
@@ -52,11 +60,14 @@ function Forum() {
                 <span name='events' id='events' onClick={(event) => toggleCategory(event)}>Events</span>
                 <span name='newbies' id='newbies' onClick={(event) => toggleCategory(event)}>Newbies</span>
             </div>
+            <NewPostCTA createNewPost={createNewPost} />
           </aside>
           <main className='forum__posts__container'>
             <h3>Posts: {postCategory.title}</h3>
             <span>{postCategory.subtitle}</span>
-            <Posts posts={posts} />
+
+            {creatingPost ? ( <PostForm /> ) : <Posts posts={posts} />}
+            
           </main>
         </div>
 

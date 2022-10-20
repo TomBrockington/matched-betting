@@ -11,11 +11,9 @@ function App() {
   return (
     <>
       <Routes>
-        
-        <Route element={<CheckLoggedInStatus />}>
+
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-        </Route>
 
           <Route path="/" element={<Home />} />
           <Route path="/calculator" element={<Calculator />} />
@@ -27,20 +25,3 @@ function App() {
 
 export default App;
 
-function isLoggedIn() {
-  const loadedToken = localStorage.getItem('token');
-  console.log('loadedToken', loadedToken);
-  return loadedToken
-}
-
-const CheckLoggedInStatus = ({ children, redirectPath = '/'}) => {
-  if (isLoggedIn()) {
-    return <Navigate to={redirectPath} replace />;
-  }
-
-  return (
-    <div>
-      {children}
-    </div>
-  )
-}
