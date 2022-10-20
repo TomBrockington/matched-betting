@@ -8,7 +8,8 @@ const {
   createPost,
   findPostsByCategory,
   findPostById,
-  editPostContent
+  editPostContent,
+  deletePostById
 } = require('../domain/posts');
 
 const getAllPosts = async (req, res) => {
@@ -158,7 +159,7 @@ const editPost = async (req, res) => {
 
     return res.status(201).json({
       data: editedPost,
-      message: `Post ${editedPost.title}`,
+      message: `Post ${editedPost.title} updated successfully`,
       code: `201`,
     });
 
@@ -172,10 +173,45 @@ const editPost = async (req, res) => {
   }
 };
 
+const deletePost = async (req, res) => {
+  console.log('deleting post');
+  const postId = Number(req.params.id);
+
+  if (!postId) {
+    return res.status(404).json({ error: `ID missing`, code: `404` });
+  }
+
+  try {
+
+    const foundPost = await findPostById(postId);
+
+    if (!foundPost) {
+      return res.status(404).json({ error: 'Post not found', code: `404` });
+    }
+
+    const deletedPost = await deletePostById(postId);
+
+    return res.status(201).json({
+      data: deletedPost,
+      message: `Post '${deletedPost.title}' deleted successfully`,
+      code: `201`,
+    });
+
+  } catch (error) { 
+
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
+  }
+}
+
 module.exports = {
   getAllPosts,
   createNewPost,
   getPostsByCategory,
   getPostById,
   editPost,
+  deletePost
 };

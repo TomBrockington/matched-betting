@@ -45,10 +45,17 @@ const editPostContent = (postId, title, content, category) => prisma.post.update
   }
 })
 
+const deletePostById = (postId) => prisma.post.delete({
+  where: {
+      id: postId
+    }
+})
+
 module.exports = {
   findAllPosts,
   findPostsByCategory,
   createPost,
   findPostById,
-  editPostContent
+  editPostContent,
+  deletePostById
 };
