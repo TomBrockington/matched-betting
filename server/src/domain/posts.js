@@ -15,6 +15,15 @@ const findPostsByCategory = (category) => prisma.post.findMany({
   
 })
 
+const findPostsById = (id) => prisma.post.findFirst({
+  where: {
+    id: id
+  },
+  include: {
+    user: true
+  }
+})
+
 const createPost = (title, content, id, category) =>
   prisma.post.create({
     data: {
@@ -29,4 +38,5 @@ module.exports = {
   findAllPosts,
   findPostsByCategory,
   createPost,
+  findPostsById
 };

@@ -7,13 +7,14 @@ const {
   findAllPosts,
   createPost,
   findPostsByCategory,
+  findPostsById
 } = require('../domain/posts');
 
 const getAllPosts = async (req, res) => {
   console.log('getting all posts...');
+
   try {
     const foundPosts = await findAllPosts();
-    console.log('found posts...', foundPosts);
 
     if (!foundPosts) {
       return res
@@ -32,7 +33,6 @@ const createNewPost = async (req, res) => {
   const id = 1; // TODO:// req.user;
   const category = 'GENERAL'; //TODO:
 
-  console.log('id:', id);
   // user id req.params
 
   if (!title || !content) {
@@ -42,14 +42,23 @@ const createNewPost = async (req, res) => {
   }
 
   try {
+
     const newPost = await createPost(title, content, id, category);
+
+    if (!newPost) {
+      return res
+      .status(409)
+      .json({ error: 'Failed to create post', code: `409` });
+    }
 
     return res.status(201).json({
       data: newPost,
       message: `Post: '${newPost.title}' created`,
       code: `201`,
     });
+
   } catch (error) {
+
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -71,14 +80,13 @@ const getPostsByCategory = async (req, res) => {
 
   try {
     const foundPosts = await findPostsByCategory(category);
-    console.log('foundPosts', foundPosts);
 
     if (!foundPosts) {
       return res
         .status(404)
         .json({ error: `Posts not found or don't exist`, code: `404` });
     }
-    console.log('foundPosts', foundPosts);
+
     return res.status(201).json({
       data: foundPosts,
       message: `Posts found for category: ${category}`,
@@ -95,8 +103,46 @@ const getPostsByCategory = async (req, res) => {
   }
 };
 
+const getPostById = async (req, res) => {
+  console.log('getting post by id');
+  const id = Number(req.params.id);
+
+  if (!id) {
+    return res
+      .status(404)
+      .json({ error: `ID missing`, code: `404` });
+  }
+
+  try {
+
+    const foundPost = await findPostsById(id);
+    console.log('foundPost', foundPost);
+
+    if (!foundPost) {
+      return res
+      .status(404)
+      .json({ error: 'Post not found', code: `404` });
+    }
+
+    return res.status(201).json({
+      data: foundPost,
+      message: `Found post ID: ${foundPost.id}`,
+      code: `201`,
+    });
+
+  } catch (error) { 
+
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
+  }
+};
+
 module.exports = {
   getAllPosts,
   createNewPost,
   getPostsByCategory,
+  getPostById,
 };
