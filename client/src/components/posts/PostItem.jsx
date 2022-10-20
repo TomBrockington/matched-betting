@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function PostItem({ post }) {
   return (
@@ -9,6 +10,7 @@ function PostItem({ post }) {
         <p>{post.createdAt}</p>
         <p>{post.userId}</p>
         <p>{post.ownerName}</p>
+        <Link to='/post'>Read Full</Link>
       </article>
     </li>
   )

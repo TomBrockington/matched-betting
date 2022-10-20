@@ -2,7 +2,9 @@ import React from 'react'
 
 function PostForm() {
   return (
-    <div>PostForm</div>
+    <section>
+        Create a new post
+    </section>
   )
 }
 

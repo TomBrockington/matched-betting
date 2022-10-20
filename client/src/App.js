@@ -4,6 +4,7 @@ import Register from './users/register/Register';
 import Login from './users/login/Login';
 import Calculator from './pages/calculator/Calculator';
 import Forum from './pages/forum/Forum';
+import Post from './pages/post/Post';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/calculator" element={<Calculator />} />
           <Route path="/forum" element={<Forum />} />
+          <Route path="/post" element={<Post />} />
       </Routes>
     </>
   );
