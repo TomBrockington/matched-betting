@@ -12,6 +12,7 @@ const {
   deleteUserById,
 } = require('../domain/users');
 
+
 const getAllUsers = async (req, res) => {
   console.log('user', req.user);
   try {

@@ -35,6 +35,8 @@ function Forum() {
       });
   }, [postCategory])
 
+  console.log('posts', posts);
+
   const createNewPost = () => {
     console.log('creating new post');
     setCreatingPost(!creatingPost)
