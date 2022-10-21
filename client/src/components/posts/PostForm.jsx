@@ -7,7 +7,7 @@ import { UserContext } from '../../context/UserContext';
 
 function PostForm({ postCategory }) {
   const { user, setUser } = useContext(UserContext);
-
+console.log('user', user);
   const [newPostArticle, setNewPostArticle] = useState({
     title: '',
     content: '',
@@ -28,7 +28,7 @@ function PostForm({ postCategory }) {
   const handleSubmit = async (e) => {
     e.preventDefault(); 
     console.log('submitting');
-
+// TODO: needs use effect to get user token, my fake user doesnt have one
     const { title, content, category, ownerName } = newPostArticle
 
     const res = await fetch('http://localhost:4000/post', {
