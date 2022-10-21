@@ -24,12 +24,35 @@ ul {
     margin-top: 1rem;
 }
 
+/* FORM */
+
 .forum__post__container {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
     padding: var(--standard-padding);
 }
 
+.post__title__container, .post__content__container {
+    display: grid;
+}
+
+.post__final__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post__category__container {
+    display: flex;
+}
+
+
 textarea {
    height: 200px;
+   resize: none;
+}
+
+.post__submit__btn {
+    border-radius: var(--main-border-radius);
+    padding: var(--standard-padding);
+
 }
