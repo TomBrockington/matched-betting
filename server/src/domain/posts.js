@@ -12,7 +12,10 @@ const findPostsByCategory = (category) => prisma.post.findMany({
   orderBy: {
     createdAt: 'desc'
   },
-  
+  include: {
+    user: true,
+    comments: true
+  }
 })
 
 const findPostById = (id) => prisma.post.findFirst({
@@ -20,7 +23,8 @@ const findPostById = (id) => prisma.post.findFirst({
     id: id
   },
   include: {
-    user: true
+    user: true,
+    comments: true
   }
 })
 
@@ -33,6 +37,9 @@ const createPost = (title, content, category, username, userId) =>
         ownerName: username,
         userId: userId,
     },
+    include: {
+      user: true,
+    }
   });
 
 const editPostContent = (postId, title, content, category) => prisma.post.update({

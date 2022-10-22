@@ -32,6 +32,14 @@ async function seed() {
     }
   })
 
+  const createdCommentOne = await prisma.comment.create({
+    data: {
+      postId: userPostOne.id,
+      userId: createdUser.id,
+      content: `Load of bollocks`
+    },
+  })
+
   const userPostTwo = await prisma.post.create({
     data: {
       userId: createdUser.id,
@@ -117,7 +125,8 @@ async function seed() {
     createdUserTwo,
     createdProfile,
     createdAdmin,
-    createdDev
+    createdDev,
+    createdCommentOne
   );
 }
 

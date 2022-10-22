@@ -37,8 +37,6 @@ model User {
   updatedAt DateTime? @updatedAt
 }
 
-// TODO: add to data returns
-// TODO: ADD bet histroy
 model Profile {
   id            Int       @id @default(autoincrement())
   firstname     String
@@ -46,6 +44,7 @@ model Profile {
   biography     String
   profileImgUrl String    @default("https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png")
   bank          Int       @default(1000)
+  betHistory    String[]
   userId        Int       @unique
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt     DateTime  @default(now())
@@ -55,7 +54,7 @@ model Profile {
 // TODO: include comments in post returns
 model Post {
   id        Int       @id @default(autoincrement())
-  title     String    
+  title     String
   content   String
   category  Category
   ownerName String
