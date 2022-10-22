@@ -7,7 +7,10 @@ const { findUserByEmail } = require('../domain/users');
 
 const authorization = async (req, res, next) => {
 
+  console.log('REQUEST . BODY', req.body);
   const header = req.header('authorization');
+
+  console.log('Header Auth.js', header);
 
   if (!header) {
     return res
@@ -16,18 +19,22 @@ const authorization = async (req, res, next) => {
   }
 
   const [type, token] = req.get('authorization').split(' ');
+  console.log('type', type);
+  console.log('token', token);
 
   if (type !== `Bearer`) {
     return res
       .status(409)
-      .json({ error: `Expected BEARER for 'type' but got ${type} instead`, code: `409` });
+      .json({ error: `Expected Bearer for 'type' but got ${type} instead`, code: `409` });
   }
 
   try {
     //
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    console.log('decodedToken', decodedToken);
 
     const foundUser = await findUserByEmail(decodedToken.email);
+    console.log('foundUser', foundUser);
 
     req.user = foundUser;
 

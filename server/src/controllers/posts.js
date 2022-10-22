@@ -13,7 +13,6 @@ const {
 } = require('../domain/posts');
 
 const getAllPosts = async (req, res) => {
-
   try {
     //
     const foundPosts = await findAllPosts();
@@ -24,9 +23,9 @@ const getAllPosts = async (req, res) => {
         .json({ error: error.message, message: `No posts found` });
     }
 
-    return res.status(200).json({ 
-      message: `Found ${foundPosts.length} posts`, 
-      data: foundPosts 
+    return res.status(200).json({
+      message: `Found ${foundPosts.length} posts`,
+      data: foundPosts,
     });
     //
   } catch (error) {
@@ -224,8 +223,6 @@ const deletePost = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   getAllPosts,

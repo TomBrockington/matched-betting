@@ -9,10 +9,12 @@ function Home() {
   const setCurrentUser = () => {
     console.log('setting user');
     setUser({
-      id: '70',
-      email: 'tim@gmail.com',
-      username: 'tim',
+      id: '3',
+      email: 'admin@email.com',
+      username: 'Mr. Default',
+      role: 'ADMIN',
       posts: [],
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE2NjY0MTMzNzAsImV4cCI6MTY3MDAxMzM3MH0.SeDyUWXNdqGdVCnbgfEckjsV8xfmvNa5xQ_BvIUWHhU'
     });
   };
 

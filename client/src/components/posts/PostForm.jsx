@@ -7,14 +7,14 @@ import { UserContext } from '../../context/UserContext';
 
 function PostForm({ postCategory }) {
   const { user, setUser } = useContext(UserContext);
-console.log('user', user);
+  console.log('user PostForm', user);
   const [newPostArticle, setNewPostArticle] = useState({
     title: '',
     content: '',
     category: postCategory.query,
     ownerName: user.username
   })
-
+  console.log('newPostArticle', newPostArticle);
   const handleChange = (e) => {
     const { name, value } = e.target
 
@@ -30,15 +30,17 @@ console.log('user', user);
     console.log('submitting');
 // TODO: needs use effect to get user token, my fake user doesnt have one
     const { title, content, category, ownerName } = newPostArticle
-
+    console.log('title', title, content, category, ownerName);
+    console.log('newPostArticle', newPostArticle);
     const res = await fetch('http://localhost:4000/post', {
       method: 'POST',
       headers: {
-        'authorization': 'Bearer',
+        'Content-Type': 'application/json',        
+        'authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(newPostArticle),
     });
-
+    console.log('res', res);
     const newPostData = await res.json();
     console.log('newPostData', newPostData);
 
