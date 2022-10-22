@@ -54,7 +54,7 @@ model Profile {
 // TODO: include comments in post returns
 model Post {
   id        Int       @id @default(autoincrement())
-  title     String    @unique
+  title     String    
   content   String
   category  Category
   ownerName String

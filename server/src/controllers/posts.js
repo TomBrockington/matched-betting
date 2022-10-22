@@ -120,7 +120,6 @@ const createNewPost = async (req, res) => {
   }
 
   try {
-    // TODO: make titles not unique
     const newPost = await createPost(
       title,
       content,

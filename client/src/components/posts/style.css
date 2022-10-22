@@ -2,7 +2,7 @@
     margin-top: 1.5rem;
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    padding: var(--standard-padding);  
+    padding: var(--padding-standard);  
 }
 
 #form__header {
@@ -17,13 +17,13 @@ ul {
 .post__item {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    padding: var(--standard-padding);
+    padding: var(--padding-standard);
 }
 
 .new__post__cta {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    padding: var(--standard-padding);
+    padding: var(--padding-standard);
     width: 100%;
     margin-top: 1rem;
 }
@@ -42,7 +42,7 @@ label {
 .forum__post__container {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    padding: var(--standard-padding);
+    padding: var(--padding-standard);
 }
 
 .post__title__container, .post__content__container {

@@ -6,13 +6,13 @@
   display: grid;
   background-color: red;
   width: 100%;
-  padding: var(--standard-padding);
+  padding: var(--padding-standard);
 }
 
 .forum__header__container {
   border: 2px solid var(--main-border-color);
   border-radius: var(--main-border-radius);
-  padding: var(--standard-padding);
+  padding: var(--padding-standard);
   margin-left: 20%;
   margin-bottom: 3rem;
 }
@@ -21,14 +21,14 @@
     background-color: orange;
     display: grid;
     grid-template-columns: 19% 1fr;
-    gap: var(--standard-padding);
+    gap: var(--padding-standard);
     position: relative;
 }
 
 .forum__catagory__container {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    padding: var(--standard-padding);
+    padding: var(--padding-standard);
     height: min-content;
     min-width: fit-content;
 }
@@ -36,7 +36,7 @@
 .forum__posts__container {
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    padding: var(--standard-padding);
+    padding: var(--padding-standard);
 
     background-color: pink;
     /* max-height: 150vh; */
