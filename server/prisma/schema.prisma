@@ -38,6 +38,7 @@ model User {
 }
 
 // TODO: add to data returns
+// TODO: ADD bet histroy
 model Profile {
   id            Int       @id @default(autoincrement())
   firstname     String

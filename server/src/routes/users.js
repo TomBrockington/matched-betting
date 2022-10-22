@@ -5,11 +5,13 @@ const router = express.Router();
 const {
     getAllUsers,
     createNewUser,
-    deleteUser
+    deleteUser,
+    getUserById
 } = require('../controllers/users');
 
 router.get('/', authorization, getAllUsers);
 router.post('/register', createNewUser);
+router.get('/:id', getUserById);
 router.delete('/:id', authorization, deleteUser);
 
 module.exports = router;

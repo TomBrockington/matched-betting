@@ -12,45 +12,28 @@ const {
   deletePostById,
 } = require('../domain/posts');
 
-const getAllPosts = async (req, res) => {
+const getPosts = async (req, res) => {
+  const { category } = req.query;
+
   try {
     //
-    const foundPosts = await findAllPosts();
+    if (!category) {
+      const foundPosts = await findAllPosts();
 
     if (!foundPosts) {
       return res
         .status(404)
         .json({ error: error.message, message: `No posts found` });
     }
-
+    //
     return res.status(200).json({
       message: `Found ${foundPosts.length} posts`,
+      code: `201`,
       data: foundPosts,
     });
-    //
-  } catch (error) {
-    //
-    return res.status(500).json({
-      error: error.message,
-      message: `Internal server error`,
-      code: `500`,
-    });
-  }
-};
+    }
 
-const getPostsByCategory = async (req, res) => {
-  console.log('getting posts by category');
-  const { category } = req.query;
-
-  if (!category) {
-    return res.status(404).json({
-      error: 'Missing request query',
-      code: `404`,
-    });
-  }
-
-  try {
-    //
+    // Else return find post by category
     const foundPosts = await findPostsByCategory(category);
 
     if (!foundPosts) {
@@ -58,34 +41,33 @@ const getPostsByCategory = async (req, res) => {
         .status(404)
         .json({ error: `Posts not found or don't exist`, code: `404` });
     }
-
-    return res.status(201).json({
-      message: `Posts found for category: ${category}`,
-      data: foundPosts,
-      code: `201`,
-    });
     //
+    return res.status(201).json({
+      message: `Found ${foundPosts.length} posts found for category: ${category}`,
+      code: `201`,
+      data: foundPosts,
+    });
+
   } catch (error) {
     //
     return res.status(500).json({
       message: `Internal server error`,
-      error: error.message,
       code: `500`,
+      error: error.message,
     });
   }
 };
 
 const getPostById = async (req, res) => {
-  console.log('getting post by id');
-  const id = Number(req.params.id);
+  const postId = Number(req.params.id);
 
-  if (!id) {
+  if (!postId) {
     return res.status(404).json({ error: `ID missing`, code: `404` });
   }
 
   try {
     //
-    const foundPost = await findPostById(id);
+    const foundPost = await findPostById(postId);
 
     if (!foundPost) {
       return res.status(404).json({ error: 'Post not found', code: `404` });
@@ -93,16 +75,16 @@ const getPostById = async (req, res) => {
 
     return res.status(201).json({
       message: `Found post ID: ${foundPost.id}`,
-      data: foundPost,
       code: `201`,
+      data: foundPost,
     });
     //
   } catch (error) {
     //
     return res.status(500).json({
-      error: error.message,
       message: `Internal server error`,
       code: `500`,
+      error: error.message,
     });
   }
 };
@@ -144,9 +126,9 @@ const createNewPost = async (req, res) => {
   } catch (error) {
     //
     return res.status(500).json({
-      error: error.message,
       message: `Internal server error`,
       code: `500`,
+      error: error.message,
     });
   }
 };
@@ -168,24 +150,23 @@ const editPost = async (req, res) => {
     }
 
     if (category === '' || category === null || category === undefined) {
-      console.log('cat empty');
       category = foundPost.category;
     }
 
     const editedPost = await editPostContent(postId, title, content, category);
 
     return res.status(201).json({
-      data: editedPost,
       message: `Post ${editedPost.title} updated successfully`,
       code: `201`,
+      data: editedPost,
     });
     //
   } catch (error) {
     //
     return res.status(500).json({
-      error: error.message,
       message: `Internal server error`,
       code: `500`,
+      error: error.message,
     });
   }
 };
@@ -202,32 +183,31 @@ const deletePost = async (req, res) => {
     const foundPost = await findPostById(postId);
 
     if (!foundPost) {
-      return res.status(404).json({ error: 'Post not found', code: `404` });
+      return res.status(404).json({ error: `Post not found`, code: `404` });
     }
 
     const deletedPost = await deletePostById(postId);
 
     return res.status(201).json({
-      data: deletedPost,
       message: `Post '${deletedPost.title}' deleted successfully`,
       code: `201`,
+      data: deletedPost,
     });
     //
   } catch (error) {
     //
     return res.status(500).json({
-      error: error.message,
       message: `Internal server error`,
       code: `500`,
+      error: error.message,
     });
   }
 };
 
 module.exports = {
-  getAllPosts,
   createNewPost,
-  getPostsByCategory,
   getPostById,
   editPost,
   deletePost,
+  getPosts,
 };

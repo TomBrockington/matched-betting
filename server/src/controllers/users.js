@@ -8,6 +8,7 @@ const hashRate = 8;
 const {
   findAllUsers,
   findUserByEmail,
+  findUserById,
   createUser,
   deleteUserById,
 } = require('../domain/users');
@@ -24,7 +25,7 @@ const getAllUsers = async (req, res) => {
 
     return res
       .status(201)
-      .json({ data: foundUsers, message: `Returning all users`, code: `201` });
+      .json({ message: `Found ${foundUsers.length} users`, code: `201`, data: foundUsers });
 
 
   } catch (error) {
@@ -53,7 +54,7 @@ const createNewUser = async (req, res) => {
     if (foundUser) {
       return res
         .status(409)
-        .json({ error: 'User already exists', code: `409` });
+        .json({ error: `User already exists`, code: `409` });
     }
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
@@ -61,9 +62,9 @@ const createNewUser = async (req, res) => {
     const newUser = await createUser(lowercaseEmail, hashedPassword);
 
     return res.status(201).json({
-      data: newUser,
       message: `User ${newUser.email} created`,
       code: `201`,
+      data: newUser,
     });
 
   } catch (error) {
@@ -86,7 +87,7 @@ const deleteUser = async (req, res) => {
       return res
         .status(409)
         .json({
-          error: 'Missing Authorization to perform request',
+          error: `Missing Authorization to perform request`,
           code: `409`,
         });
     }
@@ -94,9 +95,9 @@ const deleteUser = async (req, res) => {
     const deletedUser = await deleteUserById(userId);
 
     return res.status(201).json({
-      data: deletedUser,
       message: `User ${deletedUser.email} deleted successfully`,
       code: `200`,
+      data: deletedUser,
     });
 
   } catch (error) {
@@ -108,8 +109,44 @@ const deleteUser = async (req, res) => {
     });
   }
 };
+
+const getUserById = async (req, res) => {
+  console.log('getting by id');
+  const userId = Number(req.params.id)
+
+  try {
+    //
+      const foundUser = await findUserById(userId)
+      console.log('found user: ', foundUser);
+
+      if (!foundUser) {
+        return res
+        .status(404)
+        .json({
+          error: `User with id: ${userId} not found`,
+          code: `409`,
+        })
+      }
+
+      return res.status(201).json({
+        message: `User ${foundUser.username} found successfully`,
+        code: `200`,
+        data: foundUser,
+      });
+    //
+  } catch (error) {
+    //
+    return res.status(500).json({
+      message: `Internal server error`,
+      code: `500`,
+      error: error.message,
+    });
+  }
+}
+
 module.exports = {
   getAllUsers,
   createNewUser,
   deleteUser,
+  getUserById
 };
