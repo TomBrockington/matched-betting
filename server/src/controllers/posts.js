@@ -10,7 +10,13 @@ const {
   findPostById,
   editPostContent,
   deletePostById,
+  createComment
 } = require('../domain/posts');
+
+const {
+  findUserById
+} = require('../domain/users');
+
 
 const getPosts = async (req, res) => {
   const { category } = req.query;
@@ -175,7 +181,7 @@ const deletePost = async (req, res) => {
   const postId = Number(req.params.id);
 
   if (!postId) {
-    return res.status(404).json({ error: `ID missing`, code: `404` });
+    return res.status(404).json({ error: `Post id missing`, code: `404` });
   }
 
   try {
@@ -183,7 +189,7 @@ const deletePost = async (req, res) => {
     const foundPost = await findPostById(postId);
 
     if (!foundPost) {
-      return res.status(404).json({ error: `Post not found`, code: `404` });
+      return res.status(404).json({ error: `Post with id ${postId}`, code: `404` });
     }
 
     const deletedPost = await deletePostById(postId);
@@ -204,10 +210,60 @@ const deletePost = async (req, res) => {
   }
 };
 
+const createNewComment = async (req, res) => {
+  const postId = Number(req.params.id);
+  const userId = req.user.id;
+// TODO: check into parent id getting
+  // const parentId = req.body.parentId
+  const parentId = 1
+console.log('parentId', parentId);
+  const { content } = req.body
+  console.log('user stuff', postId, userId, content);
+
+  if (!postId) {
+    return res.status(404).json({ error: `Post postId missing`, code: `404` });
+  }
+  if (!userId) {
+    return res.status(404).json({ error: `Post userId missing`, code: `404` });
+  }
+  if (!content) {
+    return res.status(404).json({ error: `Post content missing`, code: `404` });
+  }
+  //
+  try {
+
+    
+    const foundUser = await findUserById(userId)
+    console.log('foundUser', foundUser);
+    
+    if (!foundUser) {
+      return res.status(404).json({ error: `User with id ${userId}`, code: `404` });
+    }
+    
+    const foundPost = await findPostById(postId);
+    console.log('foundPost', foundPost);
+
+    if (!foundPost) {
+      return res.status(404).json({ error: `Post with id ${postId}`, code: `404` });
+    }
+    const newComment = await createComment(postId, userId, content, parentId)
+    console.log('new comment', newComment);
+
+  } catch (error) { 
+    //
+    return res.status(500).json({
+      message: `Internal server error`,
+      code: `500`,
+      error: error.message,
+    });
+  }
+}
+
 module.exports = {
   createNewPost,
   getPostById,
   editPost,
   deletePost,
   getPosts,
+  createNewComment,
 };

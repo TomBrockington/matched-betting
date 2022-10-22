@@ -9,7 +9,8 @@ const {
     editPost,
     deletePost,
     createNewPost,
-    getPosts
+    getPosts,
+    createNewComment
 } = require('../controllers/posts');
 
 router.post('/', authorization, createNewPost)
@@ -17,6 +18,7 @@ router.get('/', getPosts);
 router.get('/:id', getPostById);
 router.patch('/:id', editPost);
 router.delete('/:id', deletePost);
+router.post('/:id/comment', authorization, createNewComment);
 
 module.exports = router;
 

@@ -3,7 +3,12 @@ const prisma = require('../utils/prisma');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const findAllPosts = () => prisma.post.findMany({});
+const findAllPosts = () => prisma.post.findMany({
+  include: {
+    user: true,
+    comments: true
+  }
+});
 
 const findPostsByCategory = (category) => prisma.post.findMany({
   where: {
@@ -59,11 +64,23 @@ const deletePostById = (postId) => prisma.post.delete({
     }
 })
 
+const createComment = (postId, userId, content, parentId) => prisma.comment.create({
+  data: {
+    postId: postId,
+    userId: userId,
+    content: content,
+    parentId: parentId,
+  }
+})
+
+
+
 module.exports = {
   findAllPosts,
   findPostsByCategory,
   createPost,
   findPostById,
   editPostContent,
-  deletePostById
+  deletePostById,
+  createComment
 };
