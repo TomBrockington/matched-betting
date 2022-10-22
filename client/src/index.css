@@ -24,8 +24,7 @@
   /* TRANSITIONS */
   --transition: all 400ms ease;
   /* PADDING  */
-  /* TODO: change names */
-  --standard-padding: 1rem;
+  --padding-standard: 1rem;
   --padding-inputs: 0.6rem;
   --padding-small: 0.4rem;
 }
