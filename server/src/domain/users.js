@@ -10,16 +10,20 @@ const findUserByEmail = (email) =>
     where: {
       email: email,
     },
+    include: {
+      profile: true,
+    },
   });
 
-const findUserById = (userId) => prisma.user.findFirst({
-  where: {
-    id: userId,
-  },
-  include: {
-    profile: true
-  }
-})
+const findUserById = (userId) =>
+  prisma.user.findFirst({
+    where: {
+      id: userId,
+    },
+    include: {
+      profile: true,
+    },
+  });
 
 const createUser = (email, password) =>
   prisma.user.create({
@@ -28,27 +32,60 @@ const createUser = (email, password) =>
       password: password,
     },
   });
-
-const updateUser = (userId, username) => prisma.user.update({
-  where: {
-    id: userId, 
-  },
-  data: {
-    username: username,
-  }
-})
-
-  const deleteUserById = (userId) => prisma.user.delete({
+// TODO: will need to add passwird
+const updateUser = (
+  userId,
+  email,
+  username,
+  firstname,
+  lastname,
+  biography,
+  profileImgUrl
+) =>
+  prisma.user.update({
     where: {
       id: userId,
-    }
-  })
-  
+    },
+    data: {
+      email: email,
+      username: username,
+      profile: {
+        update: {
+          firstname,
+          lastname,
+          biography,
+          profileImgUrl,
+        },
+      },
+      profile: {
+        create: {
+          firstname,
+          lastname,
+          biography,
+          profileImgUrl,
+        },
+      },
+    },
+    include: {
+      profile: true,
+    },
+  });
+
+const deleteUserById = (userId) =>
+  prisma.user.delete({
+    where: {
+      id: userId,
+    },
+    include: {
+      profile: true,
+    },
+  });
+
 module.exports = {
   findAllUsers,
   findUserByEmail,
   findUserById,
   createUser,
   updateUser,
-  deleteUserById
+  deleteUserById,
 };

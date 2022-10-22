@@ -14,7 +14,6 @@ const {
   deleteUserById,
 } = require('../domain/users');
 
-
 const getAllUsers = async (req, res) => {
   console.log('user', req.user);
   try {
@@ -26,11 +25,12 @@ const getAllUsers = async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: `Found ${foundUsers.length} users`, code: `201`, data: foundUsers });
-
-
+      .json({
+        message: `Found ${foundUsers.length} users`,
+        code: `201`,
+        data: foundUsers,
+      });
   } catch (error) {
-
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -67,9 +67,7 @@ const createNewUser = async (req, res) => {
       code: `201`,
       data: newUser,
     });
-
   } catch (error) {
-
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -79,19 +77,48 @@ const createNewUser = async (req, res) => {
 };
 
 const updateUserById = async (req, res) => {
-console.log('updateUserById');
-const { username } = req.body
-const userId = Number(req.params.id)
-// TODO: all these need to actually care what auth checks
-  try {
-     //
-     const foundUser = await findUserById(userId);
+  console.log('updateUserById');
+  let {
+    email,
+    username,
+    firstname,
+    lastname,
+    biography,
+    profileImgUrl,
+  } = req.body;
+  const userId = Number(req.params.id);
 
-     if (!foundUser) {
-      return res.status(404).json({ message: `No user found with id: ${userId}`, code: `404` });
+  // TODO: all these need to actually care what auth checks
+  try {
+    //
+    const foundUser = await findUserById(userId);
+
+    if (!foundUser) {
+      return res.status(404).json({
+        message: `No user found with id: ${userId}`,
+        code: `404`,
+      });
     }
 
-    const updatedUser = await updateUser(userId, username);
+    if (email === '' || username === '' || firstname === '' || lastname === '' || biography === '' || profileImgUrl === '') {
+      email = foundUser.email
+      username = foundUser.username
+      firstname = foundUser.firstname
+      lastname = foundUser.lastname
+      biography = foundUser.biography
+      profileImgUrl = foundUser.profileImgUrl
+    }
+
+    const updatedUser = await updateUser(
+      userId,
+      email,
+      username,
+      firstname,
+      lastname,
+      biography,
+      profileImgUrl,
+    );
+
     console.log('updaed', updatedUser);
 
     return res.status(201).json({
@@ -100,29 +127,26 @@ const userId = Number(req.params.id)
       data: updatedUser,
     });
 
-     //
-} catch (error) {
-  //
-  return res.status(500).json({
-    error: error.message,
-    message: `Internal server error`,
-    code: `500`,
-  });
-}
-}
+    //
+  } catch (error) {
+    //
+    return res.status(500).json({
+      error: error.message,
+      message: `Internal server error`,
+      code: `500`,
+    });
+  }
+};
 const deleteUser = async (req, res) => {
   console.log('delete user');
   const userId = Number(req.params.id);
 
   try {
-
     if (req.user.role !== `ADMIN`) {
-      return res
-        .status(409)
-        .json({
-          error: `Missing Authorization to perform request`,
-          code: `409`,
-        });
+      return res.status(409).json({
+        error: `Missing Authorization to perform request`,
+        code: `409`,
+      });
     }
 
     const deletedUser = await deleteUserById(userId);
@@ -132,9 +156,7 @@ const deleteUser = async (req, res) => {
       code: `200`,
       data: deletedUser,
     });
-
   } catch (error) {
-    
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -145,27 +167,25 @@ const deleteUser = async (req, res) => {
 
 const getUserById = async (req, res) => {
   console.log('getting by id');
-  const userId = Number(req.params.id)
+  const userId = Number(req.params.id);
 
   try {
     //
-      const foundUser = await findUserById(userId)
-      console.log('found user: ', foundUser);
+    const foundUser = await findUserById(userId);
+    console.log('found user: ', foundUser);
 
-      if (!foundUser) {
-        return res
-        .status(404)
-        .json({
-          error: `User with id: ${userId} not found`,
-          code: `409`,
-        })
-      }
-
-      return res.status(201).json({
-        message: `User ${foundUser.username} found successfully`,
-        code: `200`,
-        data: foundUser,
+    if (!foundUser) {
+      return res.status(404).json({
+        error: `User with id: ${userId} not found`,
+        code: `409`,
       });
+    }
+
+    return res.status(201).json({
+      message: `User ${foundUser.username} found successfully`,
+      code: `200`,
+      data: foundUser,
+    });
     //
   } catch (error) {
     //
@@ -175,12 +195,12 @@ const getUserById = async (req, res) => {
       error: error.message,
     });
   }
-}
+};
 
 module.exports = {
   getAllUsers,
   createNewUser,
   deleteUser,
   getUserById,
-  updateUserById
+  updateUserById,
 };
