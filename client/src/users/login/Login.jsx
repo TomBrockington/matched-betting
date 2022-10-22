@@ -5,14 +5,14 @@ import '../style.css';
 import UserForm from './UserForm';
 
 function Login() {
-  const [user, setUser] = useState('');
+  const [userData, setUserData] = useState('');
   let navigate = useNavigate();
 
   const handleChange = (event) => {
     const { value, name } = event.target;
 
-    setUser({
-      ...user,
+    setUserData({
+      ...userData,
       [name]: value,
     });
   };
@@ -26,7 +26,7 @@ function Login() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(userData),
     });
 
     // returning data from local:4000 as res.json is a token that can be used as your auth badge

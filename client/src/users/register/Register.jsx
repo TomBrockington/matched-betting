@@ -6,7 +6,7 @@ import UserForm from './UserForm';
 
 
 function Register() {
-  const [user, setUser] = useState({
+  const [userData, setUserData] = useState({
     email: '',
     password: '',
     confirmPassword: '',
@@ -18,22 +18,22 @@ function Register() {
     console.log(event.target.value);
     const { value, name } = event.target;
 
-    setUser({
-      ...user,
+    setUserData({
+      ...userData,
       [name]: value,
     });
-    console.log('user', user)
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault(); 
    
-    if (user.password !== user.confirmPassword) {
+    if (userData.password !== userData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
 
-    const { email, password } = user;
+    const { email, password } = userData;
+
     const res = await fetch('http://localhost:4000/register', {
       method: 'POST',
       headers: {
@@ -45,7 +45,7 @@ function Register() {
       }),
     });
 
-    const userData = await res.json();
+    const userResData = await res.json();
 
     navigate('/login', {
       replace: true,
