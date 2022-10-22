@@ -94,11 +94,19 @@ async function seed() {
     },
   });
 
-  const createdAdminTwo = await prisma.user.create({
+  const createdAdmin = await prisma.user.create({
     data: {
       email: 'admin@email.com',
       password,
       role: `ADMIN`
+    }
+  })
+
+  const createdDev = await prisma.user.create({
+    data: {
+      email: 'dev@email.com',
+      password,
+      role: `DEVELOPER`
     }
   })
 
@@ -108,7 +116,8 @@ async function seed() {
     userPostOne,
     createdUserTwo,
     createdProfile,
-    createdAdminTwo
+    createdAdmin,
+    createdDev
   );
 }
 
