@@ -29,6 +29,15 @@ const createUser = (email, password) =>
     },
   });
 
+const updateUser = (userId, username) => prisma.user.update({
+  where: {
+    id: userId, 
+  },
+  data: {
+    username: username,
+  }
+})
+
   const deleteUserById = (userId) => prisma.user.delete({
     where: {
       id: userId,
@@ -40,5 +49,6 @@ module.exports = {
   findUserByEmail,
   findUserById,
   createUser,
+  updateUser,
   deleteUserById
 };

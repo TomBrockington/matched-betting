@@ -10,6 +10,7 @@ const {
   findUserByEmail,
   findUserById,
   createUser,
+  updateUser,
   deleteUserById,
 } = require('../domain/users');
 
@@ -77,6 +78,38 @@ const createNewUser = async (req, res) => {
   }
 };
 
+const updateUserById = async (req, res) => {
+console.log('updateUserById');
+const { username } = req.body
+const userId = Number(req.params.id)
+// TODO: all these need to actually care what auth checks
+  try {
+     //
+     const foundUser = await findUserById(userId);
+
+     if (!foundUser) {
+      return res.status(404).json({ message: `No user found with id: ${userId}`, code: `404` });
+    }
+
+    const updatedUser = await updateUser(userId, username);
+    console.log('updaed', updatedUser);
+
+    return res.status(201).json({
+      message: `User ${updatedUser.email} updated successfully`,
+      code: `201`,
+      data: updatedUser,
+    });
+
+     //
+} catch (error) {
+  //
+  return res.status(500).json({
+    error: error.message,
+    message: `Internal server error`,
+    code: `500`,
+  });
+}
+}
 const deleteUser = async (req, res) => {
   console.log('delete user');
   const userId = Number(req.params.id);
@@ -148,5 +181,6 @@ module.exports = {
   getAllUsers,
   createNewUser,
   deleteUser,
-  getUserById
+  getUserById,
+  updateUserById
 };
