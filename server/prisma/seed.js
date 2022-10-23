@@ -117,6 +117,17 @@ async function seed() {
       role: `DEVELOPER`
     }
   })
+  
+  const linkOne = await prisma.link.create({
+    data: {
+      company: 'Betfair',
+      betType: 'Matched',
+      minBet: 10,
+      url: `https://www.betfair.com`,
+      endDate: new Date(),
+      desc: `A exchange and a bookie`
+    }
+  })
 
   console.log(
     'users',
@@ -126,12 +137,15 @@ async function seed() {
     createdProfile,
     createdAdmin,
     createdDev,
-    createdCommentOne
+    createdCommentOne,
+    linkOne
   );
 }
+
 
 seed().catch(async (error) => {
   console.error(error);
   await prisma.$disconnect();
   process.exit(1);
 });
+

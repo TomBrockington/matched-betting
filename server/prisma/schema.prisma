@@ -78,3 +78,15 @@ model Comment {
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
+
+model Link {
+  id        Int       @id @default(autoincrement())
+  company   String
+  betType   String
+  minBet    Int
+  url       String
+  endDate   DateTime
+  desc      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}

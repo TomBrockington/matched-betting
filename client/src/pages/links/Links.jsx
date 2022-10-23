@@ -1,11 +1,22 @@
 import React from 'react'
 import Nav from '../../components/nav/Nav'
-
+import './style.css'
+// TODO: add links to database
 function Links() {
   return (
-    <div>
+    <>
         <Nav />
-    </div>
+        <main>
+          <section className='links__container'>
+            <header className='links__header'>
+            Links
+            </header>
+
+            
+          </section>
+        </main>
+
+    </>
   )
 }
 
