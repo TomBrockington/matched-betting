@@ -11,13 +11,13 @@ import { userSampleData } from '../../utils/UserData'
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
-  console.log('Nav User', user);
   
   const initUserState = userSampleData
   const navigate = useNavigate();
 
   const signOut = (event) => {
     event.preventDefault();
+    
     setUser(initUserState)
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
     navigate('../', { replace: true });

@@ -3,6 +3,7 @@
   --main-background-color: green;
   --alt-background-color: grey;
   --nav-background-color: lightblue;
+  --hover-background-color: rgba(10, 107, 139, 0.533);
   /* BORDERS */
   --main-border-color: black;
   --alt-border-color: red;
@@ -11,6 +12,8 @@
   /* FONTS */
   --main-font-color: black;
   --alt-font-color: orange;
+  --link-font-color: rgb(10, 107, 139);
+  --font-size-link: 1.4rem;
 
   --font-size-Xlarge: 4rem;
   --font-size-large: 2.5rem;
