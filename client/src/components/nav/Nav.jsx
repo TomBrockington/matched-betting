@@ -3,17 +3,22 @@ import './style.css';
 import Logo from '../../assets/images/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
 import { UserContext } from '../../context/UserContext';
+
+import { userSampleData } from '../../utils/UserData'
+
 
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
+  console.log('Nav User', user);
   
+  const initUserState = userSampleData
   const navigate = useNavigate();
 
   const signOut = (event) => {
     event.preventDefault();
+    setUser(initUserState)
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
     navigate('../', { replace: true });
   };
@@ -38,17 +43,21 @@ function Nav() {
       {/* EVENTUALLY MAKE THESE CONDITION SO ONLY ONE IS SHOWN */}
       <div className='nav__user__features'>
         <div className='login__container'>
-          <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
-          <Link to='/account'><AccountCircleIcon /></Link>
-          <Link to='/home' onClick={signOut}>Sign Out</Link>
-
+          {user.email
+            ? [
+                <Link to='/account'>
+                  <AccountCircleIcon />
+                </Link>,
+                <Link to='/home' onClick={signOut}>
+                  Sign Out
+                </Link>,
+              ]
+            : [
+                <Link to='/login'>Login</Link>,
+                <Link to='/register'>Register</Link>,
+              ]}
         </div>
 
-        {/* <div className="register__container">
-        </div> */}
-
-        {/* ADD LOGOUT */}
       </div>
     </nav>
   );

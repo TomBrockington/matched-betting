@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../../components/nav/Nav';
 import '../style.css';
 import UserForm from './UserForm';
+import { UserContext } from '../../context/UserContext';
+
 
 function Login() {
+  const { setUser } = useContext(UserContext);
+
   const [userData, setUserData] = useState('');
   let navigate = useNavigate();
 
@@ -40,7 +44,10 @@ function Login() {
     if (login.error) {
       return alert('Incorrect infomation entered');
     }
-
+    setUser(
+      login.user
+    )
+    
     navigate('/', {
       replace: true,
     });

@@ -1,13 +1,13 @@
 import React from 'react'
 import { createContext, useContext, useEffect, useState } from 'react';
 import jwt_decode from 'jwt-decode';
-import { user } from '../utils/UserData'
+import { userSampleData } from '../utils/UserData'
 import LoggedInUser from '../utils/LoggedInUser';
 import {  } from '../api/Requests';
 
 export const UserContext = React.createContext()
 
-const initUserState = user
+const initUserState = userSampleData
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(initUserState)   

@@ -5,6 +5,7 @@ import { UserContext } from '../../context/UserContext';
 
 function Home() {
   const { user, setUser } = useContext(UserContext);
+  console.log('HOME user', user);
 
   const setCurrentUser = () => {
     console.log('setting user');

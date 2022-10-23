@@ -1,6 +1,7 @@
-export const user = {
+export const userSampleData = {
   id: '',
   email: '',
   username: '',
+  role: '',
   posts: [],
 };
