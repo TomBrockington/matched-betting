@@ -45,16 +45,16 @@ function Nav() {
         <div className='login__container'>
           {user.email
             ? [
-                <Link to='/account'>
+                <Link to='/account' key={1}>
                   <AccountCircleIcon />
                 </Link>,
-                <Link to='/home' onClick={signOut}>
+                <Link to='/home' onClick={signOut} key={2}>
                   Sign Out
                 </Link>,
               ]
             : [
-                <Link to='/login'>Login</Link>,
-                <Link to='/register'>Register</Link>,
+                <Link to='/login' key={3}>Login</Link>,
+                <Link to='/register' key={4}>Register</Link>,
               ]}
         </div>
 

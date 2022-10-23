@@ -17,11 +17,16 @@ function LinkContainer() {
 
   return (
     <div>
+      <ul>
       {links ? links.map((link, index) => {
+        console.log('index', index);
         return (
-          <LinkItem key={index} link={link} />
+          <li key={index}>
+            <LinkItem link={link} />
+          </li>
         )
       }) : <p>No links are availible to display</p>}
+      </ul>
     </div> 
   )
 }

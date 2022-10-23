@@ -129,6 +129,17 @@ async function seed() {
     }
   })
 
+  const linkTwo = await prisma.link.create({
+    data: {
+      company: 'BetFred',
+      betType: 'Matched',
+      minBet: 10,
+      url: `https://www.betfred.com`,
+      endDate: new Date(),
+      desc: `A bookie`
+    }
+  })
+
   console.log(
     'users',
     createdUser,
@@ -138,7 +149,8 @@ async function seed() {
     createdAdmin,
     createdDev,
     createdCommentOne,
-    linkOne
+    linkOne,
+    linkTwo
   );
 }
 
