@@ -2,29 +2,41 @@ import React, { useContext } from 'react';
 import Nav from '../../components/nav/Nav';
 import './style.css';
 import { UserContext } from '../../context/UserContext';
+import HeaderImage from '../../assets/images/football-goal.jpg';
 
 function Home() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   console.log('HOME user', user);
 
-  const setCurrentUser = () => {
-    console.log('setting user');
-    setUser({
-      id: '3',
-      email: 'admin@email.com',
-      username: 'Mr. Default',
-      role: 'ADMIN',
-      posts: [],
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE2NjY0MTMzNzAsImV4cCI6MTY3MDAxMzM3MH0.SeDyUWXNdqGdVCnbgfEckjsV8xfmvNa5xQ_BvIUWHhU'
-    });
-  };
-
   return (
-    <div className='home__container'>
+    <>
       <Nav />
-      Home
-      <button onClick={setCurrentUser}>Set User</button>
-    </div>
+      <header className='home__header__container'>
+        <div className='home__header__content'>
+          
+          <div className='home__header__tc'>
+            <h1 className='home__header__title'>WELCOME:</h1>
+          </div>
+          <div className='home__header__pc'>
+            <p className='home__header__paragraph'>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+              hic tempora? At eveniet consequuntur temporibus fugit ipsam
+              incidunt vitae eaque cupiditate cum, numquam, optio ducimus
+              recusandae. Nihil sequi ducimus cumque fuga. Amet molestiae est
+              tenetur, voluptates sunt placeat accusamus minus earum dolorum
+              assumenda eaque architecto totam quas aut sequi nobis?Nihil sequi
+              ducimus cumque fuga. Amet molestiae est tenetur, voluptates sunt
+              placeat accusamus minus earum dolorum assumenda eaque architecto
+              totam quas aut sequi nobis?
+            </p>
+          </div>
+
+          <div className='home__header__images'>
+            <img src={HeaderImage} alt='goal' className='home__header__image' />
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
 
