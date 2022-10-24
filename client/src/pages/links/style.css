@@ -43,3 +43,8 @@
   margin-bottom: var(--padding-standard);
   border-radius: var(--main-border-radius);
 }
+
+.add__list__item {
+  margin-bottom: var(--padding-standard);
+  background-color: green;
+}
