@@ -9,6 +9,7 @@ function Account() {
   const { user, setUser } = useContext(UserContext);
   const [formKeys, setFormKeys] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [newUserData, setNewUserData] = useState({})
 
   const profile = user.profile;
 
@@ -22,14 +23,39 @@ function Account() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log('name', name, value);
+
+    const currentUser = {...user}
+
+    setNewUserData({
+      ...newUserData,
+      [name]: value
+    })
   }
 
-  const handleUpdate = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('submited');
+    const { username,
+      email,
+      password,
+      firstname,
+      lastname,
+      biography,
+      profileImgUrl } = newUserData
+      console.log('newUserDataXX', newUserData);
 
+    // const token = localStorage.getItem('token');
+    // console.log('MY BIG TOKEN', token);
 
+    // const res = await fetch('http://localhost:4000/post', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',        
+    //     // 'authorization': `Bearer ${token}`
+    //   },
+    //   body: JSON.stringify(newPostArticle),
+    // });
+    // console.log('res', res);
+    // const newPostData = await res.json();
   }
 
   const setUpdating = () => {
@@ -71,7 +97,7 @@ function Account() {
                   <FormInput name={key} handleChange={handleChange} />
                 </li>
               ))}
-              <button onClick={handleUpdate}>Update</button>
+              <button onClick={handleSubmit}>Update</button>
             </ul>
           </article>
         )}
