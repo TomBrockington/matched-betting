@@ -94,7 +94,7 @@ function Account() {
             <ul>
               {formKeys.map((key, index) => (
                 <li key={index}>
-                  <FormInput name={key} handleChange={handleChange} />
+                  <FormInput name={key} value={key} handleChange={handleChange} />
                 </li>
               ))}
               <button onClick={handleSubmit}>Update</button>
