@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { betSampleData } from '../../utils/BetData';
+import {
+  calculateQualifyingBetStake,
+  calculateFreeSnrBetStake,
+  calculateFreeSrBetStake,
+  calculateRefundBetStake,
+} from './BetCalculations';
 import './style.css';
 
 function Calculator() {
@@ -12,97 +18,91 @@ function Calculator() {
   console.log('betData', betData);
 
   useEffect(() => {
-    console.log('USING EFFECT');
-    let layBetData = 0
-
     if (betType === 'Qualifying Bet') {
-      console.log('QUALIFYING BET');
-      let x = betData.backBetOdds
-      let y = (betData.layBetOdds - (betData.exchangecommision / 100))
-      let z = betData.backbetstake
-      console.log('X', x)
-      console.log('y', y);
-      console.log('z', z );
-      layBetData = x / y * z
-      setLayStake(layBetData)
+      const result = calculateQualifyingBetStake(betData);
+      setLayStake(result);
     }
+
     if (betType === 'Free Bet') {
-      console.log('FREE BET');
-      let x = (betData.backBetOdds - 1)
-      let y = (betData.layBetOdds - (betData.exchangecommision / 100))
-      let z = betData.backbetstake
-      console.log('X', x)
-      console.log('y', y);
-      console.log('z', z );
-      layBetData = x / y * z
-      setLayStake(layBetData)
+      const result = calculateFreeSnrBetStake(betData);
+      setLayStake(result);
+    }
+
+    if (betType === 'Free Bet SR') {
+      const result = calculateFreeSrBetStake(betData);
+      setLayStake(result);
     }
 
     if (betType === 'Refund Bet') {
-      console.log('REFUND BET');
-      // let x = (betData.backBetOdds - 1)
-      // let y = (betData.layBetOdds - (betData.exchangecommision / 100))
-      // let z = betData.backbetstake
-      // console.log('X', x)
-      // console.log('y', y);
-      // console.log('z', z );
-      // layBetData = x / y * z
-      // setLayStake(layBetData)
+      const result = calculateRefundBetStake(betData);
+      setLayStake(result);
     }
-    console.log('LAYDATA', layBetData);
-  }, [betType, betData])
- 
+  }, [betType, betData]);
+
   const handleBetOptionChange = (event) => {
     const { name, value } = event.target;
-    console.log('name', name, value);
     setBetType(value);
   };
 
   const handleBetData = (event) => {
     const { name, value } = event.target;
-    console.log('name', name);
-    console.log('value', value);
 
     setBetData({
       ...betData,
       [name]: value,
     });
   };
+
   return (
     <>
       <article className='calculator__main__container'>
         <section className='bet__type__container'>
           <h3>Select Bet Type</h3>
-          <form>
-            <input
-              type='radio'
-              name='betType'
-              value='Qualifying Bet'
-              id='qualifyingBet'
-              checked={betType === 'qualifyingBet'}
-              onChange={handleBetOptionChange}
-            />
-            <label htmlFor='qualifyingBet'>Qualifying Bet</label>
-
-            <input
-              type='radio'
-              name='betType'
-              value='Free Bet'
-              id='freeBet'
-              checked={betType === 'freeBet'}
-              onChange={handleBetOptionChange}
-            />
-            <label htmlFor='freeBet'>Free Bet (SNR)</label>
-
-            <input
-              type='radio'
-              name='betType'
-              value='Refund Bet'
-              id='refundBet'
-              checked={betType === 'refundBet'}
-              onChange={handleBetOptionChange}
-            />
-            <label htmlFor='refundBet'>Refund Bet</label>
+          <form className='calculator__form'>
+            <label htmlFor='qualifyingBet'>
+              Qualifying Bet
+              <input
+                type='radio'
+                name='betType'
+                value='Qualifying Bet'
+                id='qualifyingBet'
+                checked={betType === 'qualifyingBet'}
+                onChange={handleBetOptionChange}
+              />
+            </label>
+            <label htmlFor='freeBet'>
+              Free Bet (SNR)
+              <input
+                type='radio'
+                name='betType'
+                value='Free Bet'
+                id='freeBet'
+                checked={betType === 'freeBet'}
+                onChange={handleBetOptionChange}
+              />
+            </label>
+            <label htmlFor='freeBetSR'>
+              Free Bet (SR)
+              <input
+                type='radio'
+                name='betType'
+                value='Free Bet SR'
+                id='freeBetSR'
+                checked={betType === 'freeBetSR'}
+                onChange={handleBetOptionChange}
+              />
+            </label>
+            <label htmlFor='refundBet'>
+              Refund Bet
+              <input
+                type='radio'
+                name='betType'
+                value='Refund Bet'
+                id='refundBet'
+                checked={betType === 'refundBet'}
+                onChange={handleBetOptionChange}
+              />
+            </label>
           </form>
           <p>
             Selected Bet Type: <strong>{betType}</strong>
@@ -171,6 +171,27 @@ function Calculator() {
         {/* results */}
 
         <section className='results__container'>
+          <table className='results__table'>
+            <tr className='table__row'>
+              <th className='ignore'></th>
+              <th>Bookie</th>
+              <th>Exchange</th>
+              <th>Total Profit</th>
+            </tr>
+            <tr className='table__row'>
+              <td>Bookie Wins</td>
+              <td>+ Bet</td>
+              <td>- Lay</td>
+              <td>Profit</td>
+            </tr>
+            <tr className='table__row'>
+              <td>Exchange Wins</td>
+              <td>- Bet</td>
+              <td>+ Lay</td>
+              <td>Profit</td>
+            </tr>
+          </table>
+
           <div>If bookie wins</div>
           <div>If exchange wins</div>
           <div>Total Profit</div>

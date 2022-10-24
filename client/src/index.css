@@ -106,6 +106,10 @@ img {
   border-color: transparent;
 }
 
+.ignore {
+  border: none !important;
+}
+
 /* Media Queries (MEDIUM DEVICES) */
 
 @media screen and (max-width: 1024px) {

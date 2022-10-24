@@ -11,6 +11,18 @@
     padding: var(--padding-standard);
 }
 
+.calculator__form {
+    background-color: orange;
+    display: flex;
+    gap: 1rem;
+    font-weight: 600;
+
+}
+
+#refundBet, #qualifyingBet, #freeBet, #freeBetSR {
+    margin-left: 0.6rem;
+}
+
 .calculator__inputs {
     background-color: red;
     padding: var(--padding-standard);
@@ -29,3 +41,12 @@
     padding: var(--padding-standard);
 
 }
+
+.results__table {
+    padding: var(--padding-standard);
+}
+
+.table__row > * {
+    padding: var(--padding-standard);
+    border: 1px solid var(--main-border-color);
+} 
