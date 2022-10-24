@@ -5,3 +5,7 @@ export const userSampleData = {
   role: '',
   posts: [],
 };
+
+export const profileFormState = [
+  'username', 'email', 'password', 'firstname', 'lastname', 'biography', 'profileImgUrl'
+]

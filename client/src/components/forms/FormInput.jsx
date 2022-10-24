@@ -2,11 +2,11 @@ import React from 'react'
 import './style.css'
 
 function FormInput(props) {
-  console.log('props', props);
+  console.log('PROPS XXXX', props);
     return (
     <div className='form__input'>
-        <label htmlFor=""></label>
-        <input type="text" placeholder={props.placeholder} />
+        <label htmlFor={props.name}>{props.name}</label>
+        <input type="text" name={props.name} placeholder={props.name} onChange={props.handleChange} />
     </div>
   )
 }
