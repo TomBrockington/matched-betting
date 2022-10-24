@@ -16,7 +16,7 @@ function LinkContainer() {
   }, []);
 
   return (
-    <div>
+    <>
       <ul>
       {links ? links.map((link, index) => {
         console.log('index', index);
@@ -27,7 +27,7 @@ function LinkContainer() {
         )
       }) : <p>No links are availible to display</p>}
       </ul>
-    </div> 
+    </> 
   )
 }
 
