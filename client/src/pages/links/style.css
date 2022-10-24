@@ -37,3 +37,9 @@
   align-items: center;
   color: var(--main-font-color);
 }
+/* ADD LINK BUTTON */
+.link__cta {
+  padding: var(--padding-standard);
+  margin-bottom: var(--padding-standard);
+  border-radius: var(--main-border-radius);
+}
