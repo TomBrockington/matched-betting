@@ -3,21 +3,22 @@
   display: grid;
   place-content: center;
   text-align: center;
-  margin: 1rem;
+  margin: var(--padding-standard);
 
 }
 
 .howtoplay__container {
-    margin: 1rem;
+    margin: var(--padding-standard);
     background-color: orange;
     text-align: center;
 }
 
 .lessons__game__container {
     background-color: brown;
-    margin: 1rem;
+    margin: var(--padding-standard);
     height: 200vh;
     position: relative;
+    padding: var(--padding-standard);
 }
 
 .game__bank__container {

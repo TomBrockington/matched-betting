@@ -102,8 +102,6 @@ function Account() {
           </article>
         )}
       </main>
-
-      <section>test</section>
     </>
   );
 }
