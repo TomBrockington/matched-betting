@@ -36,6 +36,12 @@
   justify-content: space-between;
   align-items: center;
   color: var(--main-font-color);
+  /* TODO: here  */
+}
+
+.list__item__footer {
+  display: flex;
+  justify-content: space-between;
 }
 /* ADD LINK BUTTON */
 .link__cta {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LinkItem from './LinkItem';
 
-function LinkContainer() {
+function LinkContainer({ linkData }) {
   const [links, setLinks] = useState('');
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function LinkContainer() {
       .catch((error) => {
         console.log('error', error);
       });
-  }, []);
+  }, [linkData]);
 
   return (
     <>
