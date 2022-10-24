@@ -42,6 +42,19 @@
     /* max-height: 150vh; */
 }
 
+#general, #events, #newbies {
+  max-width: fit-content;
+  padding: 0.4rem;
+}
+
+#general:hover, #events:hover, #newbies:hover {
+  background-color: red;
+  max-width: fit-content;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--main-border-radius);
+  color: var(--alt-font-color);
+}
+
 /* CATEGORY DESIGN */
 
 .categories__container {
