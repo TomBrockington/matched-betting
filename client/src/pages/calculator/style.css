@@ -8,3 +8,16 @@
 .main__calculator__container {
     padding: 3rem 6rem;
 }
+
+.calculations__container {
+    margin-top: var(--padding-large);
+    background-color: orange;
+    height: 100vh;
+}
+
+.calculation__type {
+    background-color: red;
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    padding: var(--padding-standard);
+}

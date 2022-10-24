@@ -8,6 +8,7 @@ function NewPostCTA({ createNewPost }) {
         className='new__post__cta'
         onClick={createNewPost}
         >
+          
         Create Post
     </button>
   )
