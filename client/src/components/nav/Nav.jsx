@@ -44,18 +44,25 @@ function Nav() {
       <div className='nav__user__features'>
         <div className='login__container'>
           {user.email
-            ? [
-                <Link to='/account' key={1}>
+            ? 
+              <div className='loggedIn__links'>
+                <Link to='/account' key={1} className='account__icon'>
                   <AccountCircleIcon />
-                </Link>,
+                </Link>
+
                 <Link to='/home' onClick={signOut} key={2}>
                   Sign Out
-                </Link>,
-              ]
-            : [
-                <Link to='/login' key={3}>Login</Link>,
-                <Link to='/register' key={4}>Register</Link>,
-              ]}
+                </Link>
+
+              </div>
+
+            : 
+              <div className='loggedOut__links'>
+              
+                <Link to='/login' key={3}>Login</Link>
+                <Link to='/register' key={4}>Register</Link>
+              
+              </div>}
         </div>
 
       </div>

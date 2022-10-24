@@ -42,14 +42,22 @@
     gap: 1rem;
 }
 
-.login__container {
+.loggedOut__links, .loggedIn__links  {
     display: grid;
-    gap: 1rem;
-    grid-auto-flow: column;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    place-content: center;
 }
-
-.login__container > * {
+.loggedOut__links > * {
     color: var(--link-font-color);
     font-size: var(--font-size-link);
+}
+
+.loggedIn__links > * {
+    color: var(--link-font-color);
+    font-size: var(--font-size-link);
+}
+
+.account__icon {
+    display: grid;
+    place-content: center;
 }
