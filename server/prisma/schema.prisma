@@ -39,12 +39,12 @@ model User {
 
 model Profile {
   id            Int       @id @default(autoincrement())
-  firstname     String
-  lastname      String
-  biography     String
+  firstname     String?
+  lastname      String?
+  biography     String?
   profileImgUrl String    @default("https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png")
   bank          Int       @default(1000)
-  betHistory    String[]
+  betHistory    String[]  @default([])
   userId        Int       @unique
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt     DateTime  @default(now())

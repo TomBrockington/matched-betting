@@ -3,11 +3,12 @@ const prisma = require('../utils/prisma');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const findAllUsers = () => prisma.user.findMany({
-  include: {
+const findAllUsers = () =>
+  prisma.user.findMany({
+    include: {
       profile: true,
     },
-});
+  });
 
 const findUserByEmail = (email) =>
   prisma.user.findFirst({
@@ -34,9 +35,16 @@ const createUser = (email, password) =>
     data: {
       email: email,
       password: password,
+      profile: {
+        create: {
+        }
+      }
+    },
+    include: {
+      profile: true,
     },
   });
-  
+
 // TODO: will need to add passwird
 const updateUser = (
   userId,

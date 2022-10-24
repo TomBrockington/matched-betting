@@ -110,6 +110,15 @@ async function seed() {
     }
   })
 
+  const createdAdminProfile = await prisma.profile.create({
+    data: {
+      userId: createdAdmin.id,
+      firstname: 'admin',
+      lastname: 'magic',
+      biography: 'I have my powers of administaration',
+    }
+  })
+
   const createdDev = await prisma.user.create({
     data: {
       email: 'dev@email.com',
@@ -150,7 +159,8 @@ async function seed() {
     createdDev,
     createdCommentOne,
     linkOne,
-    linkTwo
+    linkTwo,
+    createdAdminProfile
   );
 }
 
