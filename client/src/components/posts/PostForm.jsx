@@ -5,7 +5,8 @@ import { UserContext } from '../../context/UserContext';
 
 
 
-function PostForm({ postCategory }) {
+function PostForm({ postCategory, creatingPost, setCreatingPost }) {
+
   const { user, setUser } = useContext(UserContext);
   console.log('user PostForm', user);
   const [newPostArticle, setNewPostArticle] = useState({
@@ -15,6 +16,7 @@ function PostForm({ postCategory }) {
     ownerName: user.username
   })
   console.log('newPostArticle', newPostArticle);
+
   const handleChange = (e) => {
     const { name, value } = e.target
 
@@ -48,6 +50,7 @@ function PostForm({ postCategory }) {
     const newPostData = await res.json();
     console.log('newPostData', newPostData);
 
+    setCreatingPost(!creatingPost)
   }
 
   return (

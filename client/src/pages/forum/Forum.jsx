@@ -32,7 +32,7 @@ function Forum() {
       .catch((error) => {
         console.log('error', error);
       });
-  }, [postCategory]);
+  }, [postCategory, creatingPost]);
 
   const createNewPost = () => {
     console.log('creating new post');
@@ -98,7 +98,7 @@ function Forum() {
             <span>{postCategory.subtitle}</span>
 
             {creatingPost ? (
-              <PostForm postCategory={postCategory} />
+              <PostForm postCategory={postCategory} creatingPost={creatingPost} setCreatingPost={setCreatingPost} />
             ) : (
               <Posts posts={posts} viewPost={viewPost}  />
             )}
