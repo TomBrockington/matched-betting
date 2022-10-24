@@ -134,18 +134,22 @@ async function seed() {
       minBet: 10,
       url: `https://www.betfair.com`,
       endDate: new Date(),
-      desc: `A exchange and a bookie`
+      desc: `A exchange and a bookie`,
+      qualifyingBet: 10
     }
   })
 
   const linkTwo = await prisma.link.create({
+  // TODO: make the numbers decimal point
     data: {
       company: 'BetFred',
       betType: 'Matched',
       minBet: 10,
       url: `https://www.betfred.com`,
       endDate: new Date(),
-      desc: `A bookie`
+      desc: `A bookie`,
+      qualifyingBet: 10,
+      potentialProfit: 7
     }
   })
 

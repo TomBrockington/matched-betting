@@ -2,7 +2,8 @@ import React from 'react';
 
 function LinkItem({ link }) {
   // TODO: add new things to schema
-  const { company, betType, minBet, url, endDate, desc } = link;
+  const { company, betType, minBet, url, endDate, desc,       qualifyingBet, potentialProfit
+  } = link;
 
   return (
     <article className='link__list__item'>
@@ -13,9 +14,9 @@ function LinkItem({ link }) {
 
       <div className='list__item__main'>
         <p>BetType: {betType}</p>
-        <p>Qualifying Bet: </p>
-        <p>Minimum Bet: {minBet}</p>
-        <p>Potential Profit: </p>
+        <p>Qualifying Bet: £{qualifyingBet} </p>
+        <p>Minimum Bet: £{minBet}</p>
+        <p>Potential Profit: £{potentialProfit} </p>
         <p>Link: {url}</p>
       </div>
 

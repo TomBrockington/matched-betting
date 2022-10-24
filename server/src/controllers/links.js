@@ -3,7 +3,7 @@ const prisma = require('../utils/prisma');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const { findAllLinks } = require('../domain/links');
+const { findAllLinks, createLink } = require('../domain/links');
 
 const getAllLinks = async (req, res) => {
   console.log('getAllLinks');
@@ -17,6 +17,7 @@ const getAllLinks = async (req, res) => {
         .status(404)
         .json({ error: error.message, message: `No links found` });
     }
+    //
     return res.status(201).json({
       message: `Found ${allLinks.length} links`,
       code: `201`,
@@ -33,52 +34,79 @@ const getAllLinks = async (req, res) => {
   }
 };
 
-// const getPosts = async (req, res) => {
-//   const { category } = req.query;
+const createNewLink = async (req, res) => {
+  console.log('gettingallLinks');
 
-//   try {
-//     //
-//     if (!category) {
-//       const foundPosts = await findAllPosts();
+  const {
+    company,
+    betType,
+    qualifyingBet,
+    minBet,
+    potentialProfit,
+    url,
+    endDate,
+    desc,
+  } = req.body;
 
-//     if (!foundPosts) {
-//       return res
-//         .status(404)
-//         .json({ error: error.message, message: `No posts found` });
-//     }
-//     //
-//     return res.status(200).json({
-//       message: `Found ${foundPosts.length} posts`,
-//       code: `201`,
-//       data: foundPosts,
-//     });
-//     }
+  if (
+    !company ||
+    !betType ||
+    !qualifyingBet ||
+    !minBet ||
+    !potentialProfit ||
+    !url ||
+    !endDate ||
+    !desc
+  ) {
+    return res
+      .status(404)
+      .json({
+        message: `Missing fields in request body`,
+        error: error.message,
+      });
+  }
 
-//     // Else return find post by category
-//     const foundPosts = await findPostsByCategory(category);
+  try {
+    //
+    const newLink = await createLink(
+      company,
+      betType,
+      qualifyingBet,
+      minBet,
+      potentialProfit,
+      url,
+      endDate,
+      desc
+    );
 
-//     if (!foundPosts) {
-//       return res
-//         .status(404)
-//         .json({ error: `Posts not found or don't exist`, code: `404` });
-//     }
-//     //
-//     return res.status(201).json({
-//       message: `Found ${foundPosts.length} posts found for category: ${category}`,
-//       code: `201`,
-//       data: foundPosts,
-//     });
+    console.log('newLink', newLink);
 
-//   } catch (error) {
-//     //
-//     return res.status(500).json({
-//       message: `Internal server error`,
-//       code: `500`,
-//       error: error.message,
-//     });
-//   }
-// };
+    if (!newLink) {
+      return res
+      .status(404)
+      .json({
+        message: `Failed to create new link`,
+        error: error.message,
+      });
+    }
+
+    return res.status(201).json({
+      message: `Link created successfully`,
+      code: `201`,
+      data: newLink,
+    });
+
+  } catch (error) {
+    //
+    return res.status(500).json({
+      message: `Internal server error`,
+      code: `500`,
+      error: error.message,
+    });
+  }
+};
 
 module.exports = {
   getAllLinks,
+  createNewLink,
 };
