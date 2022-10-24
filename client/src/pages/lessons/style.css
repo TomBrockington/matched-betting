@@ -1,0 +1,32 @@
+.lessons__header__container {
+  background-color: red;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  margin: 1rem;
+
+}
+
+.howtoplay__container {
+    margin: 1rem;
+    background-color: orange;
+    text-align: center;
+}
+
+.lessons__game__container {
+    background-color: brown;
+    margin: 1rem;
+    height: 200vh;
+    position: relative;
+}
+
+.game__bank__container {
+    border: 2px solid var(--main-border-color);
+    width: fit-content;
+    right: 20px;
+    top: 20px;
+}
+.game__bank__container:active {
+    position: fixed;
+}
+
