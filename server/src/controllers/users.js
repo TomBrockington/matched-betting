@@ -17,6 +17,7 @@ const {
 const getAllUsers = async (req, res) => {
   console.log('user', req.user);
   try {
+    //
     const foundUsers = await findAllUsers();
 
     if (!foundUsers) {
@@ -30,7 +31,9 @@ const getAllUsers = async (req, res) => {
         code: `201`,
         data: foundUsers,
       });
+      //
   } catch (error) {
+    //
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,
@@ -67,7 +70,9 @@ const createNewUser = async (req, res) => {
       code: `201`,
       data: newUser,
     });
+    //
   } catch (error) {
+    //
     return res.status(500).json({
       error: error.message,
       message: `Internal server error`,

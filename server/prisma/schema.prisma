@@ -80,13 +80,15 @@ model Comment {
 }
 
 model Link {
-  id        Int       @id @default(autoincrement())
-  company   String
-  betType   String
-  minBet    Int
-  url       String
-  endDate   DateTime
-  desc      String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  id              Int       @id @default(autoincrement())
+  company         String
+  betType         String
+  qualifyingBet   Int      
+  minBet          Int       
+  potentialProfit Int?       
+  url             String
+  endDate         DateTime
+  desc            String
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime? @updatedAt
 }
