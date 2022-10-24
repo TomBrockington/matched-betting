@@ -7,11 +7,13 @@ function CalculatorPage() {
   return (
     <>
       <Nav />
-      <header>
+      <header className='header__container'>
         <h2>Calulator</h2>
       </header>
+<main className='main__calculator__container'>
 
       <Calculator />
+</main>
     </>
   );
 }
