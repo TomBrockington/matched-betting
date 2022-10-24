@@ -14,6 +14,7 @@ const startingCategory = categoryInfomation[0];
 function Forum() {
   const user = useContext(UserContext);
   // need these two on any page using effect
+  console.log('Forum user', user);
   const location = useLocation();
   const navigate = useNavigate();
 

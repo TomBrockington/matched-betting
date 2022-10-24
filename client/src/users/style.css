@@ -1,9 +1,8 @@
 .register__container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    place-content: center;
-    align-items: center;
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 90vh;
 }
 
 .form__container {

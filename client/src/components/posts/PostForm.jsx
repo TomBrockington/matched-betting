@@ -32,11 +32,15 @@ function PostForm({ postCategory }) {
     const { title, content, category, ownerName } = newPostArticle
     console.log('title', title, content, category, ownerName);
     console.log('newPostArticle', newPostArticle);
+
+    const token = localStorage.getItem('token');
+    console.log('MY BIG TOKEN', token);
+
     const res = await fetch('http://localhost:4000/post', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',        
-        'authorization': `Bearer ${user.token}`
+        'authorization': `Bearer ${token}`
       },
       body: JSON.stringify(newPostArticle),
     });

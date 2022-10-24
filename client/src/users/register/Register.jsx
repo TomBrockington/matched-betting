@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Nav from '../../components/nav/Nav';
 import '../style.css';
 
 import UserForm from './UserForm';
@@ -54,12 +55,15 @@ function Register() {
   }
 
   return (
+    <>
+    <Nav />
     <main className='register__container'>
         <section className='form__container'>
             <h2>Register Now</h2>
             <UserForm handleChange={handleChange} handleSubmit={handleSubmit} />
         </section>
     </main>
+    </>
   )
 }
 

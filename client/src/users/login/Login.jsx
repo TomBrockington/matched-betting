@@ -55,7 +55,7 @@ function Login() {
 
   return (
     <>
-    {/* TODO: add in nav and adjust css */}
+    <Nav />
       <main className='register__container'>
         <section className='form__container'>
           <h2>Login</h2>
