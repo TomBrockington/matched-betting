@@ -17,7 +17,7 @@ function Calculator() {
 
     if (betType === 'Qualifying Bet') {
       console.log('QUALIFYING BET');
-      let x = betData.backbetodds
+      let x = betData.backBetOdds
       let y = (betData.layBetOdds - (betData.exchangecommision / 100))
       let z = betData.backbetstake
       console.log('X', x)
@@ -25,6 +25,29 @@ function Calculator() {
       console.log('z', z );
       layBetData = x / y * z
       setLayStake(layBetData)
+    }
+    if (betType === 'Free Bet') {
+      console.log('FREE BET');
+      let x = (betData.backBetOdds - 1)
+      let y = (betData.layBetOdds - (betData.exchangecommision / 100))
+      let z = betData.backbetstake
+      console.log('X', x)
+      console.log('y', y);
+      console.log('z', z );
+      layBetData = x / y * z
+      setLayStake(layBetData)
+    }
+
+    if (betType === 'Refund Bet') {
+      console.log('REFUND BET');
+      // let x = (betData.backBetOdds - 1)
+      // let y = (betData.layBetOdds - (betData.exchangecommision / 100))
+      // let z = betData.backbetstake
+      // console.log('X', x)
+      // console.log('y', y);
+      // console.log('z', z );
+      // layBetData = x / y * z
+      // setLayStake(layBetData)
     }
     console.log('LAYDATA', layBetData);
   }, [betType, betData])
@@ -97,11 +120,11 @@ function Calculator() {
               onChange={handleBetData}
             />
 
-            <label htmlFor='backbetodds'>Back Bet odds:</label>
+            <label htmlFor='backBetOdds'>Back Bet odds:</label>
             <input
               type='number'
-              id='backbetodds'
-              name='backbetodds'
+              id='backBetOdds'
+              name='backBetOdds'
               onChange={handleBetData}
             />
 
@@ -128,7 +151,7 @@ function Calculator() {
             />
 
             <label htmlFor='exchangecommision'>
-              Bookie commision:
+              Exchange commision:
               <input
                 type='number'
                 id='exchangecommision'

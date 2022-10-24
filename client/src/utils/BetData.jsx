@@ -1,8 +1,8 @@
 export const betSampleData = {
-    backbetstake: '',
-    backbetodds: '',
-    bookiecommision: '',
-    layBetOdds: '',
-    exchangecommision: '',
+    backbetstake: 0,
+    backBetOdds: 0,
+    bookiecommision: 0,
+    layBetOdds: 0,
+    exchangecommision: 5,
   };
   
