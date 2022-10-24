@@ -1,16 +1,9 @@
-import React from 'react';
-import Nav from '../../components/nav/Nav';
-import './style.css';
+import React from 'react'
 
 function Calculator() {
   return (
     <>
-      <Nav />
-      <header>
-        <h2>Calulator</h2>
-      </header>
-
-      <main className='calculator__main__container'>
+    <main className='calculator__main__container'>
         <section className='bet__type__container'>
             <h3>Select Bet Type</h3>
             {/* TODO: convert to form components */}
@@ -21,14 +14,14 @@ function Calculator() {
               name='qualifying'
               value='qualifying'
             />
-            <label for='qualifying'>Qualifying Bet</label>
+            <label htmlFor='qualifying'>Qualifying Bet</label>
 
             <input 
               type='radio' 
               id='freebet' 
               name='freebet' 
               value='freebet' />
-            <label for='freebet'>Free Bet</label>
+            <label htmlFor='freebet'>Free Bet</label>
 
             <input
               type='radio'
@@ -36,7 +29,7 @@ function Calculator() {
               name='refundbet'
               value='refundbet'
             />
-            <label for='refundbet'>Refund</label>
+            <label htmlFor='refundbet'>Refund</label>
           </form>
         </section>
 
@@ -64,7 +57,7 @@ function Calculator() {
         </section>
       </main>
     </>
-  );
+  )
 }
 
-export default Calculator;
+export default Calculator

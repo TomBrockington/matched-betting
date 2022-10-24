@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Register from './users/register/Register';
 import Login from './users/login/Login';
-import Calculator from './pages/calculator/Calculator';
+import CalculatorPage from './pages/calculator/CalculatorPage';
 import Forum from './pages/forum/Forum';
 import Post from './pages/post/Post';
 import Lessons from './pages/lessons/Lessons';
@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
 
           <Route path="/" element={<Home />} />
-          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/forum" element={<Forum />} />
           <Route path="/faq" element={<Faq />} />

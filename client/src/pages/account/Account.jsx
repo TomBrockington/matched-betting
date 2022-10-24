@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Nav from '../../components/nav/Nav'
+import { UserContext } from '../../context/UserContext';
+
 
 function Account() {
+  const { user } = useContext(UserContext);
+  
+  console.log('ACCOUNT user', user);
   return (
     <div>
         <Nav />

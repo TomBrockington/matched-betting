@@ -32,8 +32,6 @@ function PostForm({ postCategory, creatingPost, setCreatingPost }) {
     console.log('submitting');
 // TODO: needs use effect to get user token, my fake user doesnt have one
     const { title, content, category, ownerName } = newPostArticle
-    console.log('title', title, content, category, ownerName);
-    console.log('newPostArticle', newPostArticle);
 
     const token = localStorage.getItem('token');
     console.log('MY BIG TOKEN', token);
