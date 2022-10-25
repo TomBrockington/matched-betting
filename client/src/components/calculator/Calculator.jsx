@@ -59,6 +59,8 @@ function Calculator() {
       console.log('bookieBetResultsData', bookieBetResultsData);
       console.log('exchangeSnrResultData', exchangeBetResultsData);
       setLayStake(layStakeResult.toFixed(2));
+      setBookieResults(bookieBetResultsData);
+      setExchangeResults(exchangeBetResultsData);
     }
 
     console.log('bookieResultsXX', bookieResults);
