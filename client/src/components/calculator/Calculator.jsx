@@ -17,7 +17,7 @@ function Calculator() {
   const [layStake, setLayStake] = useState(0.0);
   const [bookieResults, setBookieResults] = useState({});
   const [exchangeResults, setExchangeResults] = useState({});
-
+// TODO: need to make the functions based on the type of bet
   useEffect(() => {
     if (betType === 'Qualifying Bet') {
       const layStakeResult = calculateQualifyingBetStake(betData);
