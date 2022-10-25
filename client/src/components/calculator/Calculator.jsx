@@ -6,6 +6,8 @@ import {
   calculateFreeSnrBetStake,
   calculateFreeSrBetStake,
   calculateRefundBetStake,
+  bookieResultData,
+  exchangeResultData,
 } from './BetCalculations';
 import './style.css';
 
@@ -13,29 +15,34 @@ function Calculator() {
   const [betType, setBetType] = useState('Qualifying Bet');
   const [betData, setBetData] = useState(betSampleData);
   const [layStake, setLayStake] = useState(0.0);
-
-  console.log('betType', betType);
-  console.log('betData', betData);
+  const [bookieResults, setBookieResults] = useState({});
+  const [exchangeResults, setExchangeResults] = useState({});
 
   useEffect(() => {
     if (betType === 'Qualifying Bet') {
-      const result = calculateQualifyingBetStake(betData);
-      setLayStake(result.toFixed(2));
+      const layStakeResult = calculateQualifyingBetStake(betData);
+      const bookieBetResultsData = bookieResultData(betData, layStake)
+      const exchangeBetResultsData = exchangeResultData(betData, layStake)
+      console.log('results XXXX', bookieBetResultsData, exchangeBetResultsData);
+      setLayStake(layStakeResult.toFixed(2));
+      setBookieResults(bookieBetResultsData);
+      setExchangeResults(exchangeBetResultsData);
     }
-
+console.log('bookieResultsXX', bookieResults);
+console.log('exchangeResultsXX', exchangeResults);
     if (betType === 'Free Bet') {
-      const result = calculateFreeSnrBetStake(betData);
-      setLayStake(result.toFixed(2));
+      const layStakeResult = calculateFreeSnrBetStake(betData);
+      setLayStake(layStakeResult.toFixed(2));
     }
 
     if (betType === 'Free Bet SR') {
-      const result = calculateFreeSrBetStake(betData);
-      setLayStake(result.toFixed(2));
+      const layStakeResult = calculateFreeSrBetStake(betData);
+      setLayStake(layStakeResult.toFixed(2));
     }
 
     if (betType === 'Refund Bet') {
-      const result = calculateRefundBetStake(betData);
-      setLayStake(result.toFixed(2));
+      const layStakeResult = calculateRefundBetStake(betData);
+      setLayStake(layStakeResult.toFixed(2));
     }
   }, [betType, betData]);
 
@@ -112,12 +119,12 @@ function Calculator() {
         {/* Work done here */}
         <section className='calculator__inputs'>
           <div className='backbet__container'>
-            <label htmlFor='backbetstake'>
+            <label htmlFor='backBetStake'>
               Back Bet Stake:
               <input
                 type='number'
-                id='backbetstake'
-                name='backbetstake'
+                id='backBetStake'
+                name='backBetStake'
                 onChange={handleBetData}
               />
             </label>
@@ -170,7 +177,13 @@ function Calculator() {
           </div>
         </section>
 
-        {/* results */}
+        {/* results 
+          [
+            [ ] [ B ] [ E ] [ P ]
+            [BW] [B+] [L-] [£P]
+            [EW] [B-] [L+] [£P]
+          ]
+        */}
 
         <section className='results__container'>
           <table className='results__table'>
@@ -182,15 +195,15 @@ function Calculator() {
             </tr>
             <tr className='table__row'>
               <td>Bookie Wins</td>
-              <td>+ Bet</td>
-              <td>- Lay</td>
-              <td>Profit</td>
+              <td> + {bookieResults.totalWon.toFixed(2)}</td>
+              <td> - {bookieResults.totalLosses.toFixed(2)}</td>
+              <td> £ {bookieResults.totalProfit.toFixed(2)}</td>
             </tr>
             <tr className='table__row'>
               <td>Exchange Wins</td>
-              <td>- Bet</td>
-              <td>+ Lay</td>
-              <td>Profit</td>
+              <td>- {exchangeResults.totalLosses.toFixed(2)}</td>
+              <td>+ {exchangeResults.totalWon.toFixed(2)}</td>
+              <td> £ {exchangeResults.totalProfit.toFixed(2)}</td>
             </tr>
           </table>
         </section>
