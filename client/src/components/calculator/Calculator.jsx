@@ -12,7 +12,7 @@ import './style.css';
 function Calculator() {
   const [betType, setBetType] = useState('Qualifying Bet');
   const [betData, setBetData] = useState(betSampleData);
-  const [layStake, setLayStake] = useState(0);
+  const [layStake, setLayStake] = useState(0.0);
 
   console.log('betType', betType);
   console.log('betData', betData);
@@ -20,22 +20,22 @@ function Calculator() {
   useEffect(() => {
     if (betType === 'Qualifying Bet') {
       const result = calculateQualifyingBetStake(betData);
-      setLayStake(result);
+      setLayStake(result.toFixed(2));
     }
 
     if (betType === 'Free Bet') {
       const result = calculateFreeSnrBetStake(betData);
-      setLayStake(result);
+      setLayStake(result.toFixed(2));
     }
 
     if (betType === 'Free Bet SR') {
       const result = calculateFreeSrBetStake(betData);
-      setLayStake(result);
+      setLayStake(result.toFixed(2));
     }
 
     if (betType === 'Refund Bet') {
       const result = calculateRefundBetStake(betData);
-      setLayStake(result);
+      setLayStake(result.toFixed(2));
     }
   }, [betType, betData]);
 
@@ -112,22 +112,24 @@ function Calculator() {
         {/* Work done here */}
         <section className='calculator__inputs'>
           <div className='backbet__container'>
-            <label htmlFor='backbetstake'>Back Bet Stake:</label>
-            <input
-              type='number'
-              id='backbetstake'
-              name='backbetstake'
-              onChange={handleBetData}
-            />
-
-            <label htmlFor='backBetOdds'>Back Bet odds:</label>
-            <input
-              type='number'
-              id='backBetOdds'
-              name='backBetOdds'
-              onChange={handleBetData}
-            />
-
+            <label htmlFor='backbetstake'>
+              Back Bet Stake:
+              <input
+                type='number'
+                id='backbetstake'
+                name='backbetstake'
+                onChange={handleBetData}
+              />
+            </label>
+            <label htmlFor='backBetOdds'>
+              Back Bet odds:
+              <input
+                type='number'
+                id='backBetOdds'
+                name='backBetOdds'
+                onChange={handleBetData}
+              />
+            </label>
             <label htmlFor='bookiecommision'>
               Bookie commision:
               <input
@@ -191,18 +193,6 @@ function Calculator() {
               <td>Profit</td>
             </tr>
           </table>
-
-          <div>If bookie wins</div>
-          <div>If exchange wins</div>
-          <div>Total Profit</div>
-        </section>
-
-        {/* Alternate Outcomes */}
-
-        <section>
-          <div>Win</div>
-          <div>Lose</div>
-          <div>Draw counts as loss</div>
         </section>
       </article>
     </>

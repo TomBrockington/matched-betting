@@ -16,20 +16,37 @@
     display: flex;
     gap: 1rem;
     font-weight: 600;
-
+    padding: var(--padding-small) 0;
 }
 
 #refundBet, #qualifyingBet, #freeBet, #freeBetSR {
     margin-left: 0.6rem;
 }
 
+/* INPUTS FOR BET VALUES */
 .calculator__inputs {
-    background-color: red;
+    background-color: yellow;
     padding: var(--padding-standard);
 
 }
+.calculator__inputs input {
+    background-color: white;
+    padding: var(--padding-small);
+    border: none;
+    font-size: 1.8rem;
+    max-width: 150px;
+}
 
-.laystake__container {
+.calculator__inputs label {
+    font-size: var(--font-size-medium);
+}
+
+
+.backbet__container {
+    background-color: blue;
+}
+
+.laystake__container{
     background-color: teal;
     display: grid;
     padding: var(--padding-standard);
@@ -47,6 +64,16 @@
 }
 
 .table__row > * {
-    padding: var(--padding-standard);
+    padding: var(--padding-small);
     border: 1px solid var(--main-border-color);
 } 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}

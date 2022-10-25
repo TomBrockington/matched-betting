@@ -2,11 +2,12 @@
     background-color: pink;
     text-align: center;
     padding: 1rem;
-    margin-top: 3rem;
+    margin-top: var(--padding-large);
+    font-size: var(--font-size-medium);
 }
 
 .main__calculator__container {
-    padding: 3rem 6rem;
+    padding: var(--padding-large) 6rem;
 }
 
 .calculations__container {
