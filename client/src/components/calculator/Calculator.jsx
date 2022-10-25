@@ -17,6 +17,7 @@ function Calculator() {
   const [betType, setBetType] = useState('Qualifying Bet');
   const [betData, setBetData] = useState(betSampleData);
   const [layStake, setLayStake] = useState(0.0);
+  const [liability, setLiablilty] = useState(0.0);
   const [bookieResults, setBookieResults] = useState(betSampleResultsData);
   const [exchangeResults, setExchangeResults] = useState(betSampleResultsData);
 
@@ -26,14 +27,17 @@ function Calculator() {
       const layStakeResult = calculateQualifyingBetStake(betData);
       const bookieBetResultsData = bookieQualifyingResultData(
         betData,
-        layStake
+        layStake,
+        liability
       );
       const exchangeBetResultsData = exchangeQualifyingResultData(
         betData,
-        layStake
+        layStake,
+        liability
       );
 
-      setLayStake(layStakeResult.toFixed(2));
+      setLayStake(layStakeResult.layBetData.toFixed(2));
+      setLiablilty(layStakeResult.liabilityRequired.toFixed(2));
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
@@ -41,8 +45,17 @@ function Calculator() {
     if (betType === 'Free Bet') {
       console.log('FREEEEE BET');
       const layStakeResult = calculateFreeSnrBetStake(betData);
-      const bookieBetResultsData = bookieSnrResultData(betData, layStake);
-      const exchangeBetResultsData = exchangeSnrResultData(betData, layStake);
+      const bookieBetResultsData = bookieSnrResultData(
+        betData,
+        layStake,
+        liability
+      );
+      const exchangeBetResultsData = exchangeSnrResultData(
+        betData,
+        layStake,
+        liability
+      );
+
       console.log('bookieBetResultsData', bookieBetResultsData);
       console.log('exchangeSnrResultData', exchangeBetResultsData);
       setLayStake(layStakeResult.toFixed(2));
@@ -190,7 +203,7 @@ function Calculator() {
 
           <div className='laystake__container'>
             <h3>Set your lay stake to £{layStake}</h3>
-            <span>Your liability will be</span>
+            <span>Your liability will be {liability}</span>
           </div>
         </section>
 
@@ -212,15 +225,15 @@ function Calculator() {
             </tr>
             <tr className='table__row'>
               <td>Bookie Wins</td>
-              <td> + {bookieResults.bookieResults.toFixed(2)}</td>
-              <td> - {bookieResults.exchangeResults.toFixed(2)}</td>
-              <td> £ {bookieResults.totalProfit.toFixed(2)}</td>
+              <td>{' '}{bookieResults.bookieResults.toFixed(2)}</td>
+              <td>{' '}{bookieResults.exchangeResults.toFixed(2)}</td>
+              <td>{' '}£{' '}{bookieResults.totalProfit.toFixed(2)}</td>
             </tr>
             <tr className='table__row'>
               <td>Exchange Wins</td>
-              <td>- {exchangeResults.exchangeResults.toFixed(2)}</td>
-              <td>+ {exchangeResults.bookieResults.toFixed(2)}</td>
-              <td> £ {exchangeResults.totalProfit.toFixed(2)}</td>
+              <td>{' '}{exchangeResults.bookieResults.toFixed(2)}</td>
+              <td>{' '}{exchangeResults.exchangeResults.toFixed(2)}</td>
+              <td>{' '}£{' '}{exchangeResults.totalProfit.toFixed(2)}</td>
             </tr>
           </table>
         </section>
