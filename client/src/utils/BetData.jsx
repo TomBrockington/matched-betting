@@ -5,4 +5,10 @@ export const betSampleData = {
     layBetOdds: 0,
     exchangecommision: 5,
   };
+
+  export const betSampleResultsData = {
+    bookieResults: 0,
+    exchangeResults: 0,
+    totalProfit: 0,
+  }
   

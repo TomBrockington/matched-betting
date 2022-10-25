@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { betSampleData } from '../../utils/BetData';
+import { betSampleData, betSampleResultsData } from '../../utils/BetData';
 import {
   calculateQualifyingBetStake,
   calculateFreeSnrBetStake,
   calculateFreeSrBetStake,
   calculateRefundBetStake,
-  bookieResultData,
-  exchangeResultData,
+  bookieQualifyingResultData,
+  exchangeQualifyingResultData,
+  bookieSnrResultData,
+  exchangeSnrResultData,
 } from './BetCalculations';
 import './style.css';
 
@@ -15,34 +17,39 @@ function Calculator() {
   const [betType, setBetType] = useState('Qualifying Bet');
   const [betData, setBetData] = useState(betSampleData);
   const [layStake, setLayStake] = useState(0.0);
-  const [bookieResults, setBookieResults] = useState({
-    totalWon: 0,
-    totalLosses: 0,
-    totalProfit: 0,
-  });
-  const [exchangeResults, setExchangeResults] = useState({
-    totalWon: 0,
-    totalLosses: 0,
-    totalProfit: 0,
-  });
-  
-  // TODO: need to make the functions based on the type of bet
+  const [bookieResults, setBookieResults] = useState(betSampleResultsData);
+  const [exchangeResults, setExchangeResults] = useState(betSampleResultsData);
+
   useEffect(() => {
     if (betType === 'Qualifying Bet') {
+      console.log('QUALIFFFFFFY');
       const layStakeResult = calculateQualifyingBetStake(betData);
-      const bookieBetResultsData = bookieResultData(betData, layStake);
-      const exchangeBetResultsData = exchangeResultData(betData, layStake);
-      console.log('results XXXX', bookieBetResultsData, exchangeBetResultsData);
+      const bookieBetResultsData = bookieQualifyingResultData(
+        betData,
+        layStake
+      );
+      const exchangeBetResultsData = exchangeQualifyingResultData(
+        betData,
+        layStake
+      );
+
       setLayStake(layStakeResult.toFixed(2));
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
-    console.log('bookieResultsXX', bookieResults);
-    console.log('exchangeResultsXX', exchangeResults);
+
     if (betType === 'Free Bet') {
+      console.log('FREEEEE BET');
       const layStakeResult = calculateFreeSnrBetStake(betData);
+      const bookieBetResultsData = bookieSnrResultData(betData, layStake);
+      const exchangeBetResultsData = exchangeSnrResultData(betData, layStake);
+      console.log('bookieBetResultsData', bookieBetResultsData);
+      console.log('exchangeSnrResultData', exchangeBetResultsData);
       setLayStake(layStakeResult.toFixed(2));
     }
+
+    console.log('bookieResultsXX', bookieResults);
+    console.log('exchangeResultsXX', exchangeResults);
 
     if (betType === 'Free Bet SR') {
       const layStakeResult = calculateFreeSrBetStake(betData);
@@ -183,6 +190,7 @@ function Calculator() {
 
           <div className='laystake__container'>
             <h3>Set your lay stake to £{layStake}</h3>
+            <span>Your liability will be</span>
           </div>
         </section>
 
@@ -204,14 +212,14 @@ function Calculator() {
             </tr>
             <tr className='table__row'>
               <td>Bookie Wins</td>
-              <td> + {bookieResults.totalWon.toFixed(2)}</td>
-              <td> - {bookieResults.totalLosses.toFixed(2)}</td>
+              <td> + {bookieResults.bookieResults.toFixed(2)}</td>
+              <td> - {bookieResults.exchangeResults.toFixed(2)}</td>
               <td> £ {bookieResults.totalProfit.toFixed(2)}</td>
             </tr>
             <tr className='table__row'>
               <td>Exchange Wins</td>
-              <td>- {exchangeResults.totalLosses.toFixed(2)}</td>
-              <td>+ {exchangeResults.totalWon.toFixed(2)}</td>
+              <td>- {exchangeResults.exchangeResults.toFixed(2)}</td>
+              <td>+ {exchangeResults.bookieResults.toFixed(2)}</td>
               <td> £ {exchangeResults.totalProfit.toFixed(2)}</td>
             </tr>
           </table>

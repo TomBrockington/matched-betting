@@ -25,6 +25,8 @@
     font-weight: 600;
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
+    display: flex;
+    justify-content: space-between;
 }
 
 .calculation__type {
@@ -32,4 +34,8 @@
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
     padding: var(--padding-standard);
+}
+
+.calculation__type__formula {
+    text-transform: capitalize;
 }
