@@ -15,21 +15,30 @@ function Calculator() {
   const [betType, setBetType] = useState('Qualifying Bet');
   const [betData, setBetData] = useState(betSampleData);
   const [layStake, setLayStake] = useState(0.0);
-  const [bookieResults, setBookieResults] = useState({});
-  const [exchangeResults, setExchangeResults] = useState({});
-// TODO: need to make the functions based on the type of bet
+  const [bookieResults, setBookieResults] = useState({
+    totalWon: 0,
+    totalLosses: 0,
+    totalProfit: 0,
+  });
+  const [exchangeResults, setExchangeResults] = useState({
+    totalWon: 0,
+    totalLosses: 0,
+    totalProfit: 0,
+  });
+  
+  // TODO: need to make the functions based on the type of bet
   useEffect(() => {
     if (betType === 'Qualifying Bet') {
       const layStakeResult = calculateQualifyingBetStake(betData);
-      const bookieBetResultsData = bookieResultData(betData, layStake)
-      const exchangeBetResultsData = exchangeResultData(betData, layStake)
+      const bookieBetResultsData = bookieResultData(betData, layStake);
+      const exchangeBetResultsData = exchangeResultData(betData, layStake);
       console.log('results XXXX', bookieBetResultsData, exchangeBetResultsData);
       setLayStake(layStakeResult.toFixed(2));
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
-console.log('bookieResultsXX', bookieResults);
-console.log('exchangeResultsXX', exchangeResults);
+    console.log('bookieResultsXX', bookieResults);
+    console.log('exchangeResultsXX', exchangeResults);
     if (betType === 'Free Bet') {
       const layStakeResult = calculateFreeSnrBetStake(betData);
       setLayStake(layStakeResult.toFixed(2));
