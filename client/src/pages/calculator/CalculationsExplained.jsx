@@ -3,7 +3,10 @@ import React from 'react'
 function CalculationsExplained() {
   return (
     <section className='calculations__container'>
+      <div className='calculations__title'>
+
             <h3>Calculations explained</h3>
+      </div>
 
           <article className='calculation__type'>
             <div className='calculation__type__title'><h3>Qualifying Bet Lay Stake</h3></div>
