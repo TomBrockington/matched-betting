@@ -20,12 +20,6 @@
     padding: var(--padding-standard);
 }
 
-.banking__container {
-    background-color: yellow;
-    display: flex;
-    justify-content: space-evenly;
-}
-
 .player__bank__container {
     border: 2px solid var(--main-border-color);
     width: fit-content;

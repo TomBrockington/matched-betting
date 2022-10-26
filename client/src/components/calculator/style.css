@@ -27,7 +27,8 @@
 .calculator__inputs {
     background-color: yellow;
     padding: var(--padding-standard);
-
+    display: grid;
+    gap: 1rem;
 }
 .calculator__inputs input {
     background-color: white;

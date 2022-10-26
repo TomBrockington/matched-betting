@@ -13,3 +13,12 @@
     gap: 1rem;
     align-items: center;
 }
+
+.banking__container {
+    background-color: yellow;
+    display: flex;
+    gap: 3rem;
+    padding: 1rem;
+    justify-content: space-evenly;
+    position: relative;
+}

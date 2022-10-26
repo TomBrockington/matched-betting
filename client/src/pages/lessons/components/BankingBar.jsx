@@ -13,6 +13,8 @@ function BankingBar({ bank }) {
     setBetHistory,
     stage,
     setStage,
+    depositData,
+    setDepositData,
   } = useContext(GameContext);
 
   console.log('playerBank', playerBank);
@@ -20,14 +22,14 @@ function BankingBar({ bank }) {
   return (
     <section className='banking__container'>
       <section className='player__bank__container'>
-        <h3>Player Bank £{bank}</h3>
+        <h3>Player Bank £{playerBank}</h3>
       </section>
       <section className='bookieBetz__bank__container'>
-        <h3>BookieBetz Bank £{bank}</h3>
+        <h3>BookieBetz Bank £{bookieBetzBank}</h3>
       </section>
 
       <section className='betFair__bank__container'>
-        <h3>BetFair (ex) Bank £{bank}</h3>
+        <h3>BetFair (ex) Bank £{betFairBank}</h3>
       </section>
     </section>
   );

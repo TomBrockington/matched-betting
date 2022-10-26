@@ -1,6 +1,6 @@
 import React from 'react'
 
-function StageTwo() {
+function StageTwo({ handleBookieChange, submitBookieDeposit, bankToggle, setBankToggle }) {
   return (
     <article className='stage__container'>
       <div className='stage__title__container'>
@@ -13,8 +13,8 @@ function StageTwo() {
       </div>
 
       <section className='stage__example__container'>
-        <input type="number" name='betDateDeposit' />
-        <button>DEPOSIT</button>
+        <input type="number" name='betDateDeposit' onChange={handleBookieChange} />
+        <button onClick={submitBookieDeposit}>DEPOSIT</button>
       </section>
     </article>
   )
