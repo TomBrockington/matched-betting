@@ -12,22 +12,21 @@ import RandomResults from './RandomResults';
 import StageEight from './StageEight';
 
 function Game() {
-
-  const { playerBank } = useContext(GameContext);
-  console.log('playerBank', playerBank);
+  const { playerBank, stage } = useContext(GameContext);
+  console.log('stage.stageOneOn', stage.stageOneOn);
 
   
   return (
     <>
       <BankingBar />;
       <StageOne />
-      <StageTwo />
-      <StageThree /> 
-      <StageFour />
-      <StageFive />
-      <StageSix />
-      <RandomResults />
-      <StageEight />
+      {stage.stageTwoOn && <StageTwo />}
+      {stage.stageThreeOn && <StageThree />}
+      {stage.stageFourOn && <StageFour />}
+      {stage.stageFiveOn && <StageFive />}
+      {stage.stageSixOn && <StageSix />}
+      {stage.stageSevenOn && <RandomResults />}
+      {stage.stageEightOn && <StageEight />}
     </>
   );
 }

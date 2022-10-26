@@ -9,11 +9,14 @@ const GameContextProvider = ({ children }) => {
   const [bookieBetzBank, setBookieBetzBank] = useState(0);
   const [betHistory, setBetHistory] = useState([]);
   const [stage, setStage] = useState({
-    stageOneOn: false,
+    stageOneOn: true,
     stageTwoOn: false,
     stageThreeOn: false,
     stageFourOn: false,
     stageFiveOn: false,
+    stageSixOn: false,
+    stageSevenOn: false,
+    stageEightOn: false,
   });
 
   return (
