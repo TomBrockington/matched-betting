@@ -1,0 +1,15 @@
+.stage__container {
+    background-color: var(--alt-background-color);
+    padding: var(--padding-small);
+    border: 2px solid var(--main-border-color);
+    border-radius: var(--main-border-radius);
+    margin-bottom: var(--padding-small);
+}
+
+.stage__title__container {
+    background-color: pink;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}

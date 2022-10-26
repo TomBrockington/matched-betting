@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useContext, useState } from 'react';
+import BankingBar from './BankingBar';
+import StageOne from './StageOne';
+import StageTwo from './StageTwo';
+import StageThree from './StageThree';
+import StageFour from './StageFour';
+import './style.css'
+import { GameContext } from '../../../context/GameContext';
+import StageFive from './StageFive';
+import StageSix from './StageSix';
+import RandomResults from './RandomResults';
+import StageEight from './StageEight';
 
-function Game({ bank }) {
+function Game() {
+
+  const { playerBank } = useContext(GameContext);
+  console.log('playerBank', playerBank);
+
+  
   return (
-    <section className='game__bank__container'>
-            <h3>Bank £{bank}</h3>
-          </section>
-  )
+    <>
+      <BankingBar />;
+      <StageOne />
+      <StageTwo />
+      <StageThree /> 
+      <StageFour />
+      <StageFive />
+      <StageSix />
+      <RandomResults />
+      <StageEight />
+    </>
+  );
 }
 
-export default Game
+export default Game;

@@ -10,29 +10,27 @@ import Faq from './pages/faq/Faq';
 import Links from './pages/links/Links';
 import Account from './pages/account/Account';
 
-
 function App() {
   console.log('App loaded');
   return (
     <>
       <Routes>
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
 
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/calculator' element={<CalculatorPage />} />
+          <Route path='/lessons' element={<Lessons />} />
 
-          <Route path="/" element={<Home />} />
-          <Route path="/calculator" element={<CalculatorPage />} />
-          <Route path="/lessons" element={<Lessons />} />
-          <Route path="/forum" element={<Forum />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/links" element={<Links />} />
-          <Route path="/account" element={<Account />} />
+        <Route path='/forum' element={<Forum />} />
+        <Route path='/faq' element={<Faq />} />
+        <Route path='/links' element={<Links />} />
+        <Route path='/account' element={<Account />} />
 
-          <Route path="/post" element={<Post />} />
+        <Route path='/post' element={<Post />} />
       </Routes>
     </>
   );
 }
 
 export default App;
-

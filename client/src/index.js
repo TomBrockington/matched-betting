@@ -5,14 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import UserContextProvider from './context/UserContext';
+import GameContextProvider from './context/GameContext';
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <GameContextProvider>
       <UserContextProvider>
         <App />
       </UserContextProvider>
+    </GameContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
