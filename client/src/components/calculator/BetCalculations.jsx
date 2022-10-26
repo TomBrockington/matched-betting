@@ -39,6 +39,8 @@ export const calculateRefundBetStake = (betData) => {
     console.log('REFUND');
 };
 
+
+// RESULTS TABLE QUALIFYING BET
 export const bookieQualifyingResultData = (betData, layStake, liability) => {
   console.log('bookieResult', betData);
   console.log('Liability', liability);
@@ -60,11 +62,10 @@ export const bookieQualifyingResultData = (betData, layStake, liability) => {
 export const exchangeQualifyingResultData = (betData, layStake, liability) => {
   console.log('exchangeResult', betData);
   // Bookie Returns
-  let totalReturn = Number(layStake);
-  let bookieResults = (totalReturn * (1 - (betData.exchangecommision / 100))) - betData.backBetStake
+  let bookieResults = -betData.backBetStake
   console.log('bookieResults', bookieResults);
   // Exchange Returns
-  let exchangeResults = Number(layStake)
+  let exchangeResults = layStake / 100 * (100 - betData.exchangecommision)
    // Profit
    let x = (betData.backBetOdds - 1)
    console.log('x', x);

@@ -11,6 +11,7 @@ import {
   bookieSnrResultData,
   exchangeSnrResultData,
 } from './BetCalculations';
+
 import './style.css';
 
 function Calculator() {
@@ -36,8 +37,8 @@ function Calculator() {
         liability
       );
 
-      setLayStake(layStakeResult.layBetData.toFixed(2));
-      setLiablilty(layStakeResult.liabilityRequired.toFixed(2));
+      setLayStake(layStakeResult.layBetData);
+      setLiablilty(layStakeResult.liabilityRequired);
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
@@ -58,7 +59,7 @@ function Calculator() {
 
       console.log('bookieBetResultsData', bookieBetResultsData);
       console.log('exchangeSnrResultData', exchangeBetResultsData);
-      setLayStake(layStakeResult.toFixed(2));
+      setLayStake(layStakeResult);
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
@@ -68,12 +69,12 @@ function Calculator() {
 
     if (betType === 'Free Bet SR') {
       const layStakeResult = calculateFreeSrBetStake(betData);
-      setLayStake(layStakeResult.toFixed(2));
+      setLayStake(layStakeResult);
     }
 
     if (betType === 'Refund Bet') {
       const layStakeResult = calculateRefundBetStake(betData);
-      setLayStake(layStakeResult.toFixed(2));
+      setLayStake(layStakeResult);
     }
   }, [betType, betData]);
 
@@ -227,15 +228,15 @@ function Calculator() {
             </tr>
             <tr className='table__row'>
               <td>Bookie Wins</td>
-              <td>{' '}{bookieResults.bookieResults.toFixed(2)}</td>
-              <td>{' '}{bookieResults.exchangeResults.toFixed(2)}</td>
-              <td>{' '}£{' '}{bookieResults.totalProfit.toFixed(2)}</td>
+              <td>{' '}{bookieResults.bookieResults}</td>
+              <td>{' '}{bookieResults.exchangeResults}</td>
+              <td>{' '}£{' '}{bookieResults.totalProfit}</td>
             </tr>
             <tr className='table__row'>
               <td>Exchange Wins</td>
-              <td>{' '}{exchangeResults.bookieResults.toFixed(2)}</td>
-              <td>{' '}{exchangeResults.exchangeResults.toFixed(2)}</td>
-              <td>{' '}£{' '}{exchangeResults.totalProfit.toFixed(2)}</td>
+              <td>{' '}{exchangeResults.bookieResults}</td>
+              <td>{' '}{exchangeResults.exchangeResults}</td>
+              <td>{' '}£{' '}{exchangeResults.totalProfit}</td>
             </tr>
           </table>
         </section>

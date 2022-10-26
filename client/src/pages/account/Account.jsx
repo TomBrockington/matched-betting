@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import FormInput from '../../components/forms/FormInput';
 import Nav from '../../components/nav/Nav';
 import { UserContext } from '../../context/UserContext';
-import { profileFormState } from '../../utils/UserData';
+import { profileFormState, sampleProfileData } from '../../utils/UserData';
 import './style.css';
 
 function Account() {
   const { user, setUser } = useContext(UserContext);
   const [formKeys, setFormKeys] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
-  const [newUserData, setNewUserData] = useState({})
+  const [newUserData, setNewUserData] = useState(sampleProfileData)
 
   const profile = user.profile;
 
