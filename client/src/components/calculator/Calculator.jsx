@@ -10,6 +10,8 @@ import {
   exchangeQualifyingResultData,
   bookieSnrResultData,
   exchangeSnrResultData,
+  bookieStakeReturnedResultData,
+  exchangeStakeReturnedResultData,
 } from './BetCalculations';
 
 import './style.css';
@@ -59,19 +61,20 @@ function Calculator() {
 
       console.log('bookieBetResultsData', bookieBetResultsData);
       console.log('exchangeSnrResultData', exchangeBetResultsData);
-      setLayStake(layStakeResult);
+      setLayStake(layStakeResult.layBetData);
+      setLiablilty(layStakeResult.liabilityRequired);
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
 
-    console.log('bookieResultsXX', bookieResults);
-    console.log('exchangeResultsXX', exchangeResults);
-
+    
     if (betType === 'Free Bet SR') {
       const layStakeResult = calculateFreeSrBetStake(betData);
       setLayStake(layStakeResult);
     }
-
+    
+    console.log('bookieResultsXX', bookieResults);
+    console.log('exchangeResultsXX', exchangeResults);
     if (betType === 'Refund Bet') {
       const layStakeResult = calculateRefundBetStake(betData);
       setLayStake(layStakeResult);
@@ -228,15 +231,15 @@ function Calculator() {
             </tr>
             <tr className='table__row'>
               <td>Bookie Wins</td>
-              <td>{' '}{bookieResults.bookieResults}</td>
-              <td>{' '}{bookieResults.exchangeResults}</td>
-              <td>{' '}£{' '}{bookieResults.totalProfit}</td>
+              <td> {bookieResults.bookieResults}</td>
+              <td> {bookieResults.exchangeResults}</td>
+              <td> £ {bookieResults.totalProfit}</td>
             </tr>
             <tr className='table__row'>
               <td>Exchange Wins</td>
-              <td>{' '}{exchangeResults.bookieResults}</td>
-              <td>{' '}{exchangeResults.exchangeResults}</td>
-              <td>{' '}£{' '}{exchangeResults.totalProfit}</td>
+              <td> {exchangeResults.bookieResults}</td>
+              <td> {exchangeResults.exchangeResults}</td>
+              <td> £ {exchangeResults.totalProfit}</td>
             </tr>
           </table>
         </section>
