@@ -27,10 +27,22 @@ function BookieBetz() {
 
   const findFootball = () => {
     console.log('footballSelected');
-  }
+    setSportSelected(true);
+    setFootballSelected(true);
+  };
+
   const findRacing = () => {
     console.log('footballSelected');
-  }
+    setSportSelected(true);
+    setRacingSelected(true);
+  };
+
+  const goBackFunction = () => {
+    setSportSelected(false);
+    setRacingSelected(false);
+    setFootballSelected(false);
+  };
+
   return (
     <section id='bookie__container'>
       <div className='bookie__header'>
@@ -42,6 +54,19 @@ function BookieBetz() {
         <div className='bookie__sports__selection'>
           <h3 onClick={findFootball}>FootBall</h3>
           <h3 onClick={findRacing}>Horse Racing</h3>
+        </div>
+      )}
+
+      {footballSelected && (
+        <div>
+          Footy stuff
+          <button onClick={goBackFunction}>Go Back</button>
+        </div>
+      )}
+
+      {racingSelected && (
+        <div>
+          Racing stuff<button onClick={goBackFunction}>Go Back</button>
         </div>
       )}
     </section>
