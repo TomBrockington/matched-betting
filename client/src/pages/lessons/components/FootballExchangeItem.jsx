@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { GameContext } from '../../../context/GameContext';
 
-function FootballItem({ event, index }) {
+function FootballExchangeItem({ event, index }) {
   const {
     playerBank,
     setPlayerBank,
@@ -24,22 +24,20 @@ function FootballItem({ event, index }) {
     currentExchangeBet,
     setCurrentExchangeBet,
   } = useContext(GameContext);
-
   const betTypes = event.betTypes;
-  const bookieOdds = event.bookieOdds;
+  const exchangeOdds = event.exchangeOdds;
   const teams = event.competitors;
 
   const placeBet = (odds) => {
     console.log('bet placing', odds);
-    setCurrentBookieBet();
   };
-
   const handleChange = (event) => {
     console.log(event.target.value);
   };
+
   return (
     <li key={index}>
-      <div> {event.title}</div>
+      <div>{event.title}</div>
 
       {teams.map((team, index) => {
         return (
@@ -57,7 +55,7 @@ function FootballItem({ event, index }) {
             </ul>
 
             <ul>
-              {bookieOdds[index].map((odd, index) => {
+              {exchangeOdds[index].map((odd, index) => {
                 return (
                   <li key={index} className='odds__list__item'>
                     <span>{odd}</span>
@@ -74,4 +72,4 @@ function FootballItem({ event, index }) {
   );
 }
 
-export default FootballItem;
+export default FootballExchangeItem;

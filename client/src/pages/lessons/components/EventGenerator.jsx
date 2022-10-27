@@ -59,7 +59,7 @@ export const horseRaceGenerator = [
     sportType: 'racing',
     betTypes: ['win'],
     bookieOdds: [2, 4, 3.5, 4.1, 4.7, 8, 16],
-    layOdds: [2.1, 4.1, 3.7, 4.2, 4.9, 8.5, 20],
+    exchangeOdds: [2.1, 4.1, 3.7, 4.2, 4.9, 8.5, 20],
   },
   {
     title: 'Royal Ascot',
@@ -75,6 +75,6 @@ export const horseRaceGenerator = [
     sportType: 'racing',
     betTypes: ['win'],
     bookieOdds: [3.1, 3.2, 5, 5.5, 6.5, 9, 12],
-    layOdds: [3.15, 3.4, 5.5, 6, 7, 9.8, 15],
+    exchangeOdds: [3.15, 3.4, 5.5, 6, 7, 9.8, 15],
   },
 ];

@@ -2,8 +2,16 @@ import React, { useContext, useState } from 'react';
 import './style.css';
 
 import { GameContext } from '../../../../context/GameContext';
+import {
+  footballGenerator,
+  horseRaceGenerator,
+} from '../../components/EventGenerator';
+import FootballItem from '../../components/FootballExchangeItem';
+import RacingItem from '../../components/RacingExchangeItem';
 
 function BetFair() {
+  const newFootballEvents = footballGenerator;
+  const newRaceEvents = horseRaceGenerator;
   const [sportSelected, setSportSelected] = useState(false);
   const [footballSelected, setFootballSelected] = useState(false);
   const [racingSelected, setRacingSelected] = useState(false);
@@ -28,13 +36,11 @@ function BetFair() {
   } = useContext(GameContext);
 
   const findFootball = () => {
-    console.log('footballSelected');
     setSportSelected(true);
     setFootballSelected(true);
   };
 
   const findRacing = () => {
-    console.log('footballSelected');
     setSportSelected(true);
     setRacingSelected(true);
   };
@@ -61,6 +67,17 @@ function BetFair() {
       {footballSelected && (
         <div>
           <h3>FootBall</h3>
+
+          <div className='sporting__event__container'>
+            <div>
+              <ul>
+                {newFootballEvents.map((event, index) => {
+                  return <FootballItem event={event} key={index} />;
+                })}
+              </ul>
+            </div>
+          </div>
+
           <button onClick={goBackFunction}>Go Back</button>
         </div>
       )}
@@ -68,6 +85,15 @@ function BetFair() {
       {racingSelected && (
         <div>
           <h3>Horse Racing</h3>
+          <div className='sporting__event__container'>
+            <div>
+              <ul>
+                {newRaceEvents.map((event, index) => {
+                  return <RacingItem event={event} key={index} />;
+                })}
+              </ul>
+            </div>
+          </div>
           <button onClick={goBackFunction}>Go Back</button>
         </div>
       )}

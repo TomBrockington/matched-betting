@@ -26,11 +26,10 @@ function Calculator() {
 
   useEffect(() => {
     setLayStake(0);
-      setLiablilty(0);
-      setBookieResults(betSampleResultsData);
-      setExchangeResults(betSampleResultsData);
+    setLiablilty(0);
+    setBookieResults(betSampleResultsData);
+    setExchangeResults(betSampleResultsData);
     if (betType === 'Qualifying Bet') {
-
       const layStakeResult = calculateQualifyingBetStake(betData);
       const bookieBetResultsData = bookieQualifyingResultData(
         betData,
@@ -100,8 +99,6 @@ function Calculator() {
       const layStakeResult = calculateRefundBetStake(betData);
       setLayStake(layStakeResult);
     }
-
-    
   }, [betType, betData]);
 
   const handleBetOptionChange = (event) => {
@@ -246,24 +243,28 @@ function Calculator() {
 
         <section className='results__container'>
           <table className='results__table'>
-            <tr className='table__row'>
-              <th className='ignore'></th>
-              <th>Bookie</th>
-              <th>Exchange</th>
-              <th>Total Profit</th>
-            </tr>
-            <tr className='table__row'>
-              <td>Bookie Wins</td>
-              <td> {bookieResults.bookieResults}</td>
-              <td> {bookieResults.exchangeResults}</td>
-              <td> £ {bookieResults.totalProfit}</td>
-            </tr>
-            <tr className='table__row'>
-              <td>Exchange Wins</td>
-              <td> {exchangeResults.bookieResults}</td>
-              <td> {exchangeResults.exchangeResults}</td>
-              <td> £ {exchangeResults.totalProfit}</td>
-            </tr>
+            <thead>
+              <tr className='table__row'>
+                <th className='ignore'></th>
+                <th>Bookie</th>
+                <th>Exchange</th>
+                <th>Total Profit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className='table__row'>
+                <td>Bookie Wins</td>
+                <td> {bookieResults.bookieResults}</td>
+                <td> {bookieResults.exchangeResults}</td>
+                <td> £ {bookieResults.totalProfit}</td>
+              </tr>
+              <tr className='table__row'>
+                <td>Exchange Wins</td>
+                <td> {exchangeResults.bookieResults}</td>
+                <td> {exchangeResults.exchangeResults}</td>
+                <td> £ {exchangeResults.totalProfit}</td>
+              </tr>
+            </tbody>
           </table>
         </section>
       </article>

@@ -10,6 +10,7 @@ import StageFive from './StageFive';
 import StageSix from './StageSix';
 import RandomResults from './RandomResults';
 import StageEight from './StageEight';
+import BetTickets from './BetTickets';
 
 function Game() {
 
@@ -39,6 +40,7 @@ useEffect(() => {
       {stage.stageThreeOn && <StageThree />}
       {stage.stageThreeOn && <BankingBar />}; 
       {stage.stageFourOn && <StageFour />}
+      {stage.stageFourOn && <BetTickets />}
       {stage.stageFiveOn && <StageFive />}
       {stage.stageSixOn && <StageSix />}
       {stage.stageSevenOn && <RandomResults />}

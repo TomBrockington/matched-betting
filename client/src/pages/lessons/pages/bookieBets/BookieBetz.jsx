@@ -4,7 +4,10 @@ import './style.css';
 import { GameContext } from '../../../../context/GameContext';
 import { useState } from 'react';
 
-import { footballGenerator, horseRaceGenerator } from '../../components/EventGenerator';
+import {
+  footballGenerator,
+  horseRaceGenerator,
+} from '../../components/EventGenerator';
 import FootballItem from '../../components/FootballItem';
 import RacingItem from '../../components/RacingItem';
 
@@ -74,13 +77,10 @@ function BookieBetz() {
           <h3>FootBall</h3>
 
           <div className='sporting__event__container'>
-
             <div>
               <ul>
                 {newFootballEvents.map((event, index) => {
-                  return (
-                    <FootballItem event={event} index={index} />
-                  )
+                  return <FootballItem event={event} key={index} />;
                 })}
               </ul>
             </div>
@@ -94,13 +94,10 @@ function BookieBetz() {
         <div>
           <h3>Horse Racing</h3>
           <div className='sporting__event__container'>
-
             <div>
               <ul>
                 {newRaceEvents.map((event, index) => {
-                  return (
-                    <RacingItem event={event} index={index} />
-                  )
+                  return <RacingItem event={event} key={index} />;
                 })}
               </ul>
             </div>

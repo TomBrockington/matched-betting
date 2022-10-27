@@ -44,7 +44,8 @@
 
 .betData__container {
     border: 2px solid var(--main-border-color);
-
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
 }
 
 .odds__list__item {
@@ -78,4 +79,8 @@
 .odds_cont {
     display: grid;
     grid-auto-flow: column;
+}
+
+.inplay__bets__container {
+    
 }

@@ -13,6 +13,9 @@ const GameContextProvider = ({ children }) => {
   const [generatedFootballEvents, setGeneratedFootballEvents] = useState([]);
   const [generatedRacingEvents, setGeneratedRacingEvents] = useState([]);
   const [betHistory, setBetHistory] = useState([]);
+  const [currentBookieBet, setCurrentBookieBet] = useState({});
+  const [currentExchangeBet, setCurrentExchangeBet] = useState({});
+  const [totalInPlayBank, setTotalInPlayBank] = useState(0.0);
   const [stage, setStage] = useState({
     stageOneOn: true,
     stageTwoOn: true,
@@ -23,8 +26,6 @@ const GameContextProvider = ({ children }) => {
     stageSevenOn: true,
     stageEightOn: true,
   });
-
-  
 
   return (
     <GameContext.Provider
@@ -45,6 +46,12 @@ const GameContextProvider = ({ children }) => {
         setBookieDepositData,
         exchangeDepositData,
         setExchangeDepositData,
+        totalInPlayBank,
+        setTotalInPlayBank,
+        currentBookieBet,
+        setCurrentBookieBet,
+        currentExchangeBet,
+        setCurrentExchangeBet,
       }}
     >
       {children}

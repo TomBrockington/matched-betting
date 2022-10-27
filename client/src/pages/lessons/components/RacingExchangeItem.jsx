@@ -1,16 +1,15 @@
 import React from 'react';
 
-function RacingItem({ event, index }) {
+function RacingExchangeItem({ event, index }) {
   console.log('event', event, index);
   const betTypes = event.betTypes;
-  const bookieOdds = event.bookieOdds;
+  const exchangeOdds = event.exchangeOdds;
   const teams = event.competitors;
-  console.log(betTypes, bookieOdds, teams);
+  console.log(betTypes, exchangeOdds, teams);
 
   const placeBet = (odds) => {
     console.log('bet placing', odds);
   };
-
   const handleChange = (event) => {
     console.log(event.target.value);
   };
@@ -26,13 +25,13 @@ function RacingItem({ event, index }) {
         </div>
 
         <ul>
-          {bookieOdds.map((odd, index) => {
+          {exchangeOdds.map((odd, index) => {
             return (
               <>
                 <li key={index} className='odds_cont'>
                   <span>{odd}</span>
                   <button onClick={placeBet}>Bet</button>
-                  <input type="number" onChange={handleChange}/>
+                  <input type="number" onChange={handleChange} />
                 </li>
               </>
             );
@@ -43,4 +42,4 @@ function RacingItem({ event, index }) {
   );
 }
 
-export default RacingItem;
+export default RacingExchangeItem;
