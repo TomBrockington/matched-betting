@@ -22,3 +22,11 @@
     justify-content: space-evenly;
     position: relative;
 }
+
+.bank__container {
+    border: 2px solid var(--main-border-color);
+    width: fit-content;
+    right: 20px;
+    top: 20px;
+    background-color: whitesmoke;
+}

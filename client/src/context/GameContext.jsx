@@ -6,12 +6,11 @@ export const GameContext = React.createContext();
 const GameContextProvider = ({ children }) => {
   const [playerBank, setPlayerBank] = useState(1000);
   const [bankToggle, setBankToggle] = useState(false);
-  const [betFairBank, setBetFairBank] = useState(0);
-  const [bookieBetzBank, setBookieBetzBank] = useState(0);
-  const [depositData, setDepositData] = useState({
-    bookieDepositData: 0,
-    exchangeDepositData: 0,
-  });
+  const [betFairBank, setBetFairBank] = useState(0.00);
+  const [bookieBetzBank, setBookieBetzBank] = useState(0.00);
+  const [bookieDepositData, setBookieDepositData] = useState(0);
+  const [exchangeDepositData, setExchangeDepositData] = useState(0);
+
   const [betHistory, setBetHistory] = useState([]);
   const [stage, setStage] = useState({
     stageOneOn: true,
@@ -23,12 +22,6 @@ const GameContextProvider = ({ children }) => {
     stageSevenOn: true,
     stageEightOn: true,
   });
-
-  useEffect(() => {
-    setPlayerBank(
-      (prev) => (prev - depositData.bookieDepositData)
-    );
-  }, [bankToggle]);
 
   return (
     <GameContext.Provider
@@ -43,10 +36,12 @@ const GameContextProvider = ({ children }) => {
         setBetHistory,
         stage,
         setStage,
-        depositData,
-        setDepositData,
         bankToggle,
         setBankToggle,
+        bookieDepositData,
+        setBookieDepositData,
+        exchangeDepositData,
+        setExchangeDepositData,
       }}
     >
       {children}

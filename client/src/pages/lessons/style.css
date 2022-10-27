@@ -20,14 +20,4 @@
     padding: var(--padding-standard);
 }
 
-.player__bank__container {
-    border: 2px solid var(--main-border-color);
-    width: fit-content;
-    right: 20px;
-    top: 20px;
-    background-color: whitesmoke;
-}
-.game__bank__container:active {
-    position: fixed;
-}
 
