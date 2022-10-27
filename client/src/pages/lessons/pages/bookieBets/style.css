@@ -45,3 +45,8 @@
     display: flex;
     gap: 3rem;
 }
+
+.bet__list__item {
+    display: flex;
+    gap: 1rem;
+}
