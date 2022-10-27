@@ -21,18 +21,22 @@ function BetFair() {
     setPlayerBank,
     bankToggle,
     setBankToggle,
+    generatedFootballEvents,
+    setGeneratedFootballEvents,
+    generatedRacingEvents,
+    setGeneratedRacingEvents,
   } = useContext(GameContext);
 
   const findFootball = () => {
     console.log('footballSelected');
-    setSportSelected(true)
-    setFootballSelected(true)
+    setSportSelected(true);
+    setFootballSelected(true);
   };
 
   const findRacing = () => {
     console.log('footballSelected');
-    setSportSelected(true)
-    setRacingSelected(true)
+    setSportSelected(true);
+    setRacingSelected(true);
   };
 
   const goBackFunction = () => {
@@ -56,14 +60,15 @@ function BetFair() {
 
       {footballSelected && (
         <div>
-          Footy stuff
+          <h3>FootBall</h3>
           <button onClick={goBackFunction}>Go Back</button>
         </div>
       )}
 
       {racingSelected && (
         <div>
-          Racing stuff<button onClick={goBackFunction}>Go Back</button>
+          <h3>Horse Racing</h3>
+          <button onClick={goBackFunction}>Go Back</button>
         </div>
       )}
     </section>

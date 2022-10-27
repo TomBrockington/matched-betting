@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BankingBar from './BankingBar';
 import StageOne from './StageOne';
 import StageTwo from './StageTwo';
@@ -12,6 +12,7 @@ import RandomResults from './RandomResults';
 import StageEight from './StageEight';
 
 function Game() {
+
   const {
     stage,
     betFairBank,
@@ -27,6 +28,8 @@ function Game() {
     bankToggle,
     setBankToggle,
   } = useContext(GameContext);
+useEffect(() => {
+  }, []);
 
   return (
     <>
