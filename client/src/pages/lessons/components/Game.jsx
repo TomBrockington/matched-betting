@@ -19,24 +19,22 @@ function Game() {
     bookieBetzBank,
     setBookieBetzBank,
     bookieDepositData,
-        setBookieDepositData,
-        exchangeDepositData,
-        setExchangeDepositData,
+    setBookieDepositData,
+    exchangeDepositData,
+    setExchangeDepositData,
     playerBank,
     setPlayerBank,
     bankToggle,
     setBankToggle,
   } = useContext(GameContext);
 
-
   return (
     <>
       <BankingBar />;
       <StageOne />
-      {stage.stageTwoOn && (
-        <StageTwo />
-      )}
+      {stage.stageTwoOn && <StageTwo />}
       {stage.stageThreeOn && <StageThree />}
+      {stage.stageThreeOn && <BankingBar />}; 
       {stage.stageFourOn && <StageFour />}
       {stage.stageFiveOn && <StageFive />}
       {stage.stageSixOn && <StageSix />}

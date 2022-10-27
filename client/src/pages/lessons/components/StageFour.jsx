@@ -17,9 +17,7 @@ function StageFour() {
         <span>Check the amount of money in the pot for you to accept as a bet.</span>
       </div>
 
-      <section className='stage__example__container'>
-        <Events />
-      </section>
+      <Events />
     </article>
   )
 }

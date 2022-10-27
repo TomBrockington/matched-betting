@@ -1,0 +1,31 @@
+#bookie__container {
+    background: blue;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+
+.bookie__header {
+    display: flex;
+    justify-content: space-between;
+    background-color: teal;
+    align-items: center;
+    padding: 0 0.4rem;
+    border-bottom: 2px solid red;
+    height: fit-content;
+}
+
+.bookie__sports__selection {
+    background-color: blueviolet;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.bookie__sports__selection h3:hover {
+    background-color: teal;
+    border-radius: var(--main-border-radius);
+    padding: 0 0.3rem;
+    cursor: pointer;
+}

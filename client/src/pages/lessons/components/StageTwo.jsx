@@ -23,7 +23,7 @@ function StageTwo() {
     console.log('handleChange', event.target.name);
     const { name, value } = event.target;
 
-    setBookieDepositData(value);
+    setBookieDepositData(Number(value));
   };
   console.log('bookieDepositData', bookieDepositData);
 
@@ -34,10 +34,8 @@ function StageTwo() {
     if (bookieDepositData > playerBank) {
       return alert('Sorry not enough funds to continue')
     }
-    console.log('bookieBetzBankXX', bookieBetzBank);
     setPlayerBank((current) => current - bookieDepositData);
     setBookieBetzBank((current) => current + bookieDepositData);
-    console.log('XXbookieBetzBank', bookieBetzBank);
 
   };
 
