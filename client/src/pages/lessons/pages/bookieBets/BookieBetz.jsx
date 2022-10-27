@@ -4,12 +4,15 @@ import './style.css';
 import { GameContext } from '../../../../context/GameContext';
 import { useState } from 'react';
 
-import { footballGenerator } from '../../components/EventGenerator';
+import { footballGenerator, horseRaceGenerator } from '../../components/EventGenerator';
 import FootballItem from '../../components/FootballItem';
+import RacingItem from '../../components/RacingItem';
 
 function BookieBetz() {
   const newFootballEvents = footballGenerator;
+  const newRaceEvents = horseRaceGenerator;
   console.log('newFootballEvents', newFootballEvents);
+  console.log('newRaceEvents', newRaceEvents);
   const [sportSelected, setSportSelected] = useState(false);
   const [footballSelected, setFootballSelected] = useState(false);
   const [racingSelected, setRacingSelected] = useState(false);
@@ -90,6 +93,18 @@ function BookieBetz() {
       {racingSelected && (
         <div>
           <h3>Horse Racing</h3>
+          <div className='sporting__event__container'>
+
+            <div>
+              <ul>
+                {newRaceEvents.map((event, index) => {
+                  return (
+                    <RacingItem event={event} index={index} />
+                  )
+                })}
+              </ul>
+            </div>
+          </div>
           <button onClick={goBackFunction}>Go Back</button>
         </div>
       )}

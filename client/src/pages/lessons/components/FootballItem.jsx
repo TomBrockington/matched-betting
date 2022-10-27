@@ -2,7 +2,7 @@ import React from 'react';
 
 function FootballItem({ event, index }) {
   const betTypes = event.betTypes;
-  const teamOdds = event.teamOdds;
+  const bookieOdds = event.bookieOdds;
   const teams = event.competitors;
 
   const placeBet = (odds) => {
@@ -30,16 +30,15 @@ function FootballItem({ event, index }) {
               </ul>
 
               <ul>
-                {teamOdds[index].map((odd, index) => {
-                    return (
-                        <>
-                        <li key={index}>
-                            <span>{odd}</span>
-                            <button onClick={placeBet}>Bet</button>
-
-                            </li>
-                        </>
-                    )
+                {bookieOdds[index].map((odd, index) => {
+                  return (
+                    <>
+                      <li key={index} className='odds__list__item'>
+                        <span>{odd}</span>
+                        <button onClick={placeBet}>Bet</button>
+                      </li>
+                    </>
+                  );
                 })}
               </ul>
             </>
