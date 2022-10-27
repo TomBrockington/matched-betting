@@ -19,8 +19,8 @@ async function seed() {
       firstname: 'Max',
       lastname: 'Power',
       biography: 'I got my name off a microwave',
-    }
-  })
+    },
+  });
 
   const userPostOne = await prisma.post.create({
     data: {
@@ -28,17 +28,17 @@ async function seed() {
       title: 'My first post',
       content: `Ahh so much to say and so little time`,
       category: `GENERAL`,
-      ownerName: createdUser.username
-    }
-  })
+      ownerName: createdUser.username,
+    },
+  });
 
   const createdCommentOne = await prisma.comment.create({
     data: {
       postId: userPostOne.id,
       userId: createdUser.id,
-      content: `Load of bollocks`
+      content: `Load of bollocks`,
     },
-  })
+  });
 
   const userPostTwo = await prisma.post.create({
     data: {
@@ -46,10 +46,9 @@ async function seed() {
       title: 'My second post',
       content: `Will it work?`,
       category: `GENERAL`,
-      ownerName: createdUser.username
-
-    }
-  })
+      ownerName: createdUser.username,
+    },
+  });
 
   const userPostThree = await prisma.post.create({
     data: {
@@ -57,10 +56,9 @@ async function seed() {
       title: 'My 3rd post',
       content: `3 is the magic number`,
       category: `EVENTS`,
-      ownerName: createdUser.username
-
-    }
-  })
+      ownerName: createdUser.username,
+    },
+  });
 
   const userPostFour = await prisma.post.create({
     data: {
@@ -68,10 +66,9 @@ async function seed() {
       title: 'My 4TH post',
       content: `SQUARE ROOT OF WHATEVER`,
       category: `EVENTS`,
-      ownerName: createdUser.username
-
-    }
-  })
+      ownerName: createdUser.username,
+    },
+  });
 
   const userPostFive = await prisma.post.create({
     data: {
@@ -79,10 +76,9 @@ async function seed() {
       title: 'My V Post',
       content: `Romans get it`,
       category: `NEWBIES`,
-      ownerName: createdUser.username
-
-    }
-  })
+      ownerName: createdUser.username,
+    },
+  });
 
   const userPostSix = await prisma.post.create({
     data: {
@@ -90,10 +86,9 @@ async function seed() {
       title: '666',
       content: `Ahh the devil is here`,
       category: `NEWBIES`,
-      ownerName: createdUser.username
-
-    }
-  })
+      ownerName: createdUser.username,
+    },
+  });
 
   const createdUserTwo = await prisma.user.create({
     data: {
@@ -106,9 +101,9 @@ async function seed() {
     data: {
       email: 'admin@admin.com',
       password,
-      role: `ADMIN`
-    }
-  })
+      role: `ADMIN`,
+    },
+  });
 
   const createdAdminProfile = await prisma.profile.create({
     data: {
@@ -116,17 +111,17 @@ async function seed() {
       firstname: 'admin',
       lastname: 'magic',
       biography: 'I have my powers of administaration',
-    }
-  })
+    },
+  });
 
   const createdDev = await prisma.user.create({
     data: {
       email: 'dev@email.com',
       password,
-      role: `DEVELOPER`
-    }
-  })
-  
+      role: `DEVELOPER`,
+    },
+  });
+
   const linkOne = await prisma.link.create({
     data: {
       company: 'Betfair',
@@ -135,12 +130,12 @@ async function seed() {
       url: `https://www.betfair.com`,
       endDate: new Date(),
       desc: `A exchange and a bookie`,
-      qualifyingBet: 10
-    }
-  })
+      qualifyingBet: 10,
+    },
+  });
 
   const linkTwo = await prisma.link.create({
-  // TODO: make the numbers decimal point
+    // TODO: make the numbers decimal point
     data: {
       company: 'BetFred',
       betType: 'Matched',
@@ -149,9 +144,36 @@ async function seed() {
       endDate: new Date(),
       desc: `A bookie`,
       qualifyingBet: 10,
-      potentialProfit: 7
-    }
-  })
+      potentialProfit: 7,
+    },
+  });
+
+  const createdSportEventOne = await prisma.sportevent.create({
+    data: {
+      title: 'Everton vs Chelsea',
+      sportType: 'football',
+      betTypes: ['win', 'lose', 'draw'],
+      competitors: ['Everton', 'chelsea'],
+    },
+  });
+
+  const createdSportEventTwo = await prisma.sportevent.create({
+    data: {
+      title: 'The Grand National',
+      sportType: 'racing',
+      betTypes: ['win'],
+      competitors: ['bigDuck', 'shesTheFastest', 'dontHoofMe', 'ponyBoy', 'theHorseNorse', 'splashy'],
+    },
+  });
+
+  const createdSportEventThree = await prisma.sportevent.create({
+    data: {
+      title: 'Royal Ascot',
+      sportType: 'racing',
+      betTypes: ['win'],
+      competitors: ['chillyHair', 'crowdPleaser', 'lastHorseInn', 'fastFucker', 'irishStew', 'soonGlue'],
+    },
+  });
 
   console.log(
     'users',
@@ -164,14 +186,14 @@ async function seed() {
     createdCommentOne,
     linkOne,
     linkTwo,
-    createdAdminProfile
+    createdAdminProfile,
+    createdSportEventOne,
+    createdSportEventTwo
   );
 }
-
 
 seed().catch(async (error) => {
   console.error(error);
   await prisma.$disconnect();
   process.exit(1);
 });
-
