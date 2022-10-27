@@ -59,6 +59,27 @@ function Calculator() {
         liability
       );
 
+      setLayStake(layStakeResult.layBetData);
+      setLiablilty(layStakeResult.liabilityRequired);
+      setBookieResults(bookieBetResultsData);
+      setExchangeResults(exchangeBetResultsData);
+    }
+
+    if (betType === 'Free Bet SR') {
+      console.log('FREE SR BET');
+      const layStakeResult = calculateFreeSrBetStake(betData);
+      console.log('LAYSTAKERESTUL', layStakeResult);
+
+      const bookieBetResultsData = bookieStakeReturnedResultData(
+        betData,
+        layStake,
+        liability
+      );
+      const exchangeBetResultsData = exchangeStakeReturnedResultData(
+        betData,
+        layStake,
+        liability
+      );
       console.log('bookieBetResultsData', bookieBetResultsData);
       console.log('exchangeSnrResultData', exchangeBetResultsData);
       setLayStake(layStakeResult.layBetData);
@@ -67,12 +88,6 @@ function Calculator() {
       setExchangeResults(exchangeBetResultsData);
     }
 
-    
-    if (betType === 'Free Bet SR') {
-      const layStakeResult = calculateFreeSrBetStake(betData);
-      setLayStake(layStakeResult);
-    }
-    
     console.log('bookieResultsXX', bookieResults);
     console.log('exchangeResultsXX', exchangeResults);
     if (betType === 'Refund Bet') {

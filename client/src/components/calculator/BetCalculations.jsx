@@ -33,7 +33,9 @@ export const calculateFreeSrBetStake = (betData) => {
   console.log('y', y);
   console.log('z', z);
   let layBetData = (x / y) * z;
-  return layBetData;
+  console.log('LAYBETDATA', layBetData);
+  let liabilityRequired = (layBetData * betData.layBetOdds) - layBetData
+  return { layBetData, liabilityRequired };
 };
 
 export const calculateRefundBetStake = (betData) => {
@@ -76,6 +78,8 @@ export const exchangeQualifyingResultData = (betData, layStake, liability) => {
    let totalProfit = x * y - z
    return {bookieResults, exchangeResults, totalProfit}
 }
+
+
 // FREE BET SNR
 //  BOOKIE
 export const bookieSnrResultData = (betData, layStake, liability) => {
@@ -112,30 +116,25 @@ export const exchangeSnrResultData = (betData, layStake) => {
    return {bookieResults, exchangeResults, totalProfit}
 }
 
+
 // FREE BET SR STAKE RETURNED
 //  BOOKIE
 export const bookieStakeReturnedResultData = (betData, layStake, liability) => {
   console.log('bookieResult', betData);
   // Bookie Returns
-  let totalReturn = (betData.backBetOdds * betData.backBetStake);
-  let bookieResults = totalReturn - betData.backBetStake
+  let bookieResults = (betData.backBetOdds * betData.backBetStake)
   // Exchange Returns
   let exchangeResults = -liability
   // Profit
-  let x = (betData.backBetOdds - 1)
-  console.log('x', x);
-  let y = betData.backBetStake 
-  let z = (betData.layBetOdds - 1) * layStake
-  console.log('z', z);
-  let totalProfit = x * y - z
-  return {bookieResults, exchangeResults, totalProfit}
+  let totalProfit = bookieResults + exchangeResults
+  return { bookieResults, exchangeResults, totalProfit }
 }
+
 // EXCHANGE
 export const exchangeStakeReturnedResultData = (betData, layStake) => {
   console.log('exchangeResult', betData);
   // Bookie Returns
    let bookieResults = 0
-   console.log('bookieResults', bookieResults);
   // Exchange Returns
   let exchangeResults = layStake / 100 * (100 - betData.exchangecommision)
    // Profit
@@ -144,6 +143,6 @@ export const exchangeStakeReturnedResultData = (betData, layStake) => {
    let y = betData.backBetStake 
    let z = (betData.layBetOdds - 1) * layStake
    console.log('z', z);
-   let totalProfit = x * y - z
+   let totalProfit = exchangeResults
    return {bookieResults, exchangeResults, totalProfit}
 }
