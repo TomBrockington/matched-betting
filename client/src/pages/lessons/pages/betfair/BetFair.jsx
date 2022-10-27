@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
-import './style.css'
+import React, { useContext, useState } from 'react';
+import './style.css';
 
 import { GameContext } from '../../../../context/GameContext';
-
 
 function BetFair() {
   const [sportSelected, setSportSelected] = useState(false);
@@ -23,12 +22,24 @@ function BetFair() {
     bankToggle,
     setBankToggle,
   } = useContext(GameContext);
+
   const findFootball = () => {
     console.log('footballSelected');
-  }
+    setSportSelected(true)
+    setFootballSelected(true)
+  };
+
   const findRacing = () => {
     console.log('footballSelected');
-  }
+    setSportSelected(true)
+    setRacingSelected(true)
+  };
+
+  const goBackFunction = () => {
+    setSportSelected(false);
+    setRacingSelected(false);
+    setFootballSelected(false);
+  };
   return (
     <section id='exchange__container'>
       <div className='exchange__header'>
@@ -36,11 +47,26 @@ function BetFair() {
         <span>In Account £{betFairBank}</span>
       </div>
 
-      <div className='exchange__sports__selection'>
-        <h3 onClick={findFootball}>FootBall</h3>
-        <h3 onClick={findRacing}>Horse Racing</h3>
-      </div>
+      {!sportSelected && (
+        <div className='bookie__sports__selection'>
+          <h3 onClick={findFootball}>FootBall</h3>
+          <h3 onClick={findRacing}>Horse Racing</h3>
+        </div>
+      )}
+
+      {footballSelected && (
+        <div>
+          Footy stuff
+          <button onClick={goBackFunction}>Go Back</button>
+        </div>
+      )}
+
+      {racingSelected && (
+        <div>
+          Racing stuff<button onClick={goBackFunction}>Go Back</button>
+        </div>
+      )}
     </section>
-  )
+  );
 }
-export default BetFair
+export default BetFair;
