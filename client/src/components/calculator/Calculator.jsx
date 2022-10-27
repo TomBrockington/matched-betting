@@ -25,8 +25,12 @@ function Calculator() {
   const [exchangeResults, setExchangeResults] = useState(betSampleResultsData);
 
   useEffect(() => {
+    setLayStake(0);
+      setLiablilty(0);
+      setBookieResults(betSampleResultsData);
+      setExchangeResults(betSampleResultsData);
     if (betType === 'Qualifying Bet') {
-      console.log('QUALIFFFFFFY');
+
       const layStakeResult = calculateQualifyingBetStake(betData);
       const bookieBetResultsData = bookieQualifyingResultData(
         betData,
@@ -47,6 +51,7 @@ function Calculator() {
 
     if (betType === 'Free Bet') {
       console.log('FREEEEE BET');
+
       const layStakeResult = calculateFreeSnrBetStake(betData);
       const bookieBetResultsData = bookieSnrResultData(
         betData,
@@ -67,6 +72,7 @@ function Calculator() {
 
     if (betType === 'Free Bet SR') {
       console.log('FREE SR BET');
+
       const layStakeResult = calculateFreeSrBetStake(betData);
       console.log('LAYSTAKERESTUL', layStakeResult);
 
@@ -94,6 +100,8 @@ function Calculator() {
       const layStakeResult = calculateRefundBetStake(betData);
       setLayStake(layStakeResult);
     }
+
+    
   }, [betType, betData]);
 
   const handleBetOptionChange = (event) => {

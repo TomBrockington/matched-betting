@@ -59,7 +59,7 @@ export const bookieQualifyingResultData = (betData, layStake, liability) => {
   let z = (betData.layBetOdds - 1) * layStake
   console.log('z', z);
   let totalProfit = x * y - z
-  return {bookieResults, exchangeResults, totalProfit}
+  return { bookieResults, exchangeResults, totalProfit }
 }
 
 export const exchangeQualifyingResultData = (betData, layStake, liability) => {
