@@ -12,3 +12,20 @@ export const betSampleData = {
     totalProfit: 0,
   }
   
+  export const sampleBookieBetTicket = {
+    sportType: '',
+    betType: '',
+    betOdds: 0,
+    betStake: 0,
+    betOn: ''
+  }
+
+    
+  export const sampleExchangeBetTicket = {
+    sportType: '',
+    betType: '',
+    betOdds: 0,
+    layStake: 0,
+    liability: '',
+    betAgainst: ''
+  }

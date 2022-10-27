@@ -13,6 +13,8 @@ function FootballItem({ event, index }) {
     setBetHistory,
     stage,
     setStage,
+    bankToggle,
+    setBankToggle,
     bookieDepositData,
     setBookieDepositData,
     exchangeDepositData,
@@ -23,6 +25,10 @@ function FootballItem({ event, index }) {
     setCurrentBookieBet,
     currentExchangeBet,
     setCurrentExchangeBet,
+    currentBookieBetData,
+    setCurrentBookieBetData,
+    currentExchangeBetData,
+    setCurrentExchangeBetData,
   } = useContext(GameContext);
 
   const betTypes = event.betTypes;
@@ -31,12 +37,22 @@ function FootballItem({ event, index }) {
 
   const placeBet = (odds) => {
     console.log('bet placing', odds);
-    setCurrentBookieBet();
+    
   };
 
   const handleChange = (event) => {
     console.log(event.target.value);
+    const value = event.target.value;
+    const num = Number(value);
+    console.log('num ', num);
+    
+    setCurrentBookieBetData({
+      ...currentBookieBetData,
+      betStake: value,
+    });
+    console.log('current bet XXXXX', currentBookieBetData);
   };
+  
   return (
     <li key={index}>
       <div> {event.title}</div>
