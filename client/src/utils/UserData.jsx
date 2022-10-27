@@ -6,6 +6,16 @@ export const userSampleData = {
   posts: [],
 };
 
+export const sampleProfileData = {
+  username: '',
+  email: '',
+  password: '',
+  firstname: '',
+  lastname: '',
+  biography: '',
+  profileImgUrl: '',
+}
+
 export const profileFormState = [
   'username', 'email', 'password', 'firstname', 'lastname', 'biography', 'profileImgUrl'
 ]
