@@ -14,7 +14,8 @@ const getAllSportEvents = async (req, res) => {
   try {
     if (sportType) {
       //
-      const foundSportType = findEventByType(sportType)
+      console.log('sportType', sportType);
+      const foundSportType = await findEventByType(sportType)
       console.log('found sportType', foundSportType);
 
       if (!foundSportType) {
