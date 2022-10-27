@@ -1,21 +1,24 @@
 import React from 'react';
 
-const placeBet = (odds) => {
-  console.log('bet placing', odds);
-};
-
 function FootballItem({ event, index }) {
   const betTypes = event.betTypes;
-  const teamOneOdds = event.teamOneOdds;
+  const teamOdds = event.teamOdds;
   const teams = event.competitors;
+
+  const placeBet = (odds) => {
+    console.log('bet placing', odds);
+  };
+
   return (
     <li key={index}>
       <div> {event.title}</div>
+
       <div className='betData__container'>
         {teams.map((team, index) => {
           return (
             <>
               <h4>{team}</h4>
+
               <ul>
                 {betTypes.map((betType, index) => {
                   return (
@@ -25,16 +28,18 @@ function FootballItem({ event, index }) {
                   );
                 })}
               </ul>
+
               <ul>
-                {teamOneOdds.map((odds, index) => {
-                  return (
-                    <li key={index} className='bet__list__item'>
-                      <div className='odds__container'>{odds}</div>
-                      <div className='betnow__button__container'>
-                        <button onClick={() => placeBet(odds)}>Bet</button>
-                      </div>
-                    </li>
-                  );
+                {teamOdds[index].map((odd, index) => {
+                    return (
+                        <>
+                        <li key={index}>
+                            <span>{odd}</span>
+                            <button onClick={placeBet}>Bet</button>
+
+                            </li>
+                        </>
+                    )
                 })}
               </ul>
             </>
