@@ -1,11 +1,10 @@
 .calculator__main__container {
-    background-color: red;
     border: 4px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
+    background-color: teal;
 }
 
 .bet__type__container {
-    background-color: teal;
     display: grid;
     grid-template-columns: 1fr;
     padding: var(--padding-standard);
@@ -25,10 +24,13 @@
 
 /* INPUTS FOR BET VALUES */
 .calculator__inputs {
-    background-color: yellow;
     padding: var(--padding-standard);
     display: grid;
     gap: 1rem;
+    background-color: orange;
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+
 }
 .calculator__inputs input {
     background-color: white;
@@ -36,6 +38,7 @@
     border: none;
     font-size: 1.8rem;
     max-width: 150px;
+    border: 1px solid black;
 }
 
 .calculator__inputs label {
@@ -44,7 +47,12 @@
 
 
 .backbet__container {
-    background-color: blue;
+    background-color: var(--nav-background-color);
+    padding: 0.4rem;
+}
+
+.laybet__container {
+    padding: 0.4rem;
 }
 
 .laystake__container{
@@ -55,8 +63,9 @@
 }
 
 .results__container {
-    background-color: pink;
     padding: var(--padding-standard);
+    border-bottom-left-radius: var(--main-border-radius);
+    border-bottom-right-radius: var(--main-border-radius);
 
 }
 

@@ -13,10 +13,13 @@ function Home() {
       <Nav />
       <header className='home__header__container'>
         <div className='home__header__content'>
-          
           <div className='home__header__tc'>
-            <h1 className='home__header__title'>WELCOME:</h1>
+            <div className='home__header__title'>
+              <h1>WELCOME:</h1>
+              <h2>To Matched Betting Masters</h2>
+            </div>
           </div>
+
           <div className='home__header__pc'>
             <p className='home__header__paragraph'>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
@@ -37,9 +40,7 @@ function Home() {
         </div>
       </header>
 
-      <main className='home__main__container'>
-        SOme main content
-      </main>
+      <main className='home__main__container'>SOme main content</main>
     </>
   );
 }

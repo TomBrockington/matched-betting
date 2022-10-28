@@ -9,7 +9,7 @@ function CalculationsExplained() {
           <span>Commision = % / 100 (5% = 0.05)</span>
         </h3>
       </div>
-      <article>
+      <article className='terms__explained'>
         <div className='betting__info'>
           <div>
             <p>

@@ -1,7 +1,7 @@
 .account__container {
-    background-color: red;
     display: grid;
     place-content: center;
+    margin-top: 3rem;
 }
 
 .account__header__container {

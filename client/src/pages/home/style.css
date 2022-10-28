@@ -31,18 +31,15 @@
     grid-area: title;
     display: grid;
     place-content: center;
+    width: 100%;
 }
 
 .home__header__title {
     background-color: blue;
-    color: white;
     font-style: italic;
     font-weight: 800;
-    font-size: var(--font-size-XXlarge);
-    width: fit-content;
-    height: fit-content;
-    padding: var(--padding-standard);
-
+    width: 100%;
+    font-size: var(--font-size-large);
 }
 
 /* PARAGRAPH AND CONTAINER  */

@@ -1,6 +1,7 @@
 :root {
   /* BACKGROUNDS */
   --main-background-color: green;
+  --secondary-background-color: orange;
   --alt-background-color: grey;
   --nav-background-color: lightblue;
   --hover-background-color: rgba(10, 107, 139, 0.533);

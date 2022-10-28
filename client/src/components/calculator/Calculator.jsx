@@ -49,7 +49,6 @@ function Calculator() {
     }
 
     if (betType === 'Free Bet') {
-      console.log('FREEEEE BET');
 
       const layStakeResult = calculateFreeSnrBetStake(betData);
       const bookieBetResultsData = bookieSnrResultData(
@@ -70,10 +69,8 @@ function Calculator() {
     }
 
     if (betType === 'Free Bet SR') {
-      console.log('FREE SR BET');
 
       const layStakeResult = calculateFreeSrBetStake(betData);
-      console.log('LAYSTAKERESTUL', layStakeResult);
 
       const bookieBetResultsData = bookieStakeReturnedResultData(
         betData,
@@ -85,16 +82,12 @@ function Calculator() {
         layStake,
         liability
       );
-      console.log('bookieBetResultsData', bookieBetResultsData);
-      console.log('exchangeSnrResultData', exchangeBetResultsData);
       setLayStake(layStakeResult.layBetData);
       setLiablilty(layStakeResult.liabilityRequired);
       setBookieResults(bookieBetResultsData);
       setExchangeResults(exchangeBetResultsData);
     }
 
-    console.log('bookieResultsXX', bookieResults);
-    console.log('exchangeResultsXX', exchangeResults);
     if (betType === 'Refund Bet') {
       const layStakeResult = calculateRefundBetStake(betData);
       setLayStake(layStakeResult);
@@ -246,23 +239,23 @@ function Calculator() {
             <thead>
               <tr className='table__row'>
                 <th className='ignore'></th>
-                <th>Bookie</th>
-                <th>Exchange</th>
-                <th>Total Profit</th>
+                <th style={{backgroundColor: "lightBlue"}}>Bookie</th>
+                <th style={{backgroundColor: "#e24343"}}>Exchange</th>
+                <th style={{backgroundColor: "pink"}}>Total Profit</th>
               </tr>
             </thead>
             <tbody>
               <tr className='table__row'>
-                <td>Bookie Wins</td>
-                <td> {bookieResults.bookieResults}</td>
-                <td> {bookieResults.exchangeResults}</td>
-                <td> £ {bookieResults.totalProfit}</td>
+                <td style={{backgroundColor: "lightBlue"}}>Bookie Wins</td>
+                <td style={{backgroundColor: "lightBlue"}}> {bookieResults.bookieResults}</td>
+                <td style={{backgroundColor: "lightBlue"}}> {bookieResults.exchangeResults}</td>
+                <td style={{backgroundColor: "pink"}}> £ {bookieResults.totalProfit}</td>
               </tr>
               <tr className='table__row'>
-                <td>Exchange Wins</td>
-                <td> {exchangeResults.bookieResults}</td>
-                <td> {exchangeResults.exchangeResults}</td>
-                <td> £ {exchangeResults.totalProfit}</td>
+                <td style={{backgroundColor: "#e24343"}}>Exchange Wins</td>
+                <td style={{backgroundColor: "#e24343"}}> {exchangeResults.bookieResults}</td>
+                <td style={{backgroundColor: "#e24343"}}> {exchangeResults.exchangeResults}</td>
+                <td style={{backgroundColor: "pink"}}> £ {exchangeResults.totalProfit}</td>
               </tr>
             </tbody>
           </table>
