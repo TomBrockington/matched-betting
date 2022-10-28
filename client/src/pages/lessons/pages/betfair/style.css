@@ -1,5 +1,5 @@
 #exchange__container {
-    background: red;
+    background: rgb(194, 194, 14);
     display: grid;
     grid-template-rows: auto 1fr;
 }

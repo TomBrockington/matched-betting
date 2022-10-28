@@ -40,7 +40,6 @@ function Home() {
         </div>
       </header>
 
-      <main className='home__main__container'>SOme main content</main>
     </>
   );
 }

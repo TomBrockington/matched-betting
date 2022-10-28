@@ -3,20 +3,25 @@
     padding: var(--padding-small);
     border: 2px solid var(--main-border-color);
     border-radius: var(--main-border-radius);
-    margin-bottom: var(--padding-small);
+    margin-bottom: 1.5rem;
     height: fit-content;
 }
 
 .stage__title__container {
-    background-color: pink;
     width: 100%;
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
+.stage__info__container {
+    padding: 0.4rem;
+}
+
 .banking__container {
-    background-color: yellow;
+    border-radius: var(--main-border-radius);
+    background-color: pink;
+    border: 2px solid black;
     display: flex;
     gap: 3rem;
     padding: 1rem;
@@ -30,10 +35,11 @@
     right: 20px;
     top: 20px;
     background-color: whitesmoke;
+    padding: 0.4rem;
 }
 
 .mock__website__container {
-    background-color: orange;
+    background-color: black;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
@@ -46,6 +52,7 @@
     border: 2px solid var(--main-border-color);
     display: grid;
     grid-template-columns: auto 1fr 1fr;
+    padding: 0.4rem;
 }
 
 .odds__list__item {

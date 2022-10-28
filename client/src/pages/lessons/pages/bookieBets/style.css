@@ -7,10 +7,10 @@
 .bookie__header {
   display: flex;
   justify-content: space-between;
-  background-color: teal;
+  background-color: rgb(128, 0, 34);
   align-items: center;
   padding: 0 0.4rem;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid black;
   height: fit-content;
 }
 
