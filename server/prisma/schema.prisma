@@ -42,7 +42,7 @@ model Profile {
   firstname     String?
   lastname      String?
   biography     String?
-  profileImgUrl String    @default("https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png")
+  profileImgUrl String    @default("https://t3.ftcdn.net/jpg/02/95/94/94/360_F_295949484_8BrlWkTrPXTYzgMn3UebDl1O13PcVNMU.jpg")
   bank          Int       @default(1000)
   betHistory    String[]  @default([])
   userId        Int       @unique

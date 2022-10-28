@@ -14,7 +14,7 @@
 }
 
 .lessons__game__container {
-    background-color: brown;
+    /* background-color: brown; */
     margin: var(--padding-standard);
     padding: var(--padding-standard);
 }
