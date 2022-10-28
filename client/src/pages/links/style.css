@@ -1,7 +1,5 @@
 .links__container {
   padding: 4rem;
-  margin: 4rem;
-  background-color: red;
 }
 
 .links__header {
@@ -22,6 +20,7 @@
   border: 2px solid var(--main-border-color);
   border-radius: var(--main-border-radius);
   padding: var(--padding-standard);
+  background-color: teal;
 }
 
 .list__item__header {

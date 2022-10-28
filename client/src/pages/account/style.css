@@ -10,7 +10,7 @@
 }
 
 .account__profile__container {
-    background-color: blue;
+    background-color: teal;
     border: 2px solid var(--main-border-color);
     width: fit-content;
     display: grid;

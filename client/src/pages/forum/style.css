@@ -4,7 +4,6 @@
 
 .forum__content_container {
   display: grid;
-  background-color: red;
   width: 100%;
   padding: var(--padding-standard);
 }
@@ -14,11 +13,11 @@
   border-radius: var(--main-border-radius);
   padding: var(--padding-standard);
   margin-left: 20%;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  background-color: teal;
 }
 /* POSTS AND CATEGORIES */
 .forum__content__container {
-    background-color: orange;
     display: grid;
     grid-template-columns: 19% 1fr;
     gap: var(--padding-standard);
@@ -31,6 +30,7 @@
     padding: var(--padding-standard);
     height: min-content;
     min-width: fit-content;
+    background-color: orange;
 }
 
 .forum__posts__container {
@@ -38,7 +38,7 @@
     border-radius: var(--main-border-radius);
     padding: var(--padding-standard);
 
-    background-color: pink;
+    background-color: teal;
     /* max-height: 150vh; */
 }
 

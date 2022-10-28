@@ -83,3 +83,11 @@ label {
     font-size: var(--font-size-medium);
     padding: 1rem 2rem;
 }
+
+.posts__container {
+    background-color: orange;
+}
+
+.post__item {
+    background-color: rgb(227, 227, 227);
+}
