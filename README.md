@@ -1,14 +1,23 @@
-# matched-betting
+# Matched Betting
+
 An educational website about how to guarantee profit from matched betting systems
 
 Current address `https://lively-brioche-882d33.netlify.app/`
-## Purpose 
+
+## Table of contents
+
+- [Bio Clicker](#bio-clicker)
+  - [Table of contents](#table-of-contents)
+
+## Purpose
+
 <p>Teach people the maths and fomulas to make succesful bets </p>
 <p>Provide a calculated with 3 formula types</p>
 <p>Educate with an interactive page that replicates bookies webpages, races and allows you to make bets.</p>
 <p>Provide a user forum where members can share tips and links or offers</p>
 
 ## Betting lessons
+
 - JSON file with various races and football games, including a few top betting options. 10 minimum
 - Player state with a bank and bet history
 - 2 Bookie state
@@ -49,4 +58,3 @@ Current address `https://lively-brioche-882d33.netlify.app/`
 - Lessons - interactive lessons with mock bookies and money to make bets with
 - FAQ - a few basic questions for newbies
 - List - a list of bookies you can use, a list of bookies to avoid, a list of other things to avoid i.e. free spins
-
