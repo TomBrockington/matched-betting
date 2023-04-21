@@ -36,7 +36,7 @@ function Login() {
     // returning data from local:4000 as res.json is a token that can be used as your auth badge
     const login = await res.json();
     console.log('login', login);
-    console.log('login', login.user);
+    console.log('login', login.data);
 
     // // saving the token to local storage
     localStorage.setItem(process.env.REACT_APP_USER_TOKEN, login.data);

@@ -17,7 +17,7 @@ const authorization = async (req, res, next) => {
 
   const [type, token] = req.get('authorization').split(' ');
 
-  if (type !== `Bearer`) {
+  if (type !== 'BEARER') {
     return res
       .status(409)
       .json({ error: `Expected Bearer for 'type' but got ${type} instead`, code: `409` });

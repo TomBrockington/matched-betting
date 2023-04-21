@@ -6,7 +6,8 @@ import HeaderImage from '../../assets/images/football-goal.jpg';
 
 function Home() {
   const { user } = useContext(UserContext);
-  console.log('HOME user', user);
+  console.log('CCC home', user);
+  console.log('process.env.REACT_APP_USER_TOKEN', process.env.REACT_APP_USER_TOKEN);
 
   return (
     <>

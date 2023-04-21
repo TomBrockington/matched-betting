@@ -10,6 +10,7 @@ import { userSampleData } from '../../utils/UserData'
 
 
 function Nav() {
+  console.log('XXX nav');
   const { user, setUser } = useContext(UserContext);
   
   const initUserState = userSampleData

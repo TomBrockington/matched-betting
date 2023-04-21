@@ -11,7 +11,7 @@ import Links from './pages/links/Links';
 import Account from './pages/account/Account';
 
 function App() {
-  console.log('App loaded');
+  console.log('BBB app.js');
   return (
     <>
       <Routes>
